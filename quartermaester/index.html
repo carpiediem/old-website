@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="demoapp">
+  <head>
+    <script src="js/angular.min.js"></script>
+    <script src="js/leaflet.js"></script>
+    <script src="js/angular-leaflet-directive.min.js"></script>
+    <link rel="stylesheet" href="css/leaflet.css" />
+    <script>
+        var app = angular.module("demoapp", ["leaflet-directive"]);
+        app.controller('DemoController', [ '$scope', function($scope) {
+            var tilesDict = {
+                westerosmap: {
+                    url: "file:///D:/Editing%20Workspace/quartermaester.info/tiles/{z}/{x}/{y}.png",
+                    options: {
+                        attribution: '<a href="http://sermountaingoat.co.uk">SerMountainGoat</a>'
+                    }
+                }
+            };
+            
+            angular.extend($scope, {
+                london: {
+                    lat: 51.505,
+                    lng: -0.09,
+                    zoom: 8
+                },
+                tiles: tilesDict.westerosmap,
+                markers: {
+                    main_marker: {
+                        lat: 51,
+                        lng: 0,
+                        focus: true,
+                        message: "Hey, drag me if you want",
+                        title: "Marker",
+                        draggable: true
+                    }
+                }
+            });
+        } ]);
+    </script>
+  </head>
+  <body ng-controller="DemoController">
+      <leaflet center="london" tiles="tiles" markers="markers" height="480px" width="640px">
+      </leaflet>
+  </body>
+</html>
