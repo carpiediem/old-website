@@ -1,45 +1,132 @@
 <!DOCTYPE html>
-<html ng-app="demoapp">
-  <head>
-    <script src="js/angular.min.js"></script>
-    <script src="js/leaflet.js"></script>
-    <script src="js/angular-leaflet-directive.min.js"></script>
-    <link rel="stylesheet" href="css/leaflet.css" />
-    <script>
-        var app = angular.module("demoapp", ["leaflet-directive"]);
-        app.controller('DemoController', [ '$scope', function($scope) {
-            var tilesDict = {
-                westerosmap: {
-                    url: "file:///D:/Editing%20Workspace/quartermaester.info/tiles/{z}/{x}/{y}.png",
-                    options: {
-                        attribution: '<a href="http://sermountaingoat.co.uk">SerMountainGoat</a>'
-                    }
-                }
-            };
-            
-            angular.extend($scope, {
-                london: {
-                    lat: 51.505,
-                    lng: -0.09,
-                    zoom: 8
-                },
-                tiles: tilesDict.westerosmap,
-                markers: {
-                    main_marker: {
-                        lat: 51,
-                        lng: 0,
-                        focus: true,
-                        message: "Hey, drag me if you want",
-                        title: "Marker",
-                        draggable: true
-                    }
-                }
-            });
-        } ]);
-    </script>
-  </head>
-  <body ng-controller="DemoController">
-      <leaflet center="london" tiles="tiles" markers="markers" height="480px" width="640px">
-      </leaflet>
-  </body>
+<html xmlns="http://www.w3.org/1999/xhtml"
+<head>
+  <title>Interactive Game of Thrones Map with Spoiler Control | Quartermaester.info</title>
+  <link rel="shortcut icon" href="http://quartermaester.info/favicon.ico">
+  <link rel="stylesheet" href="https://raw.githubusercontent.com/openlayers/openlayers/master/theme/default/style.css">
+  
+  <!-- Bootstrap core CSS -->
+  <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="http://getbootstrap.com/examples/navbar-fixed-top/navbar-fixed-top.css" rel="stylesheet">
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.3/css/base/jquery.ui.all.css" rel="stylesheet">
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.2/css/lightness/jquery-ui-1.10.2.custom.min.css" rel="stylesheet">
+  
+  <style type="text/css">
+    html, body, #map {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        min-height:0px;
+    }
+    body {padding-top: 55px !important; background:#fff; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+    .olControlAttribution {bottom:0px !important;}
+    .olControlMousePosition {color:white !important;}
+    #slider {margin-top:18px;}
+    label[for="slider"] p {margin:0px;}
+  </style>
+  <script src="http://www.openlayers.org/api/2.12/OpenLayers.js"></script>
+  <script>
+    var map;
+    var mapBounds = new OpenLayers.Bounds( 0.0, -4642.0, 4642.0, 0.0);
+    var mapMinZoom = 0;
+    var mapMaxZoom = 5;
+    var emptyTileURL = "http://www.maptiler.org/img/none.png";
+    OpenLayers.IMAGE_RELOAD_ATTEMPTS = 3;
+
+    function init(){
+        var options = {
+            div: "map",
+            controls: [],
+            maxExtent: new OpenLayers.Bounds(0.0, -4642.0, 4642.0, 0.0),
+            maxResolution: 32.000000,
+            numZoomLevels: 6,
+            center: [953.5, -2302],
+            zoom: 4
+        };
+        map = new OpenLayers.Map(options);
+
+        var layer = new OpenLayers.Layer.TMS("TMS Layer", "",
+        {
+            serviceVersion: '.',
+            layername: '.',
+            alpha: true,
+            type: 'png',
+            getURL: getURL
+        });
+
+        map.addLayer(layer);
+        
+        map.addControls([new OpenLayers.Control.PanZoomBar(),
+                         new OpenLayers.Control.Navigation(),
+                         new OpenLayers.Control.MousePosition({numDigits:0}),
+                         new OpenLayers.Control.ArgParser(),
+                         new OpenLayers.Control.Attribution()]);
+    }
+
+    function getURL(bounds) {
+        bounds = this.adjustBounds(bounds);
+        var res = this.getServerResolution();
+        var x = Math.round((bounds.left - this.tileOrigin.lon) / (res * this.tileSize.w));
+        var y = Math.round((bounds.bottom - this.tileOrigin.lat) / (res * this.tileSize.h));
+        var z = this.getServerZoom();
+        var path = this.serviceVersion + "/" + this.layername + "/" + z + "/" + x + "/" + y + "." + this.type; 
+        var url = this.url;
+        if (OpenLayers.Util.isArray(url)) {
+            url = this.selectUrl(path, url);
+        }
+        if (mapBounds.intersectsBounds(bounds) && (z >= mapMinZoom) && (z <= mapMaxZoom)) {
+            return url + path;
+        } else {
+            return emptyTileURL;
+        }
+    }
+
+  </script>
+</head>
+<body >
+  <!-- Fixed navbar -->
+  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container navbar-left">
+      <a class="navbar-brand" href="#">
+        <span class="glyphicon glyphicon-menu-hamburger"></span>
+        Quartermaester.info
+      </a>
+      <form class="navbar-form-alt">
+        <div class="input-group">
+          <span class="form-control" id="slider"></span>
+          <span class="input-group-btn">
+            <label class="btn" for="slider">
+              <p id="bookName">A Game of Thrones</p>
+              <p id="chapterName">0: Prologue</p>
+            </label>
+          </span>
+        </div>
+      </form>
+    </div>
+  </nav>
+  
+  <div id="map"></div>
+                
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.2/jquery.ui.touch-punch.min.js"></script>
+    
+  <script>
+    init();
+    $(function() {
+      //alert( $( "#slider" ).slider);
+      $( "#slider" ).slider();
+    });
+  </script>
+</body>
 </html>
