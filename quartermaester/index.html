@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 <head>
   <title>Interactive Game of Thrones Map with Spoiler Control | Quartermaester.info</title>
-  <link rel="shortcut icon" href="http://quartermaester.info/favicon.ico">
-  <link rel="stylesheet" href="https://raw.githubusercontent.com/openlayers/openlayers/master/theme/default/style.css">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="stylesheet" href="css/openlayers.css">
   
   <!-- Bootstrap core CSS -->
-  <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="http://getbootstrap.com/examples/navbar-fixed-top/navbar-fixed-top.css" rel="stylesheet">
+  <link href="css/navbar-fixed-top.css" rel="stylesheet">
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>
@@ -27,11 +27,13 @@
         height: 100%;
         min-height:0px;
     }
-    body {padding-top: 55px !important; background:#fff; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+    body {padding-top: 0px !important; overflow-x:hidden; background:#fff; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
     .olControlAttribution {bottom:0px !important;}
     .olControlMousePosition {color:white !important;}
+    .container, .navbar {color:grey !important; background-color:#eee !important; }
     #slider {margin-top:18px;}
-    label[for="slider"] p {margin:0px;}
+    label[for="slider"] p {margin:0px; font-style:italic; font-size:0.9em;}
+    #map {padding-top: 50px !important;}
   </style>
   <script src="http://www.openlayers.org/api/2.12/OpenLayers.js"></script>
   <script>
@@ -91,30 +93,155 @@
     }
 
   </script>
+  
+  <!-- <link rel="stylesheet" type="text/css" href="http://tympanus.net/Development/MultiLevelPushMenu/css/normalize.css" /> -->
+  <link rel="stylesheet" type="text/css" href="css/mlpm-demo.css" />
+  <link rel="stylesheet" type="text/css" href="css/mlpm-icons.css" />
+  <link rel="stylesheet" type="text/css" href="css/mlpm-component.css" />
+  <script src="http://tympanus.net/Development/MultiLevelPushMenu/js/modernizr.custom.js"></script>
+  
 </head>
 <body >
-  <!-- Fixed navbar -->
-  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container navbar-left">
-      <a class="navbar-brand" href="#">
-        <span class="glyphicon glyphicon-menu-hamburger"></span>
-        Quartermaester.info
-      </a>
-      <form class="navbar-form-alt">
-        <div class="input-group">
-          <span class="form-control" id="slider"></span>
-          <span class="input-group-btn">
-            <label class="btn" for="slider">
-              <p id="bookName">A Game of Thrones</p>
-              <p id="chapterName">0: Prologue</p>
-            </label>
-          </span>
-        </div>
-      </form>
-    </div>
-  </nav>
+
+  <!-- Push Wrapper -->
+  <div class="mp-pusher" id="mp-pusher">
+
+    <!-- mp-menu -->
+    <nav id="mp-menu" class="mp-menu">
+      <div class="mp-level">
+        <h2 class="icon icon-settings">Map Options</h2>
+        <ul>
+          <li class="icon icon-arrow-left">
+					  <a class="icon icon-search" href="#">Find a Town</a>
+          </li>
+          <li class="icon icon-arrow-left">
+            <a class="icon icon-params" href="#">Slider Units</a>
+            <div class="mp-level">
+              <h2 class="icon icon-params">Adjust the Spoiler Control Using These Units</h2>
+              <ul>
+                <li>
+                  <a class="icon icon-tv" href="#">TV Episodes</a>
+                </li>
+                <li>
+                  <a class="icon icon-wallet" href="#">Book Chapters</a>
+                </li>
+                <li>
+                  <a class="icon icon-wallet" href="#">Novella Chapters</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="icon icon-arrow-left">
+            <a class="icon icon-user" href="#">Characters</a>
+            <div class="mp-level">
+              <h2 class="icon icon-user">Show These Characters</h2>
+              <ul style="max-height:80%; overflow-y:auto;">
+                <li>
+                  <a>
+                    <input type="checkbox">
+                    Arya
+                  </a>
+                </li>
+                <li>
+                  <a>
+                    <input type="checkbox">
+                    Eddard
+                  </a>
+                </li>
+                <li><a><input type="checkbox">Bran</a></li>
+                <li><a><input type="checkbox">Bran</a></li>
+                <li><a><input type="checkbox">Bran</a></li>
+                <li><a><input type="checkbox">Bran</a></li>
+                <li><a><input type="checkbox">Bran</a></li>
+                <li><a><input type="checkbox">Bran</a></li>
+                <li><a><input type="checkbox">Bran</a></li>
+                <li><a><input type="checkbox">Bran</a></li>
+                <li><a><input type="checkbox">Bran</a></li>
+                <li><a><input type="checkbox">Bran</a></li>
+                <li><a><input type="checkbox">Bran</a></li>
+                <li><a><input type="checkbox">Bran</a></li>
+                <li><a><input type="checkbox">Bran</a></li>
+                <li><a><input type="checkbox">Bran</a></li>
+                <li><a><input type="checkbox">Bran</a></li>
+                <li><a><input type="checkbox">Bran</a></li>
+                <li><a><input type="checkbox">Bran</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="icon icon-arrow-left">
+            <a class="icon icon-location" href="#">Noble Houses</a>
+            <div class="mp-level">
+              <h2 class="icon icon-location">Show the Locations of These Noble Houses</h2>
+              <ul>
+                <li>
+                  <a class="icon icon-location" href="#">None</a>
+                </li>
+                <li>
+                  <a class="icon icon-location" href="#">Great Houses</a>
+                </li>
+                <li>
+                  <a class="icon icon-location" href="#">All Known Houses</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="icon icon-arrow-left">
+            <a class="icon icon-settings" href="#">Other Options</a>
+            <div class="mp-level">
+              <h2 class="icon icon-settings">Show the These on the Map</h2>
+              <ul>
+                <li>
+                  <a class="icon icon-world" href="#">Shaded Regions</a>
+                </li>
+                <li>
+                  <a class="icon icon-pen" href="#">Character Paths</a>
+                </li>
+                <li>
+                  <a class="icon icon-user" href="#">Character Names</a>
+                </li>
+                <li>
+                  <a class="icon icon-fire" href="#">Major Events</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li><a class="icon icon-clip" href="#">About this Site</a></li>
+        </ul>
+      </div>
+    </nav>
+    <!-- /mp-menu -->
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container navbar-left">
+        <span class="navbar-brand" id="trigger">
+          <span class="glyphicon glyphicon-menu-hamburger"></span>
+          Quartermaester.info
+        </span>
+        <form class="navbar-form-alt">
+          <div class="input-group">
+            <span class="form-control" id="slider"></span>
+            <span class="input-group-btn">
+              <label class="btn" for="slider">
+                <p id="bookName">A Game of Thrones</p>
+                <p id="chapterName">0: Prologue</p>
+              </label>
+            </span>
+          </div>
+        </form>
+      </div>
+    </nav>
+    
+    <div id="map"></div>
+
+  </div><!-- /pusher -->
+  <script src="http://tympanus.net/Development/MultiLevelPushMenu/js/classie.js"></script>
+  <script src="http://tympanus.net/Development/MultiLevelPushMenu/js/mlpushmenu.js"></script>
+  <script>
+    new mlPushMenu( document.getElementById( 'mp-menu' ), document.getElementById( 'trigger' ) );
+  </script>
   
-  <div id="map"></div>
+  
                 
   <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
