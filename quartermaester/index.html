@@ -26,6 +26,7 @@
         width: 100%;
         height: 100%;
         min-height:0px;
+        overflow:hidden;
     }
     body {padding-top: 0px !important; overflow-x:hidden; background:#fff; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
     .olControlAttribution {bottom:0px !important;}
@@ -34,6 +35,16 @@
     #slider {margin-top:18px;}
     label[for="slider"] p {margin:0px; font-style:italic; font-size:0.9em;}
     #map {padding-top: 50px !important;}
+    
+    #characterList {overflow-y:auto; width:300px; position:fixed; top:116px; bottom:0px;}
+    #characterList::-webkit-scrollbar {
+      width: 10px;
+      background-color: grey;
+    }
+    #characterList::-webkit-scrollbar-button:vertical {
+        display:none;
+    }
+    
   </style>
   <script src="http://www.openlayers.org/api/2.12/OpenLayers.js"></script>
   <script>
@@ -135,7 +146,7 @@
             <a class="icon icon-user" href="#">Characters</a>
             <div class="mp-level">
               <h2 class="icon icon-user">Show These Characters</h2>
-              <ul style="max-height:80%; overflow-y:auto;">
+              <ul id="characterList">
                 <li>
                   <a>
                     <input type="checkbox">
