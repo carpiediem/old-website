@@ -18,8 +18,8 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 
-  <link href="http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.3/css/base/jquery.ui.all.css" rel="stylesheet">
-  <link href="http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.2/css/lightness/jquery-ui-1.10.2.custom.min.css" rel="stylesheet">
+  <!-- <link href="http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.3/css/base/jquery.ui.all.css" rel="stylesheet"> -->
+  <link href="css/jquery-ui-1.10.2.custom.min.css" rel="stylesheet">
   
   <style type="text/css">
     html, body, #map {
@@ -33,7 +33,9 @@
     .olControlAttribution {bottom:0px !important;}
     .olControlMousePosition {color:white !important;}
     .container, .navbar {color:grey !important; background-color:#eee !important; }
+    #header .container {padding-left:0px;}
     #slider {margin-top:18px;}
+    .ui-slider-handle {height:2em; width:2em;}
     label[for="slider"] p {margin:0px; font-style:italic; font-size:0.9em;}
     #map {padding-top: 50px !important;}
     
@@ -49,7 +51,7 @@
     }
     
   </style>
-  <script src="http://www.openlayers.org/api/2.12/OpenLayers.js"></script>
+  <script src="js/OpenLayers2.12.js"></script>
   <script>
     var map;
     var mapBounds = new OpenLayers.Bounds( 0.0, -4642.0, 4642.0, 0.0);
@@ -112,7 +114,7 @@
   <link rel="stylesheet" type="text/css" href="css/mlpm-demo.css" />
   <link rel="stylesheet" type="text/css" href="css/mlpm-icons.css" />
   <link rel="stylesheet" type="text/css" href="css/mlpm-component.css" />
-  <script src="http://tympanus.net/Development/MultiLevelPushMenu/js/modernizr.custom.js"></script>
+  <script src="js/modernizr.custom.js"></script>
   
 </head>
 <body >
@@ -226,7 +228,7 @@
     <!-- /mp-menu -->
 
     <!-- Fixed navbar -->
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <nav id="header" class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container navbar-left">
         <span class="navbar-brand" id="trigger">
           <span class="glyphicon glyphicon-menu-hamburger"></span>
@@ -249,18 +251,18 @@
     <div id="map"></div>
 
   </div><!-- /pusher -->
-  <script src="http://tympanus.net/Development/MultiLevelPushMenu/js/classie.js"></script>
-  <script src="http://tympanus.net/Development/MultiLevelPushMenu/js/mlpushmenu.js"></script>
+  <script src="js/classie.js"></script>
+  <script src="js/mlpushmenu.js"></script>
   <script>
     new mlPushMenu( document.getElementById( 'mp-menu' ), document.getElementById( 'trigger' ) );
   </script>
   
   
                 
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.2/jquery.ui.touch-punch.min.js"></script>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery-ui.min.js"></script>
+  <script src="js/jquery.ui.touch-punch.min.js"></script>
     
   <script>
     init();
