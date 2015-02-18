@@ -1,4 +1,4 @@
-[
+var people = [
   {
     name:"Arya"
   },
