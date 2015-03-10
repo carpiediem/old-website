@@ -116,7 +116,8 @@
   <link rel="stylesheet" type="text/css" href="css/mlpm-component.css" />
   <script src="js/modernizr.custom.js"></script>
   <script src="js/angular.min.js"></script>
-  <script src="js/characters-data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/CharacterCtrl.js"></script>
   
 </head>
 <body ng-app="quartermaester">
@@ -153,13 +154,16 @@
             <a class="icon icon-user" href="#">Characters</a>
             <div class="mp-level">
               <h2 class="icon icon-user">Show These Characters</h2>
-              <ul id="characterList" ng-controller="characters" >
-                <li ng-repeat="x in people">
+              <ul id="characterList" ng-controller="character" >
+                <li>{{ foo }}</li>
+                <!--
+                <li ng-repeat="x in characters">
                   <a>
                     <input type="checkbox">
                     {{ x.name }}
                   </a>
                 </li>
+                -->
               </ul>
             </div>
           </li>

@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->  
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->  
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->  
+<head>
+    <title>Voting Trends in the Legislative Council of Hong Kong (LegCo)</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" lang="en" content="Data analysis of votes cast in the HK LegCo and 4 of its committees">
+    <meta name="author" content="Ryan Carpenter">    
+    <link rel="shortcut icon" href="favicon.ico">  
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,300italic,400italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'> 
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">   
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.css">
+    <!-- jQuery UI CSS -->
+    <!-- <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css"> -->
+    
+    <!-- Theme CSS -->  
+    <link id="theme-style" rel="stylesheet" href="assets/css/styles.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <style>
+      
+      .secondary h2.heading {
+        margin-bottom: 5px;
+      }
+      
+      .secondary span.heading {
+        font-size: 22px;
+      }
+      
+      .secondary ul.list-inline {
+        margin-left: 0px;
+        margin-bottom: 15px;
+      }
+      
+      .secondary ul.list-inline li {
+        margin-bottom: 0px;
+      }
+      
+      .zh {
+        display:none;
+      }
+      
+      button:focus {
+        outline:0 !important;
+        color:black !important;
+      }
+      
+      #committees button {
+        padding:6px;
+      }
+      
+      #committees button img {
+        width: 32px;
+      }
+      
+      #sessions button {
+        padding:6px;
+        font-size:0.7em;
+      }
+      
+      #sessions {
+        margin-bottom:40px;
+      }
+      
+      .circle {
+        background-color:#ccc;
+        border-radius: 50%;
+        padding:0 !important;
+        width: 25px;
+        height: 25px; 
+        /* width and height can be anything, as long as they're equal */
+      }
+      
+      .circle a {
+        position:absolute;
+        height:25px;
+        width:25px;
+        margin-top:5px;
+        text-align:center;
+        font-size:0.6em;
+        color:black;
+      }
+      
+      #legend { 
+        border-spacing: 3px;
+        border-collapse: separate;
+        width:100%;
+      }
+      
+      #legend th {
+        font-size:0.7em;
+      }
+      
+      #legend a {
+        color:#444;
+        font-size:0.9em;
+      }
+      
+      #legend .establishment, .democrat {
+        width:20px;
+        border-style: solid;
+        border-width:3px;
+      }
+      
+      #legend .establishment {background-color:Pink;}
+      #legend .democrat {background-color:PaleGreen;}
+      .dab {border-color:#1861AC;}
+      .ftu {border-color:#FF0000;}
+      .npp {border-color:#1C8BCD;}
+      .liberal {border-color:#00aeef;}
+      .kwnd {border-color:#B6C85A;}
+      .synergy {border-color:#B0D7F0;}
+      .flu {border-color:#079634;}
+      .forum {border-color:#005F6B;}
+      .civic {border-color:#7F3F98;}
+      .democratic {border-color:#5FB04A;}
+      .people {border-color:#FDD12B;}
+      .labour {border-color:#F7941E;}
+      .lsd {border-color:#e0050d;}
+      .nwsc {border-color:#FFC500;}
+      .adpl {border-color:#faf400;}
+      .neo {border-color:#F9B924;}
+      .bpa {border-color:#06A7E2;}
+      .commons {border-color:#04569C;}
+      
+      .link {
+        fill: none;
+        stroke: #666;
+        stroke-width: 1.5px;
+      }
+
+      .node circle {
+        fill: #ccc;
+        stroke: #fff;
+        stroke-width: 1.5px;
+      }
+
+      text {
+        font: 10px sans-serif;
+        pointer-events: none;
+      }
+
+    </style>
+    
+</head> 
+
+<body>
+    <!-- ******HEADER****** --> 
+    <header class="header">
+        <div class="container">                       
+            <img class="profile-image img-responsive pull-left" src="assets/images/profile.png" alt="James Lee" />
+            <div class="profile-content pull-left">
+                <h1 class="name en">Hong Kong LegCo</h1>
+                <h1 class="name zh">香港立法會</h1>
+                <h2 class="desc en">Voting Trends</h2>
+                <h2 class="desc zh">投票趨勢</h2>
+                <ul class="social list-inline">
+                    <li><a href="#" title="Tweet this page"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="#" title="Share this page"><i class="fa fa-facebook"></i></a></li> 
+                    <li><a href="#" title="+1 this page"><i class="fa fa-google-plus"></i></a></li>
+                    <li class="last-item"><a href="#" title="Post this page"><i class="fa fa-linkedin"></i></a></li>
+                </ul>
+            </div><!--//profile-->
+            
+            <div id="languages" class="btn-group pull-right" role="group" aria-label="...">
+              <a href="#!lang=en" class="btn btn-default active">En</a>
+              <a href="#!lang=tc" class="btn btn-default">中文</a>
+            </div>
+            <!-- <a class="btn btn-cta-primary pull-right" href="mailto:carpiediem@gmail.com" target="_blank"><i class="fa fa-paper-plane"></i> Contact Me</a>  -->
+        </div><!--//container-->
+    </header><!--//header-->
+    
+    <div class="container sections-wrapper">
+        <div class="row">
+            <div class="primary col-md-8 col-sm-12 col-xs-12">
+                <section class="about section">
+                    <div class="section-inner">
+                        <h2 class="heading en">Matching Votes</h2>
+                        <h2 class="heading zh">投票塊</h2>
+                        <div class="content">
+                            <p class="en">In this graph, each circle represents a LegCo member.  Colors show political party (legend is on the right).  Circles are pulled closer together if they vote the same way most of the time.  If circles that are further apart represent members that often disagree.</p>    
+                            <p class="zh">TBD</p>    
+                            <div id="graph"></div>
+                            
+                            <!-- http://bost.ocks.org/mike/miserables/ -->
+                            
+                        </div><!--//content-->
+                    </div><!--//section-inner-->                 
+                </section><!--//section-->
+    
+            </div><!--//primary-->
+            <div class="secondary col-md-4 col-sm-12 col-xs-12">
+                 <aside class="info aside section">
+                    <div class="section-inner">
+                        <h2 class="heading en">Controls</h2>
+                        <h2 class="heading zh">控制</h2>
+                        <div class="content">
+                            
+                            <div id="committees" class="btn-group" role="group" aria-label="...">
+                              <button id="legco"         class="btn btn-default active" data-name-en="Council Meetings"      data-name-zh="立法會會議"        ><img src="assets/images/legco.png"        ></button>
+                              <button id="house"         class="btn btn-default"        data-name-en="House Committee"       data-name-zh="內務委員會"        ><img src="assets/images/house.png"        ></button>
+                              <button id="finance"       class="btn btn-default"        data-name-en="Finance Committee"     data-name-zh="財務委員會"        ><img src="assets/images/finance.png"      ></button>
+                              <button id="establishment" class="btn btn-default"        data-name-en="Establishment Subcom." data-name-zh="人事編制小組委員會"><img src="assets/images/establishment.png"></button>
+                              <button id="works"         class="btn btn-default"        data-name-en="Public Works Subcom."  data-name-zh="工務小組委員會"    ><img src="assets/images/works.png"        ></button>
+                            </div>
+                            <p id="currentCommittee">
+                              <span class="heading en">Council Meetings</span>
+                              <span class="heading zh">理事會會議</span>
+                            </p>
+                            
+                            <div id="sessions" class="btn-group" role="group" aria-label="...">
+                              <button id="2012" class="btn btn-default" alt="Not yet available">2012-13</button>
+                              <button id="2013" class="btn btn-default" title="Not yet available">2012-13</button>
+                              <button id="2014" class="btn btn-default" title="Not yet available">2012-13</button>
+                              <button id="all"  class="btn btn-default active">
+                                <span class="en">All Terms</span>
+                                <span class="zh">整個任期</span>
+                              </button>
+                            </div>
+                            
+                        </div><!--//content--> 
+                        <h2 class="heading en">Legend</h2>
+                        <h2 class="heading zh">圖例</h2>
+                        <div class="content">
+                          <p class="en">Gerographical Constituencies</p>
+                          <p class="zh">地方選區</p>
+                          <ul class="list-inline">
+                            <li class="circle">
+                              <a class="en" href="http://en.wikipedia.org/wiki/Hong_Kong_Island_(constituency)" title="Hong Kong Island (7 seats)">HKI</a>
+                              <a class="zh" href="http://zh-yue.wikipedia.org/wiki/%E9%A6%99%E6%B8%AF%E5%B3%B6%E9%81%B8%E5%8D%80" title="香港島選區 (7 席)">香港</a>
+                            </li>
+                            <li class="circle">
+                              <a class="en" href="http://en.wikipedia.org/wiki/Kowloon_East_(constituency)" title="Kowloon East (5 seats)">KE</a>
+                              <a class="zh" href="http://zh-yue.wikipedia.org/wiki/%E4%B9%9D%E9%BE%8D%E6%9D%B1%E9%81%B8%E5%8D%80" title="九龍東選區 (5 席)">東九</a>
+                            </li> 
+                            <li class="circle">
+                              <a class="en" href="http://en.wikipedia.org/wiki/Kowloon_West_(constituency)" title="Kowloon West (5 seats)">KW</a>
+                              <a class="zh" href="http://zh-yue.wikipedia.org/wiki/%E4%B9%9D%E9%BE%8D%E8%A5%BF%E9%81%B8%E5%8D%80" title="九龍西選區 (5 席)">西九</a>
+                            </li>
+                            <li class="circle">
+                              <a class="en" href="http://en.wikipedia.org/wiki/New_Territories_East_(constituency)" title="New Territories East (9 seats)">NTE</a>
+                              <a class="zh" href="http://zh-yue.wikipedia.org/wiki/%E6%96%B0%E7%95%8C%E6%9D%B1%E9%81%B8%E5%8D%80" title="新界東選區 (9 席)">東新</a>
+                            </li>
+                            <li class="circle">
+                              <a class="en" href="http://en.wikipedia.org/wiki/New_Territories_West_(constituency)" title="New Territories West (9 seats)">NTW</a>
+                              <a class="zh" href="http://zh-yue.wikipedia.org/wiki/%E6%96%B0%E7%95%8C%E8%A5%BF%E9%81%B8%E5%8D%80" title="新界西選區 (9 席)">西新</a>
+                            </li>
+                            <li class="last-item"></li>
+                          </ul>
+                          
+                          <p class="en">Functional Constituencies</p>
+                          <p class="zh">功能界別</p>
+                          <ul class="list-inline">
+                            <li class="circle">
+                              <a class="en" href="http://en.wikipedia.org/wiki/Heung_Yee_Kuk_(constituency)" title="Heung Yee Kuk"><img src="assets/images/rural.png"></a>
+                              <a class="zh" href="http://zh-yue.wikipedia.org/wiki/%E9%84%89%E8%AD%B0%E5%B1%80%E5%8A%9F%E8%83%BD%E7%95%8C%E5%88%A5" title="鄉議局"><img src="assets/images/rural.png"></a>
+                            </li>
+                            <li class="circle">
+                              <a class="en" href="http://en.wikipedia.org/wiki/Agriculture_and_Fisheries_(constituency)" title="Agriculture and Fisheries"><img src="assets/images/fish.png"></a>
+                              <a class="zh" href="http://zh-yue.wikipedia.org/wiki/%E6%BC%81%E8%BE%B2%E7%95%8C%E5%8A%9F%E8%83%BD%E7%95%8C%E5%88%A5" title="漁農界"><img src="assets/images/fish.png"></a>
+                            </li>
+                            <li class="circle">
+                              <a class="en" href="http://en.wikipedia.org/wiki/Insurance_(constituency)" title="Insurance"><img src="assets/images/insurance.png"></a>
+                              <a class="zh" href="http://zh-yue.wikipedia.org/wiki/%E4%BF%9D%E9%9A%AA%E7%95%8C%E5%8A%9F%E8%83%BD%E7%95%8C%E5%88%A5" title="保險界"><img src="assets/images/insurance.png"></a>
+                            </li>
+                            <li class="circle">
+                              <a class="en" href="http://en.wikipedia.org/wiki/Transport_(constituency)" title="Transport"><img src="assets/images/transport.png"></a>
+                              <a class="zh" href="http://zh-yue.wikipedia.org/wiki/%E8%88%AA%E9%81%8B%E4%BA%A4%E9%80%9A%E7%95%8C%E5%8A%9F%E8%83%BD%E7%95%8C%E5%88%A5" title="航運交通界"><img src="assets/images/transport.png"></a>
+                            </li>
+                            <li class="circle">
+                              <a class="en" href="http://en.wikipedia.org/wiki/Education_(constituency)" title="Education"><img src="assets/images/education.png"></a>
+                              <a class="zh" href="http://zh-yue.wikipedia.org/wiki/%E6%95%99%E8%82%B2%E7%95%8C%E5%8A%9F%E8%83%BD%E7%95%8C%E5%88%A5" title="教育界"><img src="assets/images/education.png"></a>
+                            </li>
+                            <li class="circle">
+                              <a class="en" href="http://en.wikipedia.org/wiki/Legal_(constituency)" title="Legal"><img src="assets/images/legal.png"></a>
+                              <a class="zh" href="http://zh-yue.wikipedia.org/wiki/%E6%B3%95%E5%BE%8B%E7%95%8C%E5%8A%9F%E8%83%BD%E7%95%8C%E5%88%A5" title="法律界"><img src="assets/images/legal.png"></a>
+                            </li>
+                            <li class="circle">
+                              <a class="en" href="http://en.wikipedia.org/wiki/Accountancy_(constituency)" title="Accountancy"><img src="assets/images/accountancy.png"></a>
+                              <a class="zh" href="http://zh-yue.wikipedia.org/wiki/%E6%9C%83%E8%A8%88%E7%95%8C%E5%8A%9F%E8%83%BD%E7%95%8C%E5%88%A5" title="會計界"><img src="assets/images/accountancy.png"></a>
+                            </li>
+                            <li class="circle">
+                              <a class="en" href="http://en.wikipedia.org/wiki/Medical_(constituency)" title="Medical"><img src="assets/images/medical.png"></a>
+                              <a class="zh" href="http://zh-yue.wikipedia.org/wiki/%E9%86%AB%E5%AD%B8%E7%95%8C%E5%8A%9F%E8%83%BD%E7%95%8C%E5%88%A5" title="醫學界"><img src="assets/images/medical.png"></a>
+                            </li>
+                            <li class="circle">
+                              <a class="en" href="http://en.wikipedia.org/wiki/Health_Services_(constituency)" title="Health Services"><img src="assets/images/health.png"></a>
+                              <a class="zh" href="http://zh-yue.wikipedia.org/wiki/%E8%A1%9B%E7%94%9F%E6%9C%8D%E5%8B%99%E7%95%8C%E5%8A%9F%E8%83%BD%E7%95%8C%E5%88%A5" title="衞生服務界"><img src="assets/images/health.png"></a>
+                            </li>
+                            <li class="circle">
+                              <a class="en" href="http://en.wikipedia.org/wiki/Engineering_(constituency)" title="Engineering"><img src="assets/images/engineering.png"></a>
+                              <a class="zh" href="http://zh-yue.wikipedia.org/wiki/%E5%B7%A5%E7%A8%8B%E7%95%8C%E5%8A%9F%E8%83%BD%E7%95%8C%E5%88%A5" title="工程界"><img src="assets/images/engineering.png"></a>
+                            </li>
+                            <li class="circle">
+                              <a class="en" href="http://en.wikipedia.org/wiki/Architectural,_Surveying_and_Planning_(constituency)" title="Architectural, Surveying and Planning"><img src="assets/images/architecture.png"></a>
+                              <a class="zh" href="http://zh-yue.wikipedia.org/wiki/%E5%BB%BA%E7%AF%89%E3%80%81%E6%B8%AC%E9%87%8F%E5%8F%8A%E9%83%BD%E5%B8%82%E8%A6%8F%E5%8A%83%E7%95%8C%E5%8A%9F%E8%83%BD%E7%95%8C%E5%88%A5" title="建築、測量及都市規劃界"><img src="assets/images/architecture.png"></a>
+                            </li>
+                            <li class="circle">
+                              <a class="en" href="http://en.wikipedia.org/wiki/Labour_(constituency)" title="Labour (3 seats)"><img src="assets/images/labour.png"></a>
+                              <a class="zh" href="http://zh-yue.wikipedia.org/wiki/%E5%8B%9E%E5%B7%A5%E7%95%8C%E5%8A%9F%E8%83%BD%E7%95%8C%E5%88%A5" title="勞工界"><img src="assets/images/labour.png"></a>
+                            </li>
+                            <li class="circle">
+                              <a class="en" href="http://en.wikipedia.org/wiki/Social_Welfare_(constituency)" title="Social Welfare"><img src="assets/images/welfare.png"></a>
+                              <a class="zh" href="http://zh-yue.wikipedia.org/wiki/%E7%A4%BE%E6%9C%83%E7%A6%8F%E5%88%A9%E7%95%8C%E5%8A%9F%E8%83%BD%E7%95%8C%E5%88%A5" title="社會福利界"><img src="assets/images/welfare.png"></a>
+                            </li>
+                            <li class="circle">
+                              <a class="en" href="http://en.wikipedia.org/wiki/Real_Estate_and_Construction_(constituency)" title="Real Estate and Construction"><img src="assets/images/realestate.png"></a>
+                              <a class="zh" href="http://zh-yue.wikipedia.org/wiki/%E5%9C%B0%E7%94%A2%E5%8F%8A%E5%BB%BA%E9%80%A0%E7%95%8C%E5%8A%9F%E8%83%BD%E7%95%8C%E5%88%A5" title="地產及建造界"><img src="assets/images/realestate.png"></a>
+                            </li>
+                            <li class="circle">
+                              <a class="en" href="http://en.wikipedia.org/wiki/Tourism_(constituency)" title="Tourism"><img src="assets/images/tourism.png"></a>
+                              <a class="zh" href="http://zh-yue.wikipedia.org/wiki/%E6%97%85%E9%81%8A%E7%95%8C%E5%8A%9F%E8%83%BD%E7%95%8C%E5%88%A5" title="旅遊界"><img src="assets/images/tourism.png"></a>
+                            </li>
+                            <li class="circle">
+                              <a class="en" href="http://en.wikipedia.org/wiki/Commercial_(First)" title="Commercial (2 seats)"><img src="assets/images/commercial.png"></a>
+                              <a class="zh" href="http://zh-yue.wikipedia.org/wiki/%E5%95%86%E7%95%8C%EF%BC%88%E7%AC%AC%E4%B8%80%EF%BC%89%E5%8A%9F%E8%83%BD%E7%95%8C%E5%88%A5" title="商界"><img src="assets/images/commercial.png"></a>
+                            </li>
+                            <li class="circle">
+                              <a class="en" href="http://en.wikipedia.org/wiki/Industrial_(First)" title="Industrial (2 seats)"><img src="assets/images/industrial.png"></a>
+                              <a class="zh" href="http://zh-yue.wikipedia.org/wiki/%E5%B7%A5%E6%A5%AD%E7%95%8C%EF%BC%88%E7%AC%AC%E4%B8%80%EF%BC%89%E5%8A%9F%E8%83%BD%E7%95%8C%E5%88%A5" title="工業界"><img src="assets/images/industrial.png"></a>
+                            </li>
+                            <li class="circle">
+                              <a class="en" href="http://en.wikipedia.org/wiki/Finance_(constituency)" title="Finance"><img src="assets/images/fin.png"></a>
+                              <a class="zh" href="http://zh-yue.wikipedia.org/wiki/%E9%87%91%E8%9E%8D%E7%95%8C%E5%8A%9F%E8%83%BD%E7%95%8C%E5%88%A5" title="金融界"><img src="assets/images/fin.png"></a>
+                            </li>
+                            <li class="circle">
+                              <a class="en" href="http://en.wikipedia.org/wiki/Financial_Services_(constituency)" title="Financial Services"><img src="assets/images/finservices.png"></a>
+                              <a class="zh" href="http://zh-yue.wikipedia.org/wiki/%E9%87%91%E8%9E%8D%E6%9C%8D%E5%8B%99%E7%95%8C%E5%8A%9F%E8%83%BD%E7%95%8C%E5%88%A5" title="金融服務界"><img src="assets/images/finservices.png"></a>
+                            </li>
+                            <li class="circle">
+                              <a class="en" href="http://en.wikipedia.org/wiki/Sports,_Performing_Arts,_Culture_and_Publication_(constituency)" title="Sports, Performing Arts, Culture and Publication"><img src="assets/images/sports.png"></a>
+                              <a class="zh" href="http://zh-yue.wikipedia.org/wiki/%E9%AB%94%E8%82%B2%E3%80%81%E6%BC%94%E8%97%9D%E3%80%81%E6%96%87%E5%8C%96%E5%8F%8A%E5%87%BA%E7%89%88%E7%95%8C%E5%8A%9F%E8%83%BD%E7%95%8C%E5%88%A5" title="體育、演藝、文化及出版界"><img src="assets/images/sports.png"></a>
+                            </li>
+                            <li class="circle">
+                              <a class="en" href="http://en.wikipedia.org/wiki/Import_and_Export_(constituency)" title="Import and Export"><img src="assets/images/import.png"></a>
+                              <a class="zh" href="http://zh-yue.wikipedia.org/wiki/%E9%80%B2%E5%87%BA%E5%8F%A3%E7%95%8C%E5%8A%9F%E8%83%BD%E7%95%8C%E5%88%A5" title="進出口界"><img src="assets/images/import.png"></a>
+                            </li>
+                            <li class="circle">
+                              <a class="en" href="http://en.wikipedia.org/wiki/Textiles_and_Garment_(constituency)" title="Textiles and Garment"><img src="assets/images/textiles.png"></a>
+                              <a class="zh" href="http://zh-yue.wikipedia.org/wiki/%E7%B4%A1%E7%B9%94%E5%8F%8A%E8%A3%BD%E8%A1%A3%E7%95%8C%E5%8A%9F%E8%83%BD%E7%95%8C%E5%88%A5" title="紡織及製衣界"><img src="assets/images/textiles.png"></a>
+                            </li>
+                            <li class="circle">
+                              <a class="en" href="http://en.wikipedia.org/wiki/Wholesale_and_Retail_(constituency)" title="Wholesale and Retail"><img src="assets/images/retail.png"></a>
+                              <a class="zh" href="http://zh-yue.wikipedia.org/wiki/%E6%89%B9%E7%99%BC%E5%8F%8A%E9%9B%B6%E5%94%AE%E7%95%8C%E5%8A%9F%E8%83%BD%E7%95%8C%E5%88%A5" title="批發及零售界"><img src="assets/images/retail.png"></a>
+                            </li>
+                            <li class="circle">
+                              <a class="en" href="http://en.wikipedia.org/wiki/Information_Technology_(constituency)" title="Information Technology"><img src="assets/images/it.png"></a>
+                              <a class="zh" href="http://zh-yue.wikipedia.org/wiki/%E8%B3%87%E8%A8%8A%E7%A7%91%E6%8A%80%E7%95%8C%E5%8A%9F%E8%83%BD%E7%95%8C%E5%88%A5" title="資訊科技界"><img src="assets/images/it.png"></a>
+                            </li>
+                            <li class="circle">
+                              <a class="en" href="http://en.wikipedia.org/wiki/Catering_(constituency)" title="Catering"><img src="assets/images/catering.png"></a>
+                              <a class="zh" href="http://zh-yue.wikipedia.org/wiki/%E9%A3%B2%E9%A3%9F%E7%95%8C%E5%8A%9F%E8%83%BD%E7%95%8C%E5%88%A5" title="飲食界"><img src="assets/images/catering.png"></a>
+                            </li>
+                            <li class="circle">
+                              <a class="en" href="http://en.wikipedia.org/wiki/District_Council_(First)" title="District Council (6 seats)"><img src="assets/images/districts.png"></a>
+                              <a class="zh" href="http://zh-yue.wikipedia.org/wiki/%E5%8D%80%E8%AD%B0%E6%9C%83%EF%BC%88%E7%AC%AC%E4%B8%80%EF%BC%89%E5%8A%9F%E8%83%BD%E7%95%8C%E5%88%A5" title="區議會"><img src="assets/images/districts.png"></a>
+                            </li>
+                            <li class="last-item"></li>
+                          </ul>
+                          
+                          <p class="en">Political Parties</p>
+                          <p class="zh">所屬政治團體</p>
+                          <table id="legend">
+                            <tr>
+                              <th colspan=2 class="en">Pro-Establishment</th>
+                              <th colspan=2 class="zh">建制派</th>
+                              <th colspan=2 class="en">Pan-Democracy</th>
+                              <th colspan=2 class="zh">香港民主派</th>
+                            </tr>
+                            <tr>
+                              <td class="establishment bpa"></td>
+                              <td class="name">
+                                <a class="en" href="http://en.wikipedia.org/wiki/Business_and_Professionals_Alliance_for_Hong_Kong">BPA</a>
+                                <a class="zh" href="http://zh-yue.wikipedia.org/wiki/%E9%A6%99%E6%B8%AF%E7%B6%93%E6%BF%9F%E6%B0%91%E7%94%9F%E8%81%AF%E7%9B%9F">香港經濟民生聯盟</a>
+                              </td>
+                              <td class="democrat adpl"></td>
+                              <td class="name">
+                                <a class="en" href="http://en.wikipedia.org/wiki/Association_for_Democracy_and_People%27s_Livelihood">ADPL</a>
+                                <a class="zh" href="http://zh-yue.wikipedia.org/wiki/%E9%A6%99%E6%B8%AF%E6%B0%91%E4%B8%BB%E6%B0%91%E7%94%9F%E5%8D%94%E9%80%B2%E6%9C%83">香港民主民生協進會</a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="establishment dab"></td>
+                              <td class="name">
+                                <a class="en" href="http://en.wikipedia.org/wiki/Democratic_Alliance_for_the_Betterment_and_Progress_of_Hong_Kong">DAB</a>
+                                <a class="zh" href="http://zh-yue.wikipedia.org/wiki/%E6%B0%91%E4%B8%BB%E5%BB%BA%E6%B8%AF%E5%8D%94%E9%80%B2%E8%81%AF%E7%9B%9F">民主建港協進聯盟</a>
+                              </td>
+                              <td class="democrat civic"></td>
+                              <td class="name">
+                                <a class="en" href="http://en.wikipedia.org/wiki/Civic_Party">Civic</a>
+                                <a class="zh" href="http://zh-yue.wikipedia.org/wiki/%E5%85%AC%E6%B0%91%E9%BB%A8_(%E9%A6%99%E6%B8%AF)">公民黨</a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="establishment synergy"></td>
+                              <td class="name">
+                                <a class="en" href="http://en.wikipedia.org/wiki/Economic_Synergy">Ec. Synergy</a>
+                                <a class="zh" href="http://zh.wikipedia.org/wiki/%E7%B6%93%E6%BF%9F%E5%8B%95%E5%8A%9B">經濟動力</a>
+                              </td>
+                              <td class="democrat democratic"></td>
+                              <td class="name">
+                                <a class="en" href="http://en.wikipedia.org/wiki/Democratic_Party_(Hong_Kong)">Democratic</a>
+                                <a class="zh" href="http://zh-yue.wikipedia.org/wiki/%E6%B0%91%E4%B8%BB%E9%BB%A8_(%E9%A6%99%E6%B8%AF)">民主黨</a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="establishment flu"></td>
+                              <td class="name">
+                                <a class="en" href="http://en.wikipedia.org/wiki/Federation_of_Hong_Kong_and_Kowloon_Labour_Unions">FLU</a>
+                                <a class="zh" href="http://zh-yue.wikipedia.org/wiki/%E6%B8%AF%E4%B9%9D%E5%8B%9E%E5%B7%A5%E7%A4%BE%E5%9C%98%E8%81%AF%E6%9C%83">港九勞工社團聯會</a>
+                              </td>
+                              <td class="democrat labour"></td>
+                              <td class="name">
+                                <a class="en" href="http://en.wikipedia.org/wiki/Labour_Party_(Hong_Kong)">Labour</a>
+                                <a class="zh" href="http://zh-yue.wikipedia.org/wiki/%E5%B7%A5%E9%BB%A8_(%E9%A6%99%E6%B8%AF)">工黨</a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="establishment ftu"></td>
+                              <td class="name">
+                                <a class="en" href="http://en.wikipedia.org/wiki/Hong_Kong_Federation_of_Trade_Unions">FTU</a>
+                                <a class="zh" href="http://zh-yue.wikipedia.org/wiki/%E9%A6%99%E6%B8%AF%E5%B7%A5%E6%9C%83%E8%81%AF%E5%90%88%E6%9C%83">香港工會聯合會</a>
+                              </td>
+                              <td class="democrat lsd"></td>
+                              <td class="name">
+                                <a class="en" href="http://en.wikipedia.org/wiki/League_of_Social_Democrats">LSD</a>
+                                <a class="zh" href="http://zh-yue.wikipedia.org/wiki/%E7%A4%BE%E6%9C%83%E6%B0%91%E4%B8%BB%E9%80%A3%E7%B7%9A">社會民主連線</a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="establishment kwnd"></td>
+                              <td class="name">
+                                <a class="en" href="http://en.wikipedia.org/wiki/Kowloon_West_New_Dynamic">KWND</a>
+                                <a class="zh" href="http://zh-yue.wikipedia.org/wiki/%E8%A5%BF%E4%B9%9D%E6%96%B0%E5%8B%95%E5%8A%9B">西九新動力</a>
+                              </td>
+                              <td class="democrat neo"></td>
+                              <td class="name">
+                                <a class="en" href="http://en.wikipedia.org/wiki/Neo_Democrats">Neo Democrats</a>
+                                <a class="zh" href="http://zh.wikipedia.org/wiki/%E6%96%B0%E6%B0%91%E4%B8%BB%E5%90%8C%E7%9B%9F">新民主同盟</a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="establishment liberal"></td>
+                              <td class="name">
+                                <a class="en" href="http://en.wikipedia.org/wiki/Liberal_Party_(Hong_Kong)">Liberal</a>
+                                <a class="zh" href="http://zh-yue.wikipedia.org/wiki/%E8%87%AA%E7%94%B1%E9%BB%A8_(%E9%A6%99%E6%B8%AF)">自由黨</a>
+                              </td>
+                              <td class="democrat nwsc"></td>
+                              <td class="name">
+                                <a class="en" href="http://en.wikipedia.org/wiki/Neighbourhood_and_Worker%27s_Service_Centre">NWSC</a>
+                                <a class="zh" href="http://zh-yue.wikipedia.org/wiki/%E8%A1%97%E5%9D%8A%E5%B7%A5%E5%8F%8B%E6%9C%8D%E5%8B%99%E8%99%95">街坊工友服務處</a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="establishment forum"></td>
+                              <td class="name">
+                                <a class="en" href="http://en.wikipedia.org/wiki/New_Century_Forum">New Forum</a>
+                                <a class="zh" href="http://zh.wikipedia.org/wiki/%E6%96%B0%E4%B8%96%E7%B4%80%E8%AB%96%E5%A3%87">新世紀論壇</a>
+                              </td>
+                              <td class="democrat people"></td>
+                              <td class="name">
+                                <a class="en" href="http://en.wikipedia.org/wiki/People_Power_(Hong_Kong)">People Power</a>
+                                <a class="zh" href="http://zh-yue.wikipedia.org/wiki/%E4%BA%BA%E6%B0%91%E5%8A%9B%E9%87%8F">人民力量</a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="establishment npp"></td>
+                              <td class="name">
+                                <a class="en" href="http://en.wikipedia.org/wiki/New_People%27s_Party_(Hong_Kong)">NPP</a>
+                                <a class="zh" href="http://zh.wikipedia.org/wiki/%E6%96%B0%E6%B0%91%E9%BB%A8_(%E9%A6%99%E6%B8%AF)">新民黨</a>
+                              </td>
+                              <td class="democrat commons"></td>
+                              <td class="name">
+                                <a class="en" href="http://en.wikipedia.org/wiki/Professional_Commons">Prof. Commons</a>
+                                <a class="zh" href="http://zh.wikipedia.org/wiki/%E5%85%AC%E5%85%B1%E5%B0%88%E6%A5%AD%E8%81%AF%E7%9B%9F">公共專業聯盟</a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <th></th>
+                              <th>17 <span class="en">GC seats</span><span class="zh">建制派</span></th>
+                              <th></th>
+                              <th>18 <span class="en">GC seats</span><span class="zh">建制派</span></th>
+                            </tr>
+                            <tr>
+                              <th></th>
+                              <th>26 <span class="en">FC seats</span><span class="zh">功能界別</span></th>
+                              <th></th>
+                              <th>9 <span class="en">FC seats</span><span class="zh">功能界別</span></th>
+                            </tr>
+                          </table>
+                        </div><!--//content--> 
+                    </div><!--//section-inner-->                 
+                </aside><!--//aside-->
+              
+            </div><!--//secondary-->    
+        </div><!--//row-->
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <section class="about section">
+                    <div class="section-inner">
+                        <h2 class="heading en">Vote Matrix</h2>
+                        <h2 class="heading zh">矩陣投票</h2>
+                        <a href="http://bost.ocks.org/mike/miserables/">demo</a>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div><!--//masonry-->
+    
+    <!-- ******FOOTER****** --> 
+    <footer class="footer">
+      <div class="container text-center">
+        <small class="copyright en">Data from <a href="http://www.legco.gov.hk/general/english/open-legco/open-data.html" target="_blank">Open LegCo</a>.  Site template by <a href="http://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a>.  Icons by <a href="http://www.freepik.com/" target="_blank">freepik.com</a>.</small>
+        <small class="copyright zh">從<a href="http://www.legco.gov.hk/general/chinese/open-legco/open-data.html" target="_blank">公開的議會</a>的數據。  從<a href="http://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a>的網站模板。  從<a href="http://www.freepik.com/" target="_blank">freepik.com</a>的圖標。</small>
+      </div><!--//container-->
+    </footer><!--//footer-->
+ 
+    <!-- Javascript -->          
+    <script type="text/javascript" src="assets/plugins/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <!-- d3.js -->
+    <script type="text/javascript" src="http://d3js.org/d3.v2.js?2.9.1"></script>
+    <!-- custom js -->
+    <script type="text/javascript" src="data.js"></script>
+    <script type="text/javascript" src="assets/js/main.js"></script>
+</body>
+</html> 
+
