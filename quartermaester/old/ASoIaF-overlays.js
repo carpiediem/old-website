@@ -387,6 +387,26 @@ var episodes = [
   {title:"S4E08: The Mountain and the Viper",         url:"http://en.wikipedia.org/wiki/The_Mountain_and_the_Viper"},
   {title:"S4E09: The Watchers on the Wall",           url:"http://en.wikipedia.org/wiki/The_Watchers_on_the_Wall"},
   {title:"S4E10: The Children",                       url:"http://en.wikipedia.org/wiki/The_Children_(Game_of_Thrones)"},
+  {title:"S5E01: The Wars to Come",                   url:"http://en.wikipedia.org/wiki/The_Wars_to_Come"},
+  {title:"S5E02: The House of Black and White",       url:"http://en.wikipedia.org/wiki/The_House_of_Black_and_White"},
+  {title:"S5E03: High Sparrow",                       url:"http://en.wikipedia.org/wiki/High_Sparrow"},
+  {title:"S5E04: The Sons of the Harpy",              url:"http://en.wikipedia.org/wiki/Sons_of_the_Harpy"},
+  {title:"S5E05: Kill the Boy",                       url:"http://en.wikipedia.org/wiki/Kill_the_Boy"},
+  {title:"S5E06: Unbowed, Unbent, Unbroken",          url:"http://en.wikipedia.org/wiki/Unbowed,_Unbent,_Unbroken"},
+  {title:"S5E07: The Gift",                           url:"http://en.wikipedia.org/wiki/The_Gift_(Game_of_Thrones)"},
+  {title:"S5E08: Hardhome",                           url:"http://en.wikipedia.org/wiki/Hardhome"},
+  {title:"S5E09: The Dance of Dragons",               url:"https://en.wikipedia.org/wiki/The_Dance_of_Dragons"},
+  {title:"S5E10: Mother's Mercy",                     url:"https://en.wikipedia.org/wiki/Mother%27s_Mercy"},
+  {title:"S6E01: The Red Woman",                      url:"https://en.wikipedia.org/wiki/The_Red_Woman"},
+  {title:"S6E02: Home",                               url:"https://en.wikipedia.org/wiki/Home_(Game_of_Thrones)"},
+  {title:"S6E03: Oathbreaker",                        url:"https://en.wikipedia.org/wiki/Oathbreaker_(Game_of_Thrones)"},
+  {title:"S6E04: Book of the Stranger",               url:"https://en.wikipedia.org/wiki/Book_of_the_Stranger"},
+  {title:"S6E05: The Door",                           url:"https://en.wikipedia.org/wiki/The_Door_(Game_of_Thrones)"},
+  {title:"S6E06: Blood of My Blood",                  url:"https://en.wikipedia.org/wiki/Blood_of_My_Blood"},
+  {title:"S6E07: The Broken Man",                     url:"https://en.wikipedia.org/wiki/The_Broken_Man"},
+  {title:"S6E08: No One",                             url:"https://en.wikipedia.org/wiki/No_One_(Game_of_Thrones)"},
+  {title:"S6E09: Battle of the Bastards",             url:"https://en.wikipedia.org/wiki/Battle_of_the_Bastards"},
+  {title:"S6E10: The Winds of Winter",                url:"https://en.wikipedia.org/wiki/The_Winds_of_Winter_(Game_of_Thrones)"},
 ];
 
 novellas = [
@@ -698,8 +718,8 @@ northCoords = [
   new google.maps.LatLng(77.78619050110466, -91.669921875),
   new google.maps.LatLng(75.58493740869223, -90.439453125),
   new google.maps.LatLng(74.18805166460048, -87.01171875),
-  
-  
+
+
   new google.maps.LatLng(73.35305494105975, -95.947265625)
 ];
 riverlandsCoords = [
@@ -900,9 +920,9 @@ nobility = [
   {wikiKey:"House_Martell",                       seatKey:"Sunspear",         imgRatio:(119/92),  img:"http://awoiaf.westeros.org/images/thumb/b/ba/House_Martell.PNG/92px-House_Martell.PNG",            isGreat:true},
   {wikiKey:"House_Baratheon_of_Dragonstone",      seatKey:"Dragonstone",      imgRatio:(120/104), img:"http://awoiaf.westeros.org/images/thumb/d/d1/House_Baratheon.PNG/50px-House_Baratheon.PNG",        isGreat:false, chapters:[0,48],    episodes:[0,5]},  //Stannis' Lordship in Dragonstone
   {wikiKey:"House_Baratheon_of_Dragonstone",      seatKey:"Dragonstone",      imgRatio:(120/102), img:"http://awoiaf.westeros.org/images/thumb/6/61/Baratheon_DS.png/102px-Baratheon_DS.png",             isGreat:true,  chapters:[49,260],  episodes:[6,99]}, //Stannis' Reign in Dragonstone
-  {wikiKey:"House_Targaryen",                     seatKey:"Meereen",          imgRatio:(120/92),  img:"http://awoiaf.westeros.org/images/thumb/4/43/House_Targaryen.PNG/92px-House_Targaryen.PNG",        isGreat:true,  chapters:[214,999], episodes:[99,99]},//Daenerys rules in Meereen 
-  
-  
+  {wikiKey:"House_Targaryen",                     seatKey:"Meereen",          imgRatio:(120/92),  img:"http://awoiaf.westeros.org/images/thumb/4/43/House_Targaryen.PNG/92px-House_Targaryen.PNG",        isGreat:true,  chapters:[214,999], episodes:[99,99]},//Daenerys rules in Meereen
+
+
   //Landed Nobility - The North
   {wikiKey:"House_Cerwyn",   seatKey:"Castle_Cerwyn",    imgRatio:(120/90),  img:"http://awoiaf.westeros.org/images/thumb/d/d8/House_Cerwyn.PNG/90px-House_Cerwyn.PNG"},
   {wikiKey:"House_Dustin",   seatKey:"Barrowton",        imgRatio:1,  img:"http://awoiaf.westeros.org/images/thumb/7/74/House_Dustin.PNG/50px-House_Dustin.PNG"},
@@ -931,7 +951,7 @@ nobility = [
   {wikiKey:"House_Liddle",   lat:72.9067, lng:-124.5117, imgRatio:(120/110), img:"http://awoiaf.westeros.org/images/thumb/d/d4/House_Liddle.PNG/110px-House_Liddle.PNG",  clue:"mountain clan"},
   {wikiKey:"House_Norrey",   lat:73.9589, lng:-123.6328, imgRatio:(120/90),  img:"http://awoiaf.westeros.org/images/thumb/e/e8/House_Norrey.PNG/50px-House_Norrey.PNG",   clue:"mountain clan"},
   {wikiKey:"House_Wull",     lat:73.1759, lng:-114.1699, imgRatio:1,         img:"http://awoiaf.westeros.org/images/thumb/e/e0/House_Wull.PNG/50px-House_Wull.PNG",       clue:"mountain clan"},
-  
+
   //Landed Nobility - The Vale
   {wikiKey:"House_Belmore",    seatKey:"Strongsong",      imgRatio:(120/101), img:"http://awoiaf.westeros.org/images/thumb/2/20/Belmore.PNG/50px-Belmore.PNG"},
   {wikiKey:"House_Coldwater",  seatKey:"Coldwater_Burn",  imgRatio:(120/90),  img:"http://awoiaf.westeros.org/images/thumb/5/57/House_Coldwater.PNG/90px-House_Coldwater.PNG"},
@@ -958,7 +978,7 @@ nobility = [
   {wikiKey:"House_Sunderland", seatKey:"Sisterton",       imgRatio:(120/109), img:"http://awoiaf.westeros.org/images/thumb/4/45/Sunderland.png/109px-Sunderland.png"},
   {wikiKey:"House_Baelish",    seatKey:"House_Baelish",   imgRatio:(120/109), img:"http://awoiaf.westeros.org/images/thumb/b/b9/OldBaelish.png/109px-OldBaelish.png"},
   {wikiKey:"House_Waxley",     seatKey:"Wickenden",       imgRatio:(64/50),   img:"http://awoiaf.westeros.org/images/thumb/d/dc/Waxley_large.png/50px-Waxley_large.png"},
-  
+
   //Landed Nobility - The Iron Islands
   {wikiKey:"House_Blacktyde",   lat:35.1738, lng:-149.1650, imgRatio:(120/90),  img:"http://awoiaf.westeros.org/images/thumb/5/50/Blacktyde.PNG/101px-Blacktyde.PNG",             clue:"Blacktide Island"},
   {wikiKey:"House_Botley",      lat:27.1373, lng:-151.9555, imgRatio:(120/90),  img:"http://awoiaf.westeros.org/images/thumb/f/f7/Botley.png/90px-Botley.png",                    clue:"Pyke Island"},
@@ -978,7 +998,7 @@ nobility = [
   {wikiKey:"House_Tawney",      lat:32.3614, lng:-150.7470, imgRatio:(120/109), img:"http://awoiaf.westeros.org/images/thumb/e/e0/Tawney.png/109px-Tawney.png",                   clue:"Orkmont Island"},
   {wikiKey:"House_Volmark",     lat:30.2590, lng:-143.9355, imgRatio:(120/109), img:"http://awoiaf.westeros.org/images/thumb/1/17/House_Volmark.png/109px-House_Volmark.png",     clue:"Harlaw Island"},
   {wikiKey:"House_Wynch",       lat:28.0331, lng:-152.7246, imgRatio:(120/90),  img:"http://awoiaf.westeros.org/images/thumb/b/ba/Wynch.png/90px-Wynch.png",                      clue:"Pyke Island"},
-  
+
   //Landed Nobility - The Riverlands
   {wikiKey:"House_Blackwood",   seatKey:"Raventree_Hall",   imgRatio:(120/90),  img:"http://awoiaf.westeros.org/images/thumb/3/36/House_Blackwood.png/50px-House_Blackwood.png"},
   {wikiKey:"House_Bracken",     seatKey:"Stone_Hedge",      imgRatio:(120/120), img:"http://awoiaf.westeros.org/images/thumb/5/53/Bracken_sigil_coat.png/50px-Bracken_sigil_coat.png"},
@@ -1045,7 +1065,7 @@ nobility = [
   {wikiKey:"House_Yarwyck",     lat:11.7813, lng:-150.8788, imgRatio:(120/90),  img:"http://awoiaf.westeros.org/images/thumb/f/fa/Yarwyck.png/50px-Yarwyck.png",                   clue:"the Westerlands"},
   {wikiKey:"House_Clegane",     seatKey:"Clegane%27s_Keep", imgRatio:(120/109), img:"http://awoiaf.westeros.org/images/thumb/8/83/House_Clegane.png/109px-House_Clegane.png"},
   {wikiKey:"House_Swyft",       seatKey:"Cornfield",        imgRatio:(59/50),   img:"http://awoiaf.westeros.org/images/thumb/6/68/House_Swyft.PNG/50px-House_Swyft.PNG"},
-  
+
   //Landed Nobility - The Crownlands
   {wikiKey:"House_Blount",      lat:5.5722, lng:-109.0429,  imgRatio:(120/98),  img:"http://awoiaf.westeros.org/images/thumb/e/e8/House_Blount.PNG/50px-House_Blount.PNG"},
   {wikiKey:"House_Buckwell",    seatKey:"Antlers",          imgRatio:(120/105), img:"http://awoiaf.westeros.org/images/thumb/6/63/House_Buckwell.PNG/105px-House_Buckwell.PNG"},
@@ -1079,7 +1099,7 @@ nobility = [
   {wikiKey:"House_Velaryon",    lat:11.5661, lng:-88.6962,  imgRatio:(120/90),  img:"http://awoiaf.westeros.org/images/thumb/f/f3/House_Velaryon.PNG/90px-House_Velaryon.PNG"},
   {wikiKey:"House_Brune_of_Brownhollow",  lat:21.7799, lng:-83.4667, imgRatio:(6/5),img:"http://awoiaf.westeros.org/images/thumb/1/1c/House_Brune.PNG/100px-House_Brune.PNG",    clue:"Crackclaw Point at Brownhollow"},
   {wikiKey:"House_Brune_of_the_Dyre_Den", seatKey:"Dyre_Den",        imgRatio:(6/5),img:"http://awoiaf.westeros.org/images/thumb/5/5c/Coats_of_arms_of_None.png/100px-Coats_of_arms_of_None.png"},
-  
+
   //Landed Nobility - The Reach
   {wikiKey:"House_Appleton",     lat:-6.8391, lng:-111.2695,  imgRatio:(120/109), img:"http://awoiaf.westeros.org/images/thumb/1/13/House_Appleton.png/109px-House_Appleton.png", clue:"the Reach"},
   {wikiKey:"House_Ambrose",      lat:-15.1145, lng:-143.3496, imgRatio:(120/90),  img:"http://awoiaf.westeros.org/images/thumb/9/9f/Ambrose.png/50px-Ambrose.png",                clue:"the Reach"},
@@ -1118,7 +1138,7 @@ nobility = [
   {wikiKey:"Nute",              seatKey:"Lord_Hewett%27s_Town",imgRatio:(120/100),img:"http://awoiaf.westeros.org/images/thumb/5/5c/Coats_of_arms_of_None.png/100px-Coats_of_arms_of_None.png", chapters:[254,999]},  //Given to Nute the Barber in AFFC-29
   {wikiKey:"House_Serry",        lat:-22.3500, lng:-150.2490,  imgRatio:(120/109), img:"http://awoiaf.westeros.org/images/thumb/e/ed/House_Serry.PNG/50px-House_Serry.PNG",                     chapters:[0,  253]},  //Southshield
   {wikiKey:"Andrik",             lat:-22.3500, lng:-150.2490, imgRatio:(120/100), img:"http://awoiaf.westeros.org/images/thumb/5/5c/Coats_of_arms_of_None.png/100px-Coats_of_arms_of_None.png", chapters:[254,999]},  //Given to Andrik the Unsmilling in AFFC-29
-  
+
   //Landed Nobility - The Stormlands
   {wikiKey:"House_Dondarrion",   seatKey:"Blackhaven",        imgRatio:(64/55),   img:"http://awoiaf.westeros.org/images/thumb/1/1d/Dondarrion.png/55px-Dondarrion.png"},
   {wikiKey:"House_Caron",        seatKey:"Nightsong",         imgRatio:(120/105), img:"http://awoiaf.westeros.org/images/thumb/6/64/House_Caron.png/105px-House_Caron.png", chapters:[0,  137]},
@@ -1154,7 +1174,7 @@ nobility = [
   {wikiKey:"House_Wensington",   lat:-17.3925, lng:-108.4570, imgRatio:(120/90),  img:"http://awoiaf.westeros.org/images/thumb/1/1d/House_Wensington.PNG/90px-House_Wensington.PNG", clue:"the Stormlands"},
   {wikiKey:"House_Wylde",        seatKey:"Rain_House",        imgRatio:(120/109), img:"http://awoiaf.westeros.org/images/thumb/2/20/Wylde.png/109px-Wylde.png"},
   {wikiKey:"House_Seaworth",     lat:-23.8054, lng:-83.3203,  imgRatio:(120/90),  img:"http://awoiaf.westeros.org/images/thumb/9/99/Seaworth.png/90px-Seaworth.png", clue:"Cape Wrath"},
-  
+
   //Landed Nobility - Dorne
   {wikiKey:"House_Allyrion",  seatKey:"Godsgrace",         imgRatio:1,         img:"http://awoiaf.westeros.org/images/thumb/2/25/House_Allyrion.PNG/120px-House_Allyrion.PNG"},
   {wikiKey:"House_Blackmont", seatKey:"Blackmont",         imgRatio:1,         img:"http://awoiaf.westeros.org/images/thumb/f/f9/Blackmont.png/120px-Blackmont.png"},
@@ -1295,8 +1315,22 @@ paths["sansa"]= [
   {icon:"|S|808080", chapters:[211,222],                   key:"House_Baelish"},
   {line:  "#808080",                     episodes:34,      path:[[13.4109,-82.7929], [23.9661,-80.3320], [27.3718,-84.1553], "Gulltown", [31.6907,-96.0644], [30.9776,-100.1074], "Bloody_Gate", "Eyrie"]},
   {line:  "#808080", chapters:223,                         path:["House_Baelish", "Longbow_Hall", [30.9776,-100.1074], "Bloody_Gate", "Eyrie"]},
-  
-  {icon:"|S|808080", chapters:[223,999], episodes:[34,99], key:"Eyrie"},
+  {icon:"|S|808080", chapters:[223,999], episodes:[34,40], key:"Eyrie"},
+  {line:  "#808080",                     episodes:41,      path:["Crossroads_Inn", [25.1651,-110.2294],[25.2446,-106.0107],[27.4107,-104.9121],[27.4107,-104.9121], "Bloody_Gate"]},
+  {icon:"|S|808080",                     episodes:[41,41], key:"Crossroads_Inn"},
+  {icon:"|S|808080",                     episodes:[42,42], key:"Moat_Cailin"},
+  {icon:"|S|808080",                     episodes:[43,49], key:"Winterfell"},
+  {line:  "#808080",                     episodes:50,      path:["Winterfell", [67.1187,-124.8486]]},
+  {icon:"|S|808080",                     episodes:[50,52], coord:[67.1187,-124.8486]},  //Woods outside Winterfell
+  {line:  "#808080",                     episodes:53,      path:[[67.1187,-124.8486], "Castle_Black"]},
+  {icon:"|S|808080",                     episodes:[53,53], key:"Castle_Black"},
+  {line:  "#808080",                     episodes:54,      path:["Castle_Black", "Mole%27s_Town"]},
+  {icon:"|S|808080",                     episodes:[54,55], key:"Mole%27s_Town"},
+  {line:  "#808080",                     episodes:56,      path:["Castle_Black", [74.8219,-107.0947], [76.0479,-112.0605], "Westwatch-by-the-Bridge", [73.4659,-138.7353]]}, // Wildling Camp & House Mormount
+  {line:  "#808080",                     episodes:56,      path:[[74.8219,-107.0947], [72.9454,-108.4570], "Last_Hearth", [74.8219,-107.0947]]}, // House Glover
+  {icon: "_sleft|S|808080",              episodes:[56,56], coord:[74.8219,-107.0947]},
+  {line:  "#808080",                     episodes:57,      path:[[74.8219,-107.0947], [72.6988,-108.8964], [68.5121,-120.8496], "Winterfell"]},
+  {icon: "_sleft|S|808080",              episodes:[57,99], key:"Winterfell"},
 ];
 paths["bran"]= [
   {icon:       "|B|808080", chapters:[0,0],                       key:"Winterfell"},  //In Winterfell during prologue
@@ -1329,7 +1363,13 @@ paths["bran"]= [
   {icon:"_sright|B|808080",                     episodes:[33,38], key:"Craster%27s_Keep"},
   {line:         "#808080", chapters:275,                         path:["Nightfort", [81.7421,-129.6826]]},
   {line:         "#808080",                     episodes:39,      path:["Craster%27s_Keep", [81.7421,-129.6826]]},
-  {icon:       "|B|808080", chapters:[275,999], episodes:[39,99], coord:[81.7421,-129.6826]},
+  {icon:       "|B|808080", chapters:[275,999], episodes:[39,53], coord:[81.7421,-129.6826]},
+  {line:         "#808080",                     episodes:54,      path:[[81.7421,-129.6826], [81.7610,-128.4082]]},
+  {icon:       "|B|808080",                     episodes:[54,54], coord:[81.7610,-128.4082]}, // Escaping the cave
+  {line:         "#808080",                     episodes:55,      path:[[81.7610,-128.4082], [81.6660,-127.7490]]},
+  {icon:       "|B|808080",                     episodes:[55,58], coord:[81.6660,-127.7490]}, // Meeting Benjen
+  {line:         "#808080",                     episodes:59,      path:[[81.6660,-127.7490], [76.6189,-106.6113]]},
+  {icon:       "|B|808080",                     episodes:[59,99], coord:[76.6189,-106.6113]}, // Leaving Benjen a weirwood
 ];
 paths["arya"]= [
   {icon:"|A|808080", chapters:[0,11],    episodes:[0,0],   key:"Winterfell"},
@@ -1387,10 +1427,12 @@ paths["arya"]= [
   {icon:"|A|808080", chapters:[206,214], episodes:[37,37], key:"Bloody_Gate"},
   {line:  "#808080",                     episodes:39,      path:["Bloody_Gate", [25.2446,-104.1503], "Saltpans"]}, //passes Brienne
   {line:  "#808080", chapters:215,                         path:["Palisade_Village", "Crossroads_Inn", "Saltpans"]},
-  {icon:"|A|808080", chapters:[215,230], episodes:[39,99], key:"Saltpans"},
-  {line:  "#808080", chapters:231,                         path:["Saltpans", [18.5629,-100.5468], [21.2893,-89.0332], [31.1281,-77.6513], [44.5591,-60.9521], "Braavos"]},
-  {arrow: "#808080", chapters:231,                         coord:[20.0642,-94.2317], heading:70},
-  {icon:"|A|808080", chapters:[231,999],                   key:"Braavos"},
+  {icon:"|A|808080", chapters:[215,230], episodes:[39,40], key:"Saltpans"},
+  {line:  "#808080", chapters:231,       episodes:41,      path:["Saltpans", [18.5629,-100.5468], [21.2893,-89.0332], [31.1281,-77.6513], [44.5591,-60.9521], "Braavos"]},
+  {arrow: "#808080", chapters:231,       episodes:41,      coord:[20.0642,-94.2317], heading:70},
+  {icon:"|A|808080", chapters:[231,999], episodes:[41,58], key:"Braavos"},
+  {line:  "#808080", chapters:231,       episodes:41,      path:["Saltpans", "Crossroads_Inn"]},
+  {icon:"|A|808080",                     episodes:[59,99], key:"Twins"},
 ];
 paths["rickon"]= [
   {icon:"|R|808080", chapters:[0,122],   episodes:[0,14],  key:"Winterfell"},
@@ -1406,10 +1448,13 @@ paths["rickon"]= [
   {line:  "#808080",                     episodes:26,      path:[[72.2355,-114.3457], [73.5533,-111.0059]]},
   {icon:"|R|808080",                     episodes:[26,27], coord:[73.5533,-111.0059]},
   {line:  "#808080",                     episodes:28,      path:[[73.5533,-111.0059], "Queenscrown"]},
-  {icon:"|R|808080",                     episodes:[28,99], key:"Queenscrown"},
-  {icon:"lost",                          episodes:[29,99], key:"Last_Hearth"},
+  {icon:"|R|808080",                     episodes:[28,28], key:"Queenscrown"},
+  {icon:"lost",                          episodes:[29,51], key:"Last_Hearth"},
   {icon:"lost",      chapters:[142,299],                   coord:[65.2198,-121.3769]},
   {icon:"lost",      chapters:[300,999],                   coord:[75.7156,-86.1328]},
+  {line:  "#808080",                     episodes:52,      path:["Queenscrown", [73.7265,-109.7753], "Last_Hearth", [72.7380,-109.0722], [68.6885,-120.7617], "Winterfell"]},
+  {icon:"|R|808080",                     episodes:[52,57], key:"Winterfell"},
+  {icon:"skull",                         episodes:[58,99], key:"Winterfell"},
 ];
 paths["jon"]= [
   {icon:      "|J|808080", chapters:[0,0],                       key:"Winterfell"},  //In Winterfell during prologue
@@ -1437,7 +1482,7 @@ paths["jon"]= [
   {icon:      "|J|808080", chapters:[158,168], episodes:[22,24], key:"Fist_of_the_First_Men"},
   {line:        "#808080", chapters:169,       episodes:25,      path:["Fist_of_the_First_Men", [76.5781,-113.2910]]},
   {icon:      "|J|808080", chapters:[169,183], episodes:[25,25], coord:[76.5781,-113.2910]},
-  {line:        "#808080",                     episodes:26,      path:[[76.5781,-113.2910], [75.1858,-114.3457]]},  
+  {line:        "#808080",                     episodes:26,      path:[[76.5781,-113.2910], [75.1858,-114.3457]]},
   {icon:      "|J|808080",                     episodes:[26,27], coord:[75.1858,-114.3457]}, //Somewhere south of the wall
   {line:        "#808080",                     episodes:28,      path:[[75.1858,-114.3457], "Queenscrown"]},
   {line:        "#808080", chapters:184,                         path:[[76.5781,-113.2910], "Queenscrown"]},
@@ -1446,8 +1491,17 @@ paths["jon"]= [
   {line:        "#808080", chapters:191,       episodes:29,      path:["Queenscrown", "Castle_Black"]},
   {icon:"_sleft|J|808080", chapters:[191,339], episodes:[29,33], key:"Castle_Black"},
   {icon:"_sleft|J|808080",                     episodes:[34,35], key:"Craster%27s_Keep"},
-  {icon:"_sleft|J|808080",                     episodes:[36,99], key:"Castle_Black"},
-  {icon:"skull",           chapters:[340,999],                   key:"Castle_Black"},
+  {icon:"_sleft|J|808080",                     episodes:[36,46], key:"Castle_Black"},
+  {line:        "#808080",                     episodes:47,      path:["Castle_Black", "Eastwatch-by-the-Sea", [77.5420,-94.3945], [78.9713,-95.4492], "Hardhome"]},
+  {icon:      "|J|808080",                     episodes:[47,47], key:"Hardhome"},
+  {line:        "#808080",                     episodes:48,      path:[[76.3933,-99.0527], [76.4552,-106.6113], "Castle_Black"]},
+  {icon:"_sleft|J|808080",                     episodes:[48,48], key:"Castle_Black"},
+  {icon:"skull",           chapters:[340,999], episodes:[49,50], key:"Castle_Black"},
+  {icon:      "|J|808080",                     episodes:[51,55], key:"Castle_Black"},
+  {line:        "#808080",                     episodes:56,      path:["Castle_Black", [74.8219,-107.0947], [76.0479,-112.0605], "Westwatch-by-the-Bridge", [73.4659,-138.7353]]}, // Wildling Camp & House Mormount
+  {line:        "#808080",                     episodes:56,      path:[[72.9454,-108.4570], "Last_Hearth", [74.8219,-107.0947]]}, // House Glover
+  {icon:      "|J|808080",                     episodes:[56,56], coord:[74.8219,-107.0947]},
+  {icon:      "|J|808080",                     episodes:[57,99], key:"Winterfell"},
 ];
 paths["daenerys"]= [
   {icon:"|D|000000|FFFFFF", chapters:[0,10],    episodes:[0,0],   key:"Pentos"},
@@ -1474,10 +1528,20 @@ paths["daenerys"]= [
   {line:  "#000000",        chapters:200,       episodes:30,      path:["Yunkai", [-48.5747,78.7500]]},
   {icon:"|D|000000|FFFFFF",                     episodes:[30,31], coord:[-48.5747,78.7500]},
   {line:  "#000000",        chapters:200,       episodes:32,      path:[[-48.5747,78.7500], "Meereen"]},
-  {icon:"|D|000000|FFFFFF", chapters:[200,322], episodes:[32,99], key:"Meereen"},
+  {icon:"|D|000000|FFFFFF", chapters:[200,322], episodes:[32,48], key:"Meereen"},
   {icon:"lost",             chapters:[323,341],                   key:"Meereen"},
-  {line:  "#000000",        chapters:342,                         path:["Meereen", [-32.6948,85.5175], [-33.5047,85.7812]]},
-  {icon:"|D|000000|FFFFFF", chapters:[342,999],                   coord:[-33.5047,85.7812]},  //South of "Dragonstone"
+  {line:  "#000000",        chapters:342,       episodes:49,      path:["Meereen", [-39.8760,89.7363], [-32.6948,85.5175], [-33.5047,85.7812]]},
+  {icon:"|D|000000|FFFFFF", chapters:[342,999], episodes:[49,49], coord:[-33.5047,85.7812]},  //South of "Dragonstone"
+  {line:  "#000000",                            episodes:50,      path:[[-33.5047,85.7812], [-24.6070,72.4218]]},
+  {icon:"|D|000000|FFFFFF", chapters:[342,999], episodes:[50,51], coord:[-24.6070,72.4218]},  //Marching to Vaes Dothrak
+  {line:  "#000000",                            episodes:52,      path:[[-24.6070,72.4218], "Vaes_Dothrak"]},
+  {icon:"|D|000000|FFFFFF",                     episodes:[52,54], key:"Vaes_Dothrak"},
+  {line:  "#000000",                            episodes:55,      path:["Vaes_Dothrak", [-22.0652,73.5644]]},
+  {icon:"|D|000000|FFFFFF",                     episodes:[55,56], coord:[-22.0652,73.5644]},  //Leading Khalassar to Meereen
+  {line:  "#000000",                            episodes:57,      path:[[-22.0652,73.5644], "Meereen"]},
+  {icon:"|D|000000|FFFFFF",                     episodes:[57,58], key:"Meereen"},
+  {line:  "#000000",                            episodes:59,      path:["Meereen", [-58.2632,52.0312], [-68.3505,50.6689]]},
+  {icon:"|D|000000|FFFFFF",                     episodes:[59,99], coord:[-68.3505,50.6689]},  //Sailing to Westeros
 ];
 paths["aegon"]= [
   {line:  "#000000",        chapters:289,                         path:["Ghoyan_Drohe", [7.1881,-40.7812], [4.0396,-38.4082], [4.0834,-37.5292], [1.1425,-36.1669], "Ny_Sar", [-3.4256,-25.5322], [-12.4258,-21.4453], "Sorrows"]},
@@ -1545,16 +1609,28 @@ paths["jaime"]= [
   {line:         "#ff0000", chapters:205,       episodes:29,      path:[[16.9727,-112.1484], [16.0669,-109.5263], "Brindlewood"]},
   {icon: "_sleft|J|FF0000", chapters:[205,209],                   key:"Brindlewood"},
   {line:         "#ff0000", chapters:205,       episodes:29,      path:["Brindlewood", "Hayford", "King%27s_Landing"]},
-  {icon:"_sright|J|FF0000", chapters:[210,251], episodes:[29,99], key:"King%27s_Landing"},
+  {icon:"_sright|J|FF0000", chapters:[210,251], episodes:[29,42], key:"King%27s_Landing"},
+
+  {line:         "#ff0000",                     episodes:43,      path:["King%27s_Landing",  [1.1425,-99.4921], [10.1419,-87.1875], [-11.8673,-77.8710], [-22.2687,-77.3437], [-33.2111,-77.8710], [-39.7071,-78.2226], [-40.9798,-81.0351]]},
+  {icon:       "|J|FF0000",                     episodes:[43,44], coord:[-40.9798,-81.0351]},
+  {line:         "#ff0000",                     episodes:45,      path:[[-40.9798,-81.0351], "Water_Gardens"]},
+  {icon:       "|J|FF0000",                     episodes:[45,46], key:"Water_Gardens"},
+  {line:         "#ff0000",                     episodes:47,      path:["Water_Gardens", "Sunspear"]},
+  {icon:       "|J|FF0000",                     episodes:[47,48], key:"Sunspear"},
+  {line:         "#ff0000",                     episodes:49,      path:["Sunspear", [-43.6440,-83.1884]]},
+  {icon: "_sleft|J|FF0000",                     episodes:[49,49], coord:[-43.6440,-83.1884]},
+  {icon: "_sleft|J|FF0000",                     episodes:[50,55], key:"King%27s_Landing"},
   {icon:       "|J|FF0000", chapters:[252,254],                   key:"Harrenhal"},
   {line:         "#ff0000", chapters:255,                         path:["Harrenhal", "Darry"]},
   {icon:       "|J|FF0000", chapters:[255,257],                   key:"Darry"},
-  {line:         "#ff0000", chapters:258,                         path:["Darry", "Inn_of_the_Kneeling_Man", "Riverrun"]},
-  {icon:       "|J|FF0000", chapters:[258,318],                   key:"Riverrun"},
+  {line:         "#ff0000", chapters:258,       episodes:56,      path:["Darry", "Inn_of_the_Kneeling_Man", "Riverrun"]},
+  {icon:       "|J|FF0000", chapters:[258,318], episodes:[56,58], key:"Riverrun"},
   {line:         "#ff0000", chapters:319,                         path:["Riverrun", "Raventree_Hall", "Pennytree"]},
   {arrow:        "#ff0000", chapters:319,                         coord:[20.9221,-122.8267], heading:110},
   {icon: "_sleft|J|FF0000", chapters:[319,324],                   key:"Pennytree"},
   {icon:"lost",             chapters:[325,999],                   key:"Pennytree"},
+
+  {icon:       "|J|FF0000",                     episodes:[59,99], key:"King%27s_Landing"},
 ];
 paths["cersei"]= [
   {icon:      "|C|FF0000", chapters:[0,3],                       key:"King%27s_Landing"},
@@ -1579,10 +1655,21 @@ paths["tyrion"]= [
   {line:         "#ff0000", chapters:56,        episodes:8,       path:[[32.6578,-120.5419], [32.6578,-122.3876]]},
   {icon:"_sright|T|FF0000", chapters:[56,68],   episodes:[8,8],   coord:[32.6578,-122.3876]}, //Ruby Ford on the Green Fork of the Trident
   {icon:"_sright|T|FF0000", chapters:[69,79],   episodes:[9,9],   key:"Crossroads_Inn"},
-  {icon:       "|T|FF0000", chapters:[80,219],  episodes:[10,99], key:"King%27s_Landing"},
+  {icon:       "|T|FF0000", chapters:[80,219],  episodes:[10,39], key:"King%27s_Landing"},
   {icon:"lost",             chapters:[220,270],                   key:"King%27s_Landing"},
-  {line:         "#ff0000", chapters:271,                         path:["King%27s_Landing", [2.1967,-98.4375], [10.0554,-87.5390], [2.9869,-65.6542], "Pentos"]},
-  {icon:       "|T|FF0000", chapters:[271,275],                   key:"Pentos"},
+  {line:         "#ff0000", chapters:271,       episodes:40,      path:["King%27s_Landing", [2.1967,-98.4375], [10.0554,-87.5390], [2.9869,-65.6542], "Pentos"]},
+  {icon:       "|T|FF0000", chapters:[271,275], episodes:[40,40], key:"Pentos"},
+
+  {line:         "#ff0000",                     episodes:41,      path:["Pentos", [6.2279,-49.8339], [-15.1145,-37.7929]]},
+  {icon:       "|T|FF0000",                     episodes:[41,41], coord:[-15.1145,-37.7929]},
+  {line:         "#ff0000",                     episodes:42,      path:[[-15.1145,-37.7929], [-41.7713,-29.3554], "Volantis"]},
+  {icon:       "|T|FF0000",                     episodes:[42,43], key:"Volantis"},
+  {line:         "#ff0000",                     episodes:44,      path:["Volantis", [-46.6192,-8.9648], [-45.3984,3.3398], [-64.1297,18.5449], [-65.0350,29.8828], [-65.1276,38.2324]]},
+  {icon:       "|T|FF0000",                     episodes:[44,44], coord:[-65.1276,38.2324]},
+  {line:         "#ff0000",                     episodes:45,      path:[[-65.1276,38.2324], [-64.9049,41.5283], [-62.2883,43.5937]]},
+  {icon:       "|T|FF0000",                     episodes:[45,46], coord:[-62.2883,43.5937]},
+  {line:         "#ff0000",                     episodes:47,      path:[[-62.2883,43.5937], [-63.0350,58.1835], [-60.4138,59.9414], [-56.8008,57.3925], [-58.2170,75.1464], [-53.3308,76.3769], "Yunkai", [-48.5747,78.7500], "Meereen"]},
+
   {line:         "#ff0000", chapters:276,                         path:["Pentos", [6.4026,-49.6582]]},
   {icon:       "|T|FF0000", chapters:[276,278],                   coord:[6.4026,-49.6582]}, //Velvet Hills
   {line:         "#ff0000", chapters:279,                         path:[[6.4026,-49.6582], "Ghoyan_Drohe"]},
@@ -1600,7 +1687,10 @@ paths["tyrion"]= [
   {line:         "#ff0000", chapters:311,                         path:[[-65.2198,14.4140], [-73.0482,19.6875], [-74.4021,41.4843], [-72.2355,59.6777], [-65.3301,58.0078]]},
   {icon:       "|T|FF0000", chapters:[311,317],                   coord:[-65.3301,58.0078]}, //The gulf of Grief
   {line:         "#ff0000", chapters:318,                         path:[[-65.3301,58.0078], [-60.0209,59.5898], [-56.9928,59.3261], "Meereen"]},
-  {icon:"_sright|T|FF0000", chapters:[318,999],                   key:"Meereen"},
+
+  {icon:"_sright|T|FF0000", chapters:[318,999], episodes:[47,58], key:"Meereen"},
+  {line:         "#FF0000",                     episodes:59,      path:["Meereen", [-58.2632,52.0312], [-68.3505,50.6689]]},
+  {icon:"_sright|T|FF0000",                     episodes:[59,99], coord:[-68.3505,50.6689]},  //Sailing to Westeros
 ];
 paths["joffrey"]= [
   {icon:       "|J|F3CD18", chapters:[0,3],                       key:"King%27s_Landing"},
@@ -1619,13 +1709,16 @@ paths["myrcella"]= [
   {icon:       "|M|F3CD18", chapters:[15,19],   episodes:[1,1],   coord:[26.4312,-114.1406]}, //The Trident
   {icon:       "|M|F3CD18", chapters:[20,113],  episodes:[2,14],  key:"King%27s_Landing"},
   {line:         "#F3CD18", chapters:114,       episodes:15,      path:["King%27s_Landing", [1.1425,-99.4921]]},
-  {icon:       "|M|F3CD18", chapters:[114,226], episodes:[15,99], coord:[1.1425,-99.4921]}, //Ship to Dorne
-  {line:         "#F3CD18", chapters:227,                         path:[[1.1425,-99.4921], [10.1419,-87.1875], [44.5904,-61.4355], "Braavos", [44.5904,-61.4355], [-12.6403,-78.6621], [-33.2111,-77.6953], [-41.7057,-79.5410], "Sunspear"]},
-  {icon:"_sright|M|F3CD18", chapters:[227,245],                   key:"Sunspear"},
+  {icon:       "|M|F3CD18", chapters:[114,226], episodes:[15,15], coord:[1.1425,-99.4921]}, //Ship to Dorne
+  {line:         "#F3CD18", chapters:227,       episodes:16,      path:[[1.1425,-99.4921], [10.1419,-87.1875], [44.5904,-61.4355], "Braavos", [44.5904,-61.4355], [-12.6403,-78.6621], [-33.2111,-77.6953], [-41.7057,-79.5410], "Sunspear"]},
+  {icon:"_sright|M|F3CD18", chapters:[227,245], episodes:[16,48], key:"Sunspear"},
   {line:         "#F3CD18", chapters:246,                         path:["Sunspear", "Shandystone", [-43.0367,-92.2412]]},
   {icon:"_sright|M|F3CD18", chapters:[246,264],                   coord:[-43.0367,-92.2412]}, //The Greenblood, near Shandystone
   {line:         "#F3CD18", chapters:265,                         path:[[-43.0367,-92.2412], [-43.0046,-91.3183], [-43.8345,-90.4833], [-43.7393,-89.0771], [-44.3395,-88.0664], "Planky_Town", "Sunspear"]},
   {icon:"_sright|M|F3CD18", chapters:[265,999],                   key:"Sunspear"},
+  {line:         "#F3CD18",                     episodes:49,      path:["Sunspear", [-43.6440,-83.1884]]},
+  {icon:"skull",                                episodes:[49,49], coord:[-43.6440,-83.1884]},
+  {icon:"skull",                                episodes:[50,99], key:"King%27s_Landing"},
 ];
 paths["robert"]= [
   {icon: "_sleft|R|F3CD18", chapters:[0,3],                       key:"King%27s_Landing"},
@@ -1649,10 +1742,21 @@ paths["stannis"]= [
   {icon: "_sleft|S|F3CD18", chapters:[132,134], episodes:[18,18], key:"King%27s_Landing"},
   {icon:       "|S|F3CD18", chapters:[135,152],                   coord:[0.7031,-101.7773]}, //Retreat to ships
   {icon: "_sleft|S|F3CD18", chapters:[153,215], episodes:[19,34], key:"Dragonstone"},
+
   {line:         "#F3CD18",                     episodes:35,      path:["Dragonstone", [19.6425,-80.8593], [31.7281,-77.1679], [44.5591,-60.9521], "Braavos"]},
-  {icon: "_sleft|S|F3CD18",                     episodes:[35,99], key:"Braavos"},
+  {icon: "_sleft|S|F3CD18",                     episodes:[35,38], key:"Braavos"},
+  {line:         "#F3CD18",                     episodes:39,      path:["Braavos", [72.5808,-79.2773], "Eastwatch-by-the-Sea", "Castle_Black"]},
+
   {line:         "#F3CD18", chapters:216,                         path:["Dragonstone", [19.6425,-80.8593], [31.7281,-77.1679], [72.5808,-79.2773], "Eastwatch-by-the-Sea", "Castle_Black"]},
-  {icon:"_sright|S|F3CD18", chapters:[216,296],                   key:"Castle_Black"},
+  {icon:"_sright|S|F3CD18", chapters:[216,296], episodes:[39,43], key:"Castle_Black"},
+
+  {line:         "#F3CD18",                     episodes:44,      path:["Castle_Black", "Mole%27s_Town"]},
+  {icon:       "|S|F3CD18",                     episodes:[44,46], key:"Mole%27s_Town"},
+  {line:         "#F3CD18",                     episodes:47,      path:["Mole%27s_Town", [72.8679,-108.8964], [70.6126,-115.7519]]},
+  {icon:       "|S|F3CD18",                     episodes:[47,48], coord:[70.6126,-115.7519]}, //Stopped by the snow
+  {line:         "#F3CD18",                     episodes:49,      path:[[70.6126,-115.7519], "Winterfell"]},
+  {icon:"skull",                                episodes:[49,99], key:"Winterfell"},
+
   {line:         "#F3CD18", chapters:297,                         path:["Castle_Black", [75.2977,-115.2246], [72.7119,-118.7402], [72.6595,-125.2441], [70.3778,-130.2539], "Deepwood_Motte"]},
   {icon:       "|S|F3CD18", chapters:[297,312],                   key:"Deepwood_Motte"},
   {line:         "#F3CD18", chapters:313,                         path:["Deepwood_Motte", "Crofters%27_village"]},
@@ -1702,12 +1806,24 @@ paths["theon"]= [
   {line:         "#FF9700", chapters:192,       episodes:29,      path:["Winterfell", [65.6582,-116.3671], "Dreadfort"]},
   {icon:"lost",             chapters:[192,282],                   key:"Dreadfort"},
   {icon:       "|T|FF9700", chapters:[283,290], episodes:[29,36], key:"Dreadfort"},
-  {icon:       "|T|FF9700", chapters:[291,307], episodes:[37,99], key:"Moat_Cailin"},
-  {icon:       "|T|FF9700", chapters:[308,332],                   key:"Winterfell"},
+  {icon:       "|T|FF9700", chapters:[291,307], episodes:[37,40], key:"Moat_Cailin"},
+  {icon:       "|T|FF9700", chapters:[308,332], episodes:[41,49], key:"Winterfell"},
   {line:         "#FF9700", chapters:333,                         path:["Winterfell", "Crofters%27_village"]},
   {icon:"_sright|T|FF9700", chapters:[333,339],                   key:"Crofters%27_village"},
   {icon:"skull",            chapters:[340,343],                   key:"Crofters%27_village"},
   {icon:"_sright|T|FF9700", chapters:[344,999],                   key:"Crofters%27_village"},
+  {line:         "#FF9700",                     episodes:50,      path:["Winterfell", [67.1187,-124.8486]]},
+  {icon: "_sleft|T|FF9700",                     episodes:[50,52], coord:[67.1187,-124.8486]},  //Woods outside Winterfell
+  {line:         "#FF9700",                     episodes:53,      path:[[67.1187,-124.8486], [65.0721,-142.3828], [64.8489,-145.6347], [60.9304,-153.8085], "Stony_Shore", [61.7731,-162.3339], [46.6192,-161.1914], "Ten_Towers"]},
+  {icon:       "|T|FF9700",                     episodes:[53,53], key:"Ten_Towers"},  //Reunited with Yara
+  {line:         "#FF9700",                     episodes: 54,     path:["Ten_Towers", [31.9894,-154.4824]]},
+  {icon:"_sright|T|FF9700",                     episodes:[54,55], coord:[31.9894,-154.4824]},  //Kingsmoot
+  {line:         "#FF9700",                     episodes: 56,     path:[[31.9894,-154.4824], [33.3213,-154.5556], [33.5413,-157.1923], [30.0310,-157.9833], [5.7471,-159.0820], [-34.4884,-159.9169], [-51.0137,-146.2939], [-49.6107,-16.4355], [-48.1074,-10.6347], "Volantis"]},
+  {icon:"_sright|T|FF9700",                     episodes:[56,57], key:"Volantis"},  //Brothel
+  {line:         "#FF9700",                     episodes: 58,     path:["Volantis", [-72.7640,19.6875], [-74.0919,38.4960], [-61.0582,60.6445], [-57.7979,58.3593], "Meereen"]},
+  {icon:"_sright|T|FF9700",                     episodes:[58,58], key:"Meereen"},
+  {line:         "#FF9700",                     episodes:59,      path:["Meereen", [-58.2632,52.0312], [-68.3505,50.6689]]},
+  {icon:"_sright|T|FF9700",                     episodes:[59,99], coord:[-68.3505,50.6689]},  //Sailing to Westeros
 ];
 paths["brienne"]= [
   {icon:       "|B|FF00FF", chapters:[0,94],    episodes:[0,11],  key:"Evenfall_Hall"},  //Unknown during AGOT, but later placed at home
@@ -1743,12 +1859,30 @@ paths["brienne"]= [
   {icon:"_sright|B|FF00FF", chapters:[205,209],                   key:"Brindlewood"},
   {line:         "#FF00FF", chapters:205,       episodes:29,      path:["Brindlewood", "Hayford", "King%27s_Landing"]},
   {icon:       "|B|FF00FF", chapters:[210,233], episodes:[29,33], key:"King%27s_Landing"},
+
   {line:         "#FF00FF",                     episodes:34,      path:["King%27s_Landing", [4.9158,-101.6015]]},
   {icon:       "|B|FF00FF",                     episodes:[34,35], coord:[5.8783,-107.3144]}, //Where Pod can't cook
   {line:         "#FF00FF",                     episodes:36,      path:[[4.9158,-101.6015], "Crossroads_Inn"]},
   {icon:       "|B|FF00FF",                     episodes:[36,38], key:"Crossroads_Inn"}, //Brienne & Pod meet Hot Pie
   {line:         "#FF00FF",                     episodes:39,      path:["Crossroads_Inn", [23.9661,-109.8632], [25.2446,-104.1503]]},
-  {icon:       "|B|FF00FF",                     episodes:[39,99], coord:[25.2446,-104.1503]}, //Arya near the Eyrie
+  {icon:       "|B|FF00FF",                     episodes:[39,40], coord:[25.2446,-104.1503]}, //Arya near the Eyrie
+  {icon:       "|B|FF00FF",                     episodes:[41,41], key:"Crossroads_Inn"},
+  {line:         "#FF00FF",                     episodes:42,      path:["Crossroads_Inn", [34.8859,-121.9042], [41.2447,-120.6738], [44.6530,-122.4316], [52.6963,-121.6406]]},
+  {icon:       "|B|FF00FF",                     episodes:[42,43], coord:[52.6963,-121.6406]},  //within sight of Moat Cailin
+  {line:         "#FF00FF",                     episodes:44,      path:[[52.6963,-121.6406], [54.2652,-116.6308], [59.4450,-122.8710], [64.8862,-125.0683], "Castle_Cerwyn"]},
+  {icon:       "|B|FF00FF",                     episodes:[44,48], key:"Castle_Cerwyn"},
+  {line:         "#FF00FF",                     episodes:49,      path:["Castle_Cerwyn", "Winterfell"]},
+  {icon:"_sright|B|FF00FF",                     episodes:[49,49], key:"Winterfell"},
+  {line:         "#FF00FF",                     episodes:50,      path:["Winterfell", [67.1187,-124.8486]]},
+  {icon:"_sright|B|FF00FF",                     episodes:[50,52], coord:[67.1187,-124.8486]},  //Woods outside Winterfell
+  {line:         "#FF00FF",                     episodes:53,      path:[[67.1187,-124.8486], "Castle_Black"]},
+  {icon:"_sright|B|FF00FF",                     episodes:[53,53], key:"Castle_Black"},
+  {line:         "#FF00FF",                     episodes:54,      path:["Castle_Black", "Mole%27s_Town"]},
+  {icon:"_sright|B|FF00FF",                     episodes:[54,56], key:"Mole%27s_Town"},
+  {line:         "#FF00FF",                     episodes:57,      path:["Mole%27s_Town", [72.9711,-108.5449], "Winterfell", [64.8676,-124.5410], "Moat_Cailin", [44.6530,-122.4316]]},
+  {line:         "#FF00FF",                     episodes:57,      path:["Crossroads_Inn", [22.3500,-114.0380], "Inn_of_the_Kneeling_Man", "Riverrun", [23.4430,-127.2216]]},
+  {icon:       "|B|FF00FF",                     episodes:[57,99], coord:[23.4430,-127.2216]},
+
   {line:         "#FF00FF", chapters:234,                         path:["King%27s_Landing", "Duskendale"]},
   {icon:       "|B|FF00FF", chapters:[234,238],                   key:"Duskendale"},
   {line:         "#FF00FF", chapters:239,                         path:["Duskendale", "Maidenpool"]},
@@ -1787,7 +1921,21 @@ paths["davos"]= [
   {line:         "#AAAAAA", chapters:153,       episodes:20,      path:[[2.8991,-93.0761], [8.3202,-89.6484], [11.3357,-85.0161], "Dragonstone"]},
   {icon:"_sright|D|AAAAAA", chapters:[153,215], episodes:[20,34], key:"Dragonstone"},
   {line:         "#AAAAAA",                     episodes:35,      path:["Dragonstone", [19.6425,-80.8593], [31.7281,-77.1679], [44.5591,-60.9521], "Braavos"]},
-  {icon:"_sright|D|AAAAAA",                     episodes:[35,99], key:"Braavos"},
+
+  {icon:"_sright|D|AAAAAA",                     episodes:[35,38], key:"Braavos"},
+  {line:         "#AAAAAA",                     episodes:39,      path:["Braavos", [72.5808,-79.2773], "Eastwatch-by-the-Sea", "Castle_Black"]},
+  {icon:"_sright|D|AAAAAA",                     episodes:[39,43], key:"Castle_Black"},
+  {line:         "#AAAAAA",                     episodes:44,      path:["Castle_Black", "Mole%27s_Town"]},
+  {icon:       "|D|AAAAAA",                     episodes:[44,46], key:"Mole%27s_Town"},
+  {line:         "#AAAAAA",                     episodes:47,      path:["Mole%27s_Town", [72.8679,-108.8964], [70.6126,-115.7519]]},
+  {icon:       "|D|AAAAAA",                     episodes:[47,47], coord:[70.6126,-115.7519]}, //Stopped by the snow
+  {icon:       "|D|AAAAAA",                     episodes:[48,49], key:"Mole%27s_Town"},
+  {icon:       "|D|AAAAAA",                     episodes:[50,99], key:"Castle_Black"},
+  {line:         "#AAAAAA",                     episodes: 56,     path:["Castle_Black", [74.8219,-107.0947]]},
+  {icon:"_sright|D|AAAAAA",                     episodes:[56,56], coord:[74.8219,-107.0947]},
+  {line:         "#AAAAAA",                     episodes:57,      path:[[74.8219,-107.0947], [72.6988,-108.8964], [68.5121,-120.8496], "Winterfell"]},
+  {icon:"_sright|D|AAAAAA",                     episodes:[57,99], key:"Winterfell"},
+
   //{line:         "#AAAAAA", chapters:[242,279],                   path:["Dragonstone", [19.6425,-80.8593], [31.7281,-77.1679], [49.8379,-80.8593], "White_Harbor"]},
   {icon:       "|D|AAAAAA", chapters:[242,248],                   key:"White_Harbor"},
   {icon:"skull",            chapters:[249,279],                   key:"White_Harbor"},
@@ -1822,16 +1970,20 @@ paths["samwell"]= [
   {line:         "#000000",        chapters:199,       episodes:29,      path:[[76.6899,-110.6104], "Nightfort"]},
   {icon:"_sright|S|000000|FFFFFF", chapters:[199,217],                   key:"Nightfort"},
   {line:         "#000000",        chapters:218,       episodes:29,      path:["Nightfort", "Castle_Black"]},
-  {icon:       "|S|000000|FFFFFF", chapters:[218,239], episodes:[29,99], key:"Castle_Black"},
+  {icon:       "|S|000000|FFFFFF", chapters:[218,239], episodes:[29,48], key:"Castle_Black"},
   {line:         "#000000",                            episodes:32,      path:["Castle_Black", "Mole%27s_Town"]},
-  {line:         "#000000",        chapters:240,                         path:["Castle_Black", "Eastwatch-by-the-Sea", [72.5808,-79.2773], [63.7824,-69.0820]]},
-  {icon:       "|S|000000|FFFFFF", chapters:[240,250],                   coord:[63.7824,-69.0820]}, //At sea
+  {line:         "#000000",        chapters:240,       episodes:49,      path:["Castle_Black", "Eastwatch-by-the-Sea", [72.5808,-79.2773], [63.7824,-69.0820]]},
+  {icon:       "|S|000000|FFFFFF", chapters:[240,250], episodes:[49,51], coord:[63.7824,-69.0820]}, //At sea
   {line:         "#000000",        chapters:251,                         path:[[63.7824,-69.0820], "Braavos"]},
   {icon:"_sright|S|000000|FFFFFF", chapters:[251,270],                   key:"Braavos"},
   {line:         "#000000",        chapters:271,                         path:["Braavos", [44.5278,-62.3144], [-22.2687,-77.3437], [-33.2111,-77.8710], [-41.3768,-78.7500], [-48.3416,-88.5937], [-49.6107,-110.2148]]},
-  {icon:       "|S|000000|FFFFFF", chapters:[271,280],                   coord:[-49.6107,-110.2148]}, //Off the coast of Dorne
+  {line:         "#000000",                            episodes:52,      path:[[63.7824,-69.0820], [44.5278,-62.3144], [-22.2687,-77.3437], [-33.2111,-77.8710], [-41.3768,-78.7500], [-48.3416,-88.5937], [-49.6107,-110.2148]]},
+  {icon:       "|S|000000|FFFFFF", chapters:[271,280], episodes:[52,54], coord:[-49.6107,-110.2148]}, //Off the coast of Dorne
+  {line:         "#000000",                            episodes:55,      path:[[-49.6107,-110.2148], [-50.4575,-134.3847], [-47.3388,-148.8867], [-41.1124,-154.2480], "Oldtown", [-30.9776,-142.7343], "Horn_Hill"]},
+  {icon:       "|S|000000|FFFFFF",                     episodes:[55,58], key:"Horn_Hill"},
+
   {line:         "#000000",        chapters:281,                         path:[[-49.6107,-110.2148], [-50.4575,-135.2636], [-47.2792,-149.8535], [-40.7805,-154.6875], "Oldtown"]},
-  {icon:       "|S|000000|FFFFFF", chapters:[281,999],                   key:"Oldtown"},
+  {icon:       "|S|000000|FFFFFF", chapters:[281,999], episodes:[59,99], key:"Oldtown"},
 ];
 
 paths["asha"]= [
@@ -1840,16 +1992,23 @@ paths["asha"]= [
   {icon:       "|A|FF9700", chapters:[ 97,235], episodes:[14,34], key:"Deepwood_Motte"},  //ACOK24
   {line:         "#FF9700", chapters: 129,      episodes: 17,     path:["Deepwood_Motte", "Winterfell"]},  //ACOK56
   {line:         "#FF9700",                     episodes: 35,     path:["Deepwood_Motte", "Tumbledown_Tower", [67.0674,-113.8183], "Dreadfort"]},
-  {icon:       "|A|FF9700",                     episodes:[35,99], key:"Dreadfort"},
-  {line:         "#FF9700", chapters: 236,                        path:[[46.3773,-161.6309], "Ten_Towers"]},
-  {icon:       "|A|FF9700", chapters:[236,242],                   key:"Ten_Towers"},  //AFFC11
-  {line:         "#FF9700", chapters: 243,                        path:["Ten_Towers", [31.9894,-154.4824]]},
-  {icon: "_sleft|A|FF9700", chapters:[243,296],                   coord:[31.9894,-154.4824]},  //AFFC18
+  {icon:       "|A|FF9700",                     episodes:[35,52], key:"Dreadfort"},
+  {line:         "#FF9700", chapters: 236,      episodes: 53,     path:[[46.3773,-161.6309], "Ten_Towers"]},
+  {icon:       "|A|FF9700", chapters:[236,242], episodes:[53,53], key:"Ten_Towers"},  //AFFC11
+  {line:         "#FF9700", chapters: 243,      episodes: 54,     path:["Ten_Towers", [31.9894,-154.4824]]},
+  {icon: "_sleft|A|FF9700", chapters:[243,296], episodes:[54,55], coord:[31.9894,-154.4824]},  //AFFC18
   {line:         "#FF9700", chapters: 297,                        path:[[31.9894,-154.4824], [46.3773,-161.6309]]},
   {line:         "#FF9700", chapters: 297,                        path:["Deepwood_Motte", [70.0955,-139.4385]]},
   {icon:       "|A|FF9700", chapters:[297,312],                   coord:[70.0955,-139.4385]},  //ADWD26
   {line:         "#FF9700", chapters: 313,                        path:["Deepwood_Motte", "Crofters%27_village"]},
   {icon: "_sleft|A|FF9700", chapters:[313,999],                   key:"Crofters%27_village"},  //ADWD42
+
+  {line:         "#FF9700",                     episodes: 56,     path:[[31.9894,-154.4824], [33.3213,-154.5556], [33.5413,-157.1923], [30.0310,-157.9833], [5.7471,-159.0820], [-34.4884,-159.9169], [-51.0137,-146.2939], [-49.6107,-16.4355], [-48.1074,-10.6347], "Volantis"]},
+  {icon: "_sleft|A|FF9700",                     episodes:[56,57], key:"Volantis"},  //Brothel
+  {line:         "#FF9700",                     episodes: 58,     path:["Volantis", [-72.7640,19.6875], [-74.0919,38.4960], [-61.0582,60.6445], [-57.7979,58.3593], "Meereen"]},
+  {icon: "_sleft|A|FF9700",                     episodes:[58,58], key:"Meereen"},
+  {line:         "#FF9700",                     episodes:59,      path:["Meereen", [-58.2632,52.0312], [-68.3505,50.6689]]},
+  {icon: "_sleft|A|FF9700",                     episodes:[59,99], coord:[-68.3505,50.6689]},  //Sailing to Westeros
 ];
 
 paths["victarion"]= [
@@ -1868,7 +2027,7 @@ paths["victarion"]= [
 
 
 paths["arianne"]= [
-  {icon:       "|A|AD011B", chapters:[  0,245], episodes:[ 0,99], key:"Sunspear"},  //In Sunspear during first books
+  {icon:       "|A|AD011B", chapters:[  0,245],                   key:"Sunspear"},  //In Sunspear during first books
   {line:         "#AD011B", chapters: 246,                        path:["Sunspear", "Shandystone", [-43.0367,-92.2412]]},
   {icon: "_sleft|A|AD011B", chapters:[246,264],                   coord:[-43.0367,-92.2412]},  //AFFC21
   {line:         "#AD011B", chapters:265,                         path:[[-43.0367,-92.2412], [-43.0046,-91.3183], [-43.8345,-90.4833], [-43.7393,-89.0771], [-44.3395,-88.0664], "Planky_Town", "Sunspear"]},
@@ -1888,5 +2047,19 @@ paths["littlefinger"]= [
   {line:         "#006300", chapters:211,                         path:[[1.2303,-103.3593], [1.4939,-98.0859], [9.7956,-88.1542], [13.4109,-82.7929], [32.1756,-77.2558], "House_Baelish"]},
   {icon: "_sleft|P|006300", chapters:[211,222],                   key:"House_Baelish"},
   {line:         "#006300", chapters:223,                         path:["House_Baelish", "Longbow_Hall", "Eyrie"]},
-  {icon: "_sleft|P|006300", chapters:[223,999], episodes:[34,99], key:"Eyrie"},
+  {icon: "_sleft|P|006300", chapters:[223,999], episodes:[34,40], key:"Eyrie"},
+  {line:         "#006300",                     episodes:41,      path:["Crossroads_Inn", [25.1651,-110.2294],[25.2446,-106.0107],[27.4107,-104.9121],[27.4107,-104.9121], "Bloody_Gate"]},
+  {icon: "_sleft|P|006300",                     episodes:[41,41], key:"Crossroads_Inn"},
+  {line:         "#006300",                     episodes:42,      path:["Crossroads_Inn", [34.8859,-121.9042], [41.2447,-120.6738], [44.6530,-122.4316], "Moat_Cailin"]},
+  {icon: "_sleft|P|006300",                     episodes:[42,42], key:"Moat_Cailin"},
+  {line:         "#006300",                     episodes:43,      path:["Moat_Cailin", [64.6991,-124.86328125], "Winterfell"]},
+  {icon: "_sleft|P|006300",                     episodes:[43,44], key:"Winterfell"},  //He's gone during 44, but not yet back at KL
+  {line:         "#006300",                     episodes:45,      path:[[64.9235,-124.4531], [58.9500,-114.9609], "White_Harbor", [50.1205,-111.5332], [49.8379,-83.1445], [32.0267,-76.9921], [23.9661,-80.3320]]},
+  {icon: "_sleft|P|006300",                     episodes:[45,52], key:"King%27s_Landing"},
+  {line:         "#006300",                     episodes:45,      path:["Gulltown", "Runestone"]},
+  {icon:       "|P|006300",                     episodes:[53,53], key:"Runestone"},
+  {line:         "#006300",                     episodes:54,      path:["Runestone", [32.0267,-76.9921], [71.1877,-79.8925], [72.9969,-81.5625], [74.0678,-86.9238], "Eastwatch-by-the-Sea", "Mole%27s_Town"]},
+  {icon:       "|P|006300",                     episodes:[54,57], key:"Mole%27s_Town"},
+  {line:         "#006300",                     episodes:58,      path:[[71.1877,-79.8925], [57.1839,-84.8144], [51.9713,-100.8105], [51.0413,-111.0498], "White_Harbor", "Moat_Cailin"]},
+  {icon:       "|P|006300",                     episodes:[58,99], key:"Winterfell"},
 ];
