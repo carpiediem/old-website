@@ -906,7 +906,10 @@ nobility = [
   {wikiKey:"House_Stark",                         seatKey:"Winterfell",       imgRatio:(120/90),  img:"http://awoiaf.westeros.org/images/thumb/5/51/House_Stark.PNG/90px-House_Stark.PNG",                isGreat:true,  chapters:[0,118],   episodes:[0,14]},  //Winterfell falls to Theon Greyjoy
   {wikiKey:"House_Greyjoy",                       seatKey:"Winterfell",       imgRatio:1,         img:"http://awoiaf.westeros.org/images/thumb/f/f3/Greyjoy_coat_sigil.png/120px-Greyjoy_coat_sigil.png", isGreat:true,  chapters:[119,138], episodes:[15,18]}, //Theon's lordship until Winterfell burns
   {wikiKey:"House_Bolton",                        seatKey:"Dreadfort",        imgRatio:(120/102), img:"http://awoiaf.westeros.org/images/thumb/7/76/Bolton.png/50px-Bolton.png",                          isGreat:false, chapters:[0,195]},
-  {wikiKey:"House_Bolton",                        seatKey:"Dreadfort",        imgRatio:(120/102), img:"http://awoiaf.westeros.org/images/thumb/7/76/Bolton.png/50px-Bolton.png",                          isGreat:true,  chapters:[196,999], episodes:[99,99]},  //Named Warden of the North in ASOS-53: Tyrion VI
+  {wikiKey:"House_Bolton",                        seatKey:"Dreadfort",        imgRatio:(120/102), img:"http://awoiaf.westeros.org/images/thumb/7/76/Bolton.png/50px-Bolton.png",                          isGreat:true,  chapters:[196,307], episodes:[19,41]},  //Named Warden of the North in ASOS-53: Tyrion VI
+  {wikiKey:"House_Bolton",                        seatKey:"Winterfell",       imgRatio:(120/102), img:"http://awoiaf.westeros.org/images/thumb/7/76/Bolton.png/50px-Bolton.png",                          isGreat:true,  chapters:[308,999], episodes:[42,57]},  //Moves to Winterfell in S5E3 & ADWD-37
+  {wikiKey:"House_Bolton",                        seatKey:"Dreadfort",        imgRatio:(120/102), img:"http://awoiaf.westeros.org/images/thumb/7/76/Bolton.png/50px-Bolton.png",                          isGreat:false, chapters:[308,999], episodes:[42,99]},
+  {wikiKey:"House_Stark",                         seatKey:"Winterfell",       imgRatio:(120/90),  img:"http://awoiaf.westeros.org/images/thumb/5/51/House_Stark.PNG/90px-House_Stark.PNG",                isGreat:true,  chapters:[999,999], episodes:[58,99]},  //Battle of the Bastards
   {wikiKey:"House_Tully",                         seatKey:"Riverrun",         imgRatio:(120/112), img:"http://awoiaf.westeros.org/images/thumb/2/23/House_Tully.PNG/112px-House_Tully.PNG",               isGreat:true,  chapters:[0,137]},                      //Tullys have lost control of Riverlands, but continue to hold Riverrun until AFFC-44: Jaime VII
   {wikiKey:"House_Tully",                         seatKey:"Riverrun",         imgRatio:(120/112), img:"http://awoiaf.westeros.org/images/thumb/2/23/House_Tully.PNG/112px-House_Tully.PNG",               isGreat:false, chapters:[138,268], episodes:[99,99]},  //but continue to hold Riverrun until AFFC-44: Jaime VII
   {wikiKey:"House_Baelish_of_Harrenhal",          seatKey:"Harrenhal",        imgRatio:(120/90),  img:"http://awoiaf.westeros.org/images/thumb/1/13/House_Baelish.PNG/90px-House_Baelish.PNG",            isGreat:true,  chapters:[138,999], episodes:[99,99]},  //Named Lord Paramount of the Trident in ACOK-65: Sansa VIII
@@ -936,11 +939,12 @@ nobility = [
   {wikiKey:"House_Ryswell",  lat:59.6233, lng:-150.5712, imgRatio:(120/109), img:"http://awoiaf.westeros.org/images/thumb/7/7f/House_Ryswell.PNG/109px-House_Ryswell.PNG",clue:"the extensive area between the Barrowlands and the Stony Shore"},
   {wikiKey:"House_Umber",    seatKey:"Last_Hearth",      imgRatio:(119/102), img:"http://awoiaf.westeros.org/images/thumb/1/14/Umber.png/102px-Umber.png"},
   {wikiKey:"House_Glover",   seatKey:"Deepwood_Motte",   imgRatio:(120/90),  img:"http://awoiaf.westeros.org/images/thumb/3/3d/House_Glover.PNG/50px-House_Glover.PNG",              chapters:[0,109],   episodes:[0,13]},  //Captured by Asha Greyjoy in ACOK-37 Theon III
-  {wikiKey:"House_Greyjoy",  seatKey:"Deepwood_Motte",   imgRatio:1,         img:"http://awoiaf.westeros.org/images/thumb/f/f3/Greyjoy_coat_sigil.png/120px-Greyjoy_coat_sigil.png", chapters:[110,296], episodes:[14,99]},
-  {wikiKey:"House_Glover",   seatKey:"Deepwood_Motte",   imgRatio:(120/90),  img:"http://awoiaf.westeros.org/images/thumb/3/3d/House_Glover.PNG/50px-House_Glover.PNG",              chapters:[297,999], episodes:[99,99]},  //Captured by Stannis Baratheon in ADWD-26
+  {wikiKey:"House_Greyjoy",  seatKey:"Deepwood_Motte",   imgRatio:1,         img:"http://awoiaf.westeros.org/images/thumb/f/f3/Greyjoy_coat_sigil.png/120px-Greyjoy_coat_sigil.png", chapters:[110,296], episodes:[14,50]},
+  {wikiKey:"House_Glover",   seatKey:"Deepwood_Motte",   imgRatio:(120/90),  img:"http://awoiaf.westeros.org/images/thumb/3/3d/House_Glover.PNG/50px-House_Glover.PNG",              chapters:[297,999], episodes:[51,99]},  //Recaptured by Stannis Baratheon in ADWD-26 & Glovers/Boltons in S6E2
   {wikiKey:"House_Tallhart", seatKey:"Torrhen%27s_Square",imgRatio:(120/103),img:"http://awoiaf.westeros.org/images/thumb/f/fe/House_Tallhart.PNG/103px-House_Tallhart.PNG",         chapters:[0,118],   episodes:[0,13]},  //Captured by Dagmer Cleftjaw in ACOK-46 Bran VI
-  {wikiKey:"House_Greyjoy",  seatKey:"Torrhen%27s_Square",imgRatio:1,        img:"http://awoiaf.westeros.org/images/thumb/f/f3/Greyjoy_coat_sigil.png/120px-Greyjoy_coat_sigil.png", chapters:[119,124], episodes:[14,99]},
-  {wikiKey:"House_Tallhart", seatKey:"Torrhen%27s_Square",imgRatio:(120/103),img:"http://awoiaf.westeros.org/images/thumb/f/fe/House_Tallhart.PNG/103px-House_Tallhart.PNG",         chapters:[125,999],                 },  //Recaptured by Rodrick Cassel?
+  {wikiKey:"House_Greyjoy",  seatKey:"Torrhen%27s_Square",imgRatio:1,        img:"http://awoiaf.westeros.org/images/thumb/f/f3/Greyjoy_coat_sigil.png/120px-Greyjoy_coat_sigil.png", chapters:[119,124], episodes:[14,50]},
+  {wikiKey:"House_Tallhart", seatKey:"Torrhen%27s_Square",imgRatio:(120/103),img:"http://awoiaf.westeros.org/images/thumb/f/fe/House_Tallhart.PNG/103px-House_Tallhart.PNG",         chapters:[125,999], episodes:[51,99]},  //Recaptured by Rodrick Cassel?
+  {wikiKey:"House_Greyjoy",  seatKey:"Moat_Cailin",       imgRatio:1,        img:"http://awoiaf.westeros.org/images/thumb/f/f3/Greyjoy_coat_sigil.png/120px-Greyjoy_coat_sigil.png", chapters:[ 97,291], episodes:[14,37]},
                             {seatKey:"Flint%27s_Finger", imgRatio:(120/107), img:"http://awoiaf.westeros.org/images/thumb/5/5d/House_Flint_of_Flint%27s_Finger.PNG/250px-House_Flint_of_Flint%27s_Finger.PNG", wikiKey:"House_Flint_of_Flint%27s_Finger",},
   {wikiKey:"House_Crowl",    lat:76.3829, lng:-89.2675,  imgRatio:(120/90),  img:"http://awoiaf.westeros.org/images/thumb/f/f2/House_Crowl.PNG/90px-House_Crowl.PNG",     clue:"mountain clan"},
   {wikiKey:"House_Magnar",   lat:75.5301, lng:-83.0273,  imgRatio:(120/93),  img:"http://awoiaf.westeros.org/images/thumb/6/63/Magnar.png/93px-Magnar.png",               clue:"mountain clan"},
@@ -956,27 +960,27 @@ nobility = [
   {wikiKey:"House_Belmore",    seatKey:"Strongsong",      imgRatio:(120/101), img:"http://awoiaf.westeros.org/images/thumb/2/20/Belmore.PNG/50px-Belmore.PNG"},
   {wikiKey:"House_Coldwater",  seatKey:"Coldwater_Burn",  imgRatio:(120/90),  img:"http://awoiaf.westeros.org/images/thumb/5/57/House_Coldwater.PNG/90px-House_Coldwater.PNG"},
   {wikiKey:"House_Corbray",    seatKey:"Heart%27s_Home",  imgRatio:(120/93),  img:"http://awoiaf.westeros.org/images/thumb/e/e0/Corbray.png/93px-Corbray.png"},
-  {wikiKey:"House_Donniger",   lat:33.1007, lng:-98.5400, imgRatio:(120/98),  img:"http://awoiaf.westeros.org/images/thumb/1/16/Donniger.png/98px-Donniger.png",           clue:"the Vale"},
+  {wikiKey:"House_Donniger",   lat:33.1007, lng:-98.5400, imgRatio:(120/109), img:"http://awoiaf.westeros.org/images/thumb/1/16/Donniger.png/109px-Donniger.png",          clue:"the Vale"},
   {wikiKey:"House_Egen",       lat:34.1254, lng:-95.9033, imgRatio:(120/104), img:"http://awoiaf.westeros.org/images/thumb/8/8a/House_Egen.PNG/104px-House_Egen.PNG",      clue:"the Vale"},
-  {wikiKey:"House_Elesham",    lat:48.5457, lng:-84.6752, imgRatio:(120/93),  img:"http://awoiaf.westeros.org/images/thumb/5/51/Elesham.png/93px-Elesham.png",             clue:"the Vale"},
+  {wikiKey:"House_Elesham",    lat:48.5747, lng:-84.5507, imgRatio:(120/109), img:"http://awoiaf.westeros.org/images/thumb/5/51/Elesham.png/109px-Elesham.png",            clue:"The Paps"},
   {wikiKey:"House_Grafton",    seatKey:"Gulltown",        imgRatio:(120/93),  img:"http://awoiaf.westeros.org/images/thumb/9/91/Grafton.png/93px-Grafton.png"},
   {wikiKey:"House_Hardyng",    lat:35.3532, lng:-94.4091, imgRatio:(120/90),  img:"http://awoiaf.westeros.org/images/thumb/7/7e/House_Hardyng.PNG/90px-House_Hardyng.PNG", clue:"the Vale"},
   {wikiKey:"House_Hersy",      lat:43.1009, lng:-105.4174,imgRatio:(120/109), img:"http://awoiaf.westeros.org/images/thumb/f/f7/Hersy.png/109px-Hersy.png",                clue:"the Vale"},
-  {wikiKey:"House_Hunter",     seatKey:"Longbow_Hall",    imgRatio:(120/90),  img:"http://awoiaf.westeros.org/images/thumb/f/f0/House_Hunter.PNG/90px-House_Hunter.PNG"},
+  {wikiKey:"House_Hunter",     seatKey:"Longbow_Hall",    imgRatio:(120/109), img:"http://awoiaf.westeros.org/images/thumb/f/f0/House_Hunter.PNG/109px-House_Hunter.PNG"},
   {wikiKey:"House_Lynderly",   seatKey:"Snakewood",       imgRatio:1,         img:"http://awoiaf.westeros.org/images/thumb/6/66/Lynderly.png/50px-Lynderly.png"},
-  {wikiKey:"House_Melcolm",    seatKey:"Old_Anchor",      imgRatio:(120/90),  img:"http://awoiaf.westeros.org/images/thumb/e/e9/House_Melcolm.PNG/90px-House_Melcolm.PNG"},
+  {wikiKey:"House_Melcolm",    seatKey:"Old_Anchor",      imgRatio:(120/109), img:"http://awoiaf.westeros.org/images/thumb/e/e9/House_Melcolm.PNG/109px-House_Melcolm.PNG"},
   {wikiKey:"House_Moore",      lat:36.7036, lng:-92.0361, imgRatio:(120/109), img:"http://awoiaf.westeros.org/images/thumb/e/e9/House_Moore.PNG/109px-House_Moore.PNG",    clue:"the Vale"},
-  {wikiKey:"House_Pryor",      lat:48.0193, lng:-95.8813, imgRatio:(120/93),  img:"http://awoiaf.westeros.org/images/thumb/2/24/Pryor.PNG/93px-Pryor.PNG",                 clue:"the Pebble"},
-  {wikiKey:"House_Redfort",    seatKey:"Redfort",         imgRatio:(120/109), img:"http://awoiaf.westeros.org/images/thumb/e/e0/House_Redfort.png/109px-House_Redfort.png"},
+  {wikiKey:"House_Pryor",      lat:48.0193, lng:-95.8813, imgRatio:(120/109), img:"http://awoiaf.westeros.org/images/thumb/2/24/Pryor.PNG/109px-Pryor.PNG",                clue:"The Pebble"},
+  {wikiKey:"House_Redfort",    seatKey:"Redfort",         imgRatio:(120/108), img:"http://awoiaf.westeros.org/images/thumb/e/e0/House_Redfort.png/108px-House_Redfort.png"},
   {wikiKey:"House_Royce",      seatKey:"Runestone",       imgRatio:(55/50),   img:"http://awoiaf.westeros.org/images/thumb/e/ed/Royce.png/50px-Royce.png"},
   {wikiKey:"House_Royce_of_the_Gates_of_the_Moon", seatKey:"Eyrie", imgRatio:(120/109), img:"http://awoiaf.westeros.org/images/thumb/c/cf/House_Royce_of_the_Gates_of_the_Moon.png/109px-House_Royce_of_the_Gates_of_the_Moon.png"},
-  {wikiKey:"House_Ruthermont", lat:37.6838, lng:-89.1357, imgRatio:(120/93),  img:"http://awoiaf.westeros.org/images/thumb/0/01/Ruthermont.png/93px-Ruthermont.png",       clue:"the Vale"},
-  {wikiKey:"House_Upcliff",    lat:38.5137, lng:-83.6865, imgRatio:(120/90),  img:"http://awoiaf.westeros.org/images/thumb/8/8c/Upcliff.png/250px-Upcliff.png",             clue:"the Vale"},
-  {wikiKey:"House_Waynwood",   seatKey:"Ironoaks",        imgRatio:(120/103), img:"http://awoiaf.westeros.org/images/thumb/b/b6/House_Waynwood.PNG/103px-House_Waynwood.PNG"},
+  {wikiKey:"House_Ruthermont", lat:37.6838, lng:-89.1357, imgRatio:(120/109), img:"http://awoiaf.westeros.org/images/thumb/0/01/Ruthermont.png/109px-Ruthermont.png",      clue:"the Vale"},
+  {wikiKey:"House_Upcliff",    lat:38.5137, lng:-83.6865, imgRatio:(120/90),  img:"http://awoiaf.westeros.org/images/thumb/8/8c/Upcliff.png/250px-Upcliff.png",            clue:"the Vale"},
+  {wikiKey:"House_Waynwood",   seatKey:"Ironoaks",        imgRatio:(120/109), img:"http://awoiaf.westeros.org/images/thumb/b/b6/House_Waynwood.PNG/109px-House_Waynwood.PNG"},
   {wikiKey:"House_Wydman",     lat:38.5137, lng:-89.6630, imgRatio:(120/109), img:"http://awoiaf.westeros.org/images/thumb/b/bc/Wydman.png/109px-Wydman.png",              clue:"the Vale"},
   {wikiKey:"House_Borrell",    lat:48.8357, lng:-108.2958,imgRatio:(120/109), img:"http://awoiaf.westeros.org/images/thumb/3/39/Borell.png/109px-Borell.png",              clue:"the Vale"},
   {wikiKey:"House_Sunderland", seatKey:"Sisterton",       imgRatio:(120/109), img:"http://awoiaf.westeros.org/images/thumb/4/45/Sunderland.png/109px-Sunderland.png"},
-  {wikiKey:"House_Baelish",    seatKey:"House_Baelish",   imgRatio:(120/109), img:"http://awoiaf.westeros.org/images/thumb/b/b9/OldBaelish.png/109px-OldBaelish.png"},
+  {wikiKey:"House_Baelish",    seatKey:"House_Baelish",   imgRatio:(120/103), img:"http://awoiaf.westeros.org/images/thumb/b/b9/OldBaelish.png/103px-OldBaelish.png"},
   {wikiKey:"House_Waxley",     seatKey:"Wickenden",       imgRatio:(64/50),   img:"http://awoiaf.westeros.org/images/thumb/d/dc/Waxley_large.png/50px-Waxley_large.png"},
 
   //Landed Nobility - The Iron Islands
@@ -1003,23 +1007,23 @@ nobility = [
   {wikiKey:"House_Blackwood",   seatKey:"Raventree_Hall",   imgRatio:(120/90),  img:"http://awoiaf.westeros.org/images/thumb/3/36/House_Blackwood.png/50px-House_Blackwood.png"},
   {wikiKey:"House_Bracken",     seatKey:"Stone_Hedge",      imgRatio:(120/120), img:"http://awoiaf.westeros.org/images/thumb/5/53/Bracken_sigil_coat.png/50px-Bracken_sigil_coat.png"},
   {wikiKey:"House_Butterwell",  lat:16.7835, lng:-107.2851, imgRatio:(120/109), img:"http://awoiaf.westeros.org/images/thumb/a/a1/House_Butterwell.png/109px-House_Butterwell.png", clue:"the Riverlands"},
-  {wikiKey:"House_Charlton",    lat:35.7465, lng:-123.8525, imgRatio:(120/93),  img:"http://awoiaf.westeros.org/images/thumb/c/c1/Charlton.png/93px-Charlton.png", clue:"the Riverlands"},
+  {wikiKey:"House_Charlton",    lat:35.7465, lng:-123.8525, imgRatio:(120/109), img:"http://awoiaf.westeros.org/images/thumb/c/c1/Charlton.png/109px-Charlton.png",                 clue:"the Riverlands"},
   {wikiKey:"House_Frey",        seatKey:"Twins",            imgRatio:(120/109), img:"http://awoiaf.westeros.org/images/thumb/3/3b/House_Frey.png/109px-House_Frey.png"},
   {wikiKey:"House_Frey_of_Riverrun", seatKey:"Riverrun",    imgRatio:(120/100), img:"http://awoiaf.westeros.org/images/thumb/3/3b/House_Frey.png/109px-House_Frey.png",   chapters:[269,999]},
   {wikiKey:"House_Goodbrook",   seatKey:"Goodbrook_Village",imgRatio:(120/103), img:"http://awoiaf.westeros.org/images/thumb/9/95/House_Goodbrook.PNG/103px-House_Goodbrook.PNG"},
-  {wikiKey:"House_Grell",       lat:21.4121, lng:-133.7841, imgRatio:(54/50),   img:"http://awoiaf.westeros.org/images/thumb/b/b7/House_Grell.PNG/50px-House_Grell.PNG",          clue:"the Riverlands"},
+  {wikiKey:"House_Grell",       lat:21.4121, lng:-133.7841, imgRatio:(54/50),   img:"http://awoiaf.westeros.org/images/thumb/b/b7/House_Grell.PNG/50px-House_Grell.PNG",           clue:"the Riverlands"},
   {wikiKey:"House_Hawick",      seatKey:"Saltpans",         imgRatio:(120/93),  img:"http://awoiaf.westeros.org/images/thumb/0/09/Hawick.png/50px-Hawick.png"},
-  {wikiKey:"House_Keath",       lat:24.8465, lng:-120.2490, imgRatio:(120/93),  img:"http://awoiaf.westeros.org/images/thumb/c/c7/Keath.png/93px-Keath.png",                      clue:"the Riverlands"},
-  {wikiKey:"House_Lolliston",   lat:6.2279, lng:-116.7333,  imgRatio:(120/100), img:"http://awoiaf.westeros.org/images/thumb/e/e7/House_Lolliston.PNG/250px-House_Lolliston.PNG", clue:"the Riverlands"},
+  {wikiKey:"House_Keath",       lat:24.8465, lng:-120.2490, imgRatio:(120/93),  img:"http://awoiaf.westeros.org/images/thumb/c/c7/Keath.png/93px-Keath.png",                       clue:"the Riverlands"},
+  {wikiKey:"House_Lolliston",   lat:6.2279, lng:-116.7333,  imgRatio:(120/100), img:"http://awoiaf.westeros.org/images/thumb/e/e7/House_Lolliston.PNG/250px-House_Lolliston.PNG",  clue:"the Riverlands"},
   {wikiKey:"House_Lychester",   seatKey:"Lychester_Keep",   imgRatio:(120/90),  img:"http://awoiaf.westeros.org/images/thumb/c/ca/House_Lychester.PNG/90px-House_Lychester.PNG"},
   {wikiKey:"House_Mallister",   seatKey:"Seagard",          imgRatio:(120/90),  img:"http://awoiaf.westeros.org/images/thumb/e/e5/House_Mallister.png/90px-House_Mallister.png"},
   {wikiKey:"House_Mooton",      seatKey:"Maidenpool",       imgRatio:(120/100), img:"http://awoiaf.westeros.org/images/thumb/7/74/House_Mooton.PNG/50px-House_Mooton.PNG"},
   {wikiKey:"House_Piper",       seatKey:"Pinkmaiden_Castle",imgRatio:(120/103), img:"http://awoiaf.westeros.org/images/thumb/3/30/House_Piper.png/103px-House_Piper.png"},
   {wikiKey:"House_Roote", seatKey:"Lord_Harroway%27s_Town", imgRatio:(120/107), img:"http://awoiaf.westeros.org/images/thumb/d/d1/Roote.png/50px-Roote.png"},
-  {wikiKey:"House_Ryger",       lat:10.0986, lng:-116.6455, imgRatio:(120/90),  img:"http://awoiaf.westeros.org/images/thumb/7/71/House_Ryger.PNG/90px-House_Ryger.PNG",          clue:"the Riverlands"},
-  {wikiKey:"House_Shawney",     lat:25.0457, lng:-124.5556, imgRatio:(120/93),  img:"http://awoiaf.westeros.org/images/thumb/b/bf/Shawney.png/93px-Shawney.png",                  clue:"the Riverlands"},
+  {wikiKey:"House_Ryger",       lat:10.0986, lng:-116.6455, imgRatio:(120/90),  img:"http://awoiaf.westeros.org/images/thumb/7/71/House_Ryger.PNG/90px-House_Ryger.PNG",           clue:"the Riverlands"},
+  {wikiKey:"House_Shawney",     lat:25.0457, lng:-124.5556, imgRatio:(120/93),  img:"http://awoiaf.westeros.org/images/thumb/b/bf/Shawney.png/93px-Shawney.png",                   clue:"the Riverlands"},
   {wikiKey:"House_Smallwood",   seatKey:"Acorn_Hall",       imgRatio:(120/90),  img:"http://awoiaf.westeros.org/images/thumb/f/f2/Smallwood.png/50px-Smallwood.png"},
-  {wikiKey:"House_Terrick",     lat:25.5226, lng:-133.9599, imgRatio:(120/90),  img:"http://awoiaf.westeros.org/images/thumb/0/0b/House_Terrick.PNG/250px-House_Terrick.PNG",     clue:"the Riverlands"},
+  {wikiKey:"House_Terrick",     lat:25.5226, lng:-133.9599, imgRatio:(120/90),  img:"http://awoiaf.westeros.org/images/thumb/0/0b/House_Terrick.PNG/250px-House_Terrick.PNG",      clue:"the Riverlands"},
   {wikiKey:"House_Vance_of_Atranta", lat:28.2656, lng:-119.2822, imgRatio:(120/90),  img:"http://awoiaf.westeros.org/images/thumb/6/69/House_Vance_of_Artranta.PNG/50px-House_Vance_of_Artranta.PNG", clue:"the Riverlands"},
   {wikiKey:"House_Vance_of_Wayfarer%27s_Rest", seatKey:"Wayfarer%27s_Rest", imgRatio:(120/90),  img:"http://awoiaf.westeros.org/images/thumb/0/01/House_Vance_of_Wayfarer%27s_rest.PNG/50px-House_Vance_of_Wayfarer%27s_rest.PNG"},
   {wikiKey:"House_Vypren",      lat:13.0259, lng:-134.0478, imgRatio:(120/106), img:"http://awoiaf.westeros.org/images/thumb/b/b5/Vyprin.png/50px-Vyprin.png",                    clue:"the Riverlands"},
@@ -1047,7 +1051,7 @@ nobility = [
   {wikiKey:"House_Hamell",      lat:2.8113,  lng:-134.2675, imgRatio:(120/100), img:"http://awoiaf.westeros.org/images/thumb/6/6c/Hamell.PNG/250px-Hamell.PNG",                    clue:"the Westerlands"},
   {wikiKey:"House_Jast",        lat:9.6224,  lng:-154.7460, imgRatio:(120/90),  img:"http://awoiaf.westeros.org/images/thumb/4/4d/House_Jast.PNG/90px-House_Jast.PNG",             clue:"the Westerlands"},
   {wikiKey:"House_Kenning_of_Kayce", seatKey:"Kayce",       imgRatio:(120/90),  img:"http://awoiaf.westeros.org/images/thumb/4/4b/House_Kenning.PNG/50px-House_Kenning.PNG"},      //Timing?
-  {wikiKey:"House_Lefford",     seatKey:"Golden_Tooth",     imgRatio:(120/90),  img:"http://awoiaf.westeros.org/images/thumb/7/71/House_Lefford.PNG/90px-House_Lefford.PNG"},
+  {wikiKey:"House_Lefford",     seatKey:"Golden_Tooth",     imgRatio:(120/109), img:"http://awoiaf.westeros.org/images/thumb/7/71/House_Lefford.PNG/109px-House_Lefford.PNG"},
   {wikiKey:"House_Lydden",      seatKey:"Deep_Den",         imgRatio:(120/90),  img:"http://awoiaf.westeros.org/images/thumb/e/ec/House_Lydden.PNG/50px-House_Lydden.PNG"},
   {wikiKey:"House_Marbrand",    seatKey:"Ashemark",         imgRatio:(120/90),  img:"http://awoiaf.westeros.org/images/thumb/9/98/Marbrand.png/90px-Marbrand.png"},
   {wikiKey:"House_Moreland",    lat:2.3723,  lng:-139.5849, imgRatio:(120/90),  img:"http://awoiaf.westeros.org/images/thumb/9/94/House_Moreland.PNG/90px-House_Moreland.PNG",     clue:"the Westerlands"},
@@ -1092,11 +1096,11 @@ nobility = [
   {wikiKey:"House_Stokeworth",  seatKey:"Stokeworth",       imgRatio:(120/90),  img:"http://awoiaf.westeros.org/images/thumb/8/8f/Stokeworth.png/50px-Stokeworth.png"},
   {wikiKey:"House_Thorne",      lat:17.0567, lng:-98.1005,  imgRatio:1,         img:"http://awoiaf.westeros.org/images/thumb/2/24/Thorne.png/50px-Thorne.png",                   clue:"the Crownlands"},
   {wikiKey:"House_Wendwater",   lat:15.3689, lng:-96.8701,  imgRatio:(120/103), img:"http://awoiaf.westeros.org/images/thumb/2/22/House_Wendwater.PNG/250px-House_Wendwater.PNG",clue:"the Crownlands"},
-  {wikiKey:"House_Bar_Emmon",   seatKey:"Sharp_Point",      imgRatio:(120/89),  img:"http://awoiaf.westeros.org/images/thumb/e/e7/BarEmmon.png/89px-BarEmmon.png"},
+  {wikiKey:"House_Bar_Emmon",   seatKey:"Sharp_Point",      imgRatio:(120/109), img:"http://awoiaf.westeros.org/images/thumb/e/e7/BarEmmon.png/109px-BarEmmon.png"},
   {wikiKey:"House_Celtigar",    lat:19.7667, lng:-82.5439,  imgRatio:(120/90),  img:"http://awoiaf.westeros.org/images/thumb/6/60/Celtigar.png/50px-Celtigar.png"},
   {wikiKey:"House_Rambton",     lat:15.5383, lng:-89.0039,  imgRatio:(120/90),  img:"http://awoiaf.westeros.org/images/thumb/1/1c/House_Rambton.PNG/109px-House_Rambton.PNG",    clue:"Sweetport Sound"},
   {wikiKey:"House_Sunglass",    lat:16.1724, lng:-88.2128,  imgRatio:(120/90),  img:"http://awoiaf.westeros.org/images/thumb/a/a6/Sunglass.png/50px-Sunglass.png",               clue:"Sweetport Sound"},
-  {wikiKey:"House_Velaryon",    lat:11.5661, lng:-88.6962,  imgRatio:(120/90),  img:"http://awoiaf.westeros.org/images/thumb/f/f3/House_Velaryon.PNG/90px-House_Velaryon.PNG"},
+  {wikiKey:"House_Velaryon",    lat:11.6522, lng:-88.1103,  imgRatio:(120/103), img:"http://awoiaf.westeros.org/images/thumb/f/f3/House_Velaryon.PNG/103px-House_Velaryon.PNG",  clue: "Driftmark"},
   {wikiKey:"House_Brune_of_Brownhollow",  lat:21.7799, lng:-83.4667, imgRatio:(6/5),img:"http://awoiaf.westeros.org/images/thumb/1/1c/House_Brune.PNG/100px-House_Brune.PNG",    clue:"Crackclaw Point at Brownhollow"},
   {wikiKey:"House_Brune_of_the_Dyre_Den", seatKey:"Dyre_Den",        imgRatio:(6/5),img:"http://awoiaf.westeros.org/images/thumb/5/5c/Coats_of_arms_of_None.png/100px-Coats_of_arms_of_None.png"},
 
@@ -1111,7 +1115,7 @@ nobility = [
   {wikiKey:"House_Cockshaw",     lat:-0.7031, lng:-121.8164,  imgRatio:(120/90),  img:"http://awoiaf.westeros.org/images/thumb/f/f3/Cockshaw.png/50px-Cockshaw.png",              clue:"the Reach"},
   {wikiKey:"House_Cordwayner",   lat:-10.1419, lng:-152.7539, imgRatio:(120/89),  img:"http://awoiaf.westeros.org/images/thumb/b/b0/Cordwayner.png/250px-Cordwayner.png",         clue:"the Reach at Hammerhal"},
   {wikiKey:"House_Costayne",     seatKey:"Three_Towers",      imgRatio:(120/109), img:"http://awoiaf.westeros.org/images/thumb/5/57/House_Costayne.PNG/109px-House_Costayne.PNG"},
-  {wikiKey:"House_Crane",        seatKey:"Red_Lake",          imgRatio:(120/102), img:"http://awoiaf.westeros.org/images/thumb/1/14/House_Crane.PNG/102px-House_Crane.PNG"},
+  {wikiKey:"House_Crane",        seatKey:"Red_Lake",          imgRatio:(120/109), img:"http://awoiaf.westeros.org/images/thumb/1/14/House_Crane.PNG/109px-House_Crane.PNG"},
   {wikiKey:"House_Cuy",          seatKey:"Sunflower_Hall",    imgRatio:(120/90),  img:"http://awoiaf.westeros.org/images/thumb/5/57/House_Cuy.PNG/50px-House_Cuy.PNG"},
   {wikiKey:"House_Footly",       seatKey:"Tumbleton",         imgRatio:(120/93),  img:"http://awoiaf.westeros.org/images/thumb/a/a0/Footly.png/50px-Footly.png"},
   {wikiKey:"House_Hightower",    seatKey:"Oldtown",           imgRatio:(120/90),  img:"http://awoiaf.westeros.org/images/thumb/7/7c/House_Hightower.png/90px-House_Hightower.png"},
@@ -1157,7 +1161,7 @@ nobility = [
   {wikiKey:"House_Herston",      lat:-14.5197, lng:-107.2265, imgRatio:(120/90),  img:"http://awoiaf.westeros.org/images/thumb/6/65/Herston.png/90px-Herston.png",                   clue:"the Stormlands"},
   {wikiKey:"House_Horpe",        lat:-28.4590, lng:-99.6679,  imgRatio:(120/105), img:"http://awoiaf.westeros.org/images/thumb/1/14/Horpe.png/50px-Horpe.png",                      clue:"the Stormlands"},
   {wikiKey:"House_Kellington",   lat:-28.0719, lng:-93.9550,  imgRatio:(120/109), img:"http://awoiaf.westeros.org/images/thumb/c/c7/Kellington.png/109px-Kellington.png",            clue:"the Stormlands"},
-  {wikiKey:"House_Lonmouth",     lat:-27.6056, lng:-87.2753,  imgRatio:(120/103), img:"http://awoiaf.westeros.org/images/thumb/c/ce/House_Lonmouth.PNG/103px-House_Lonmouth.PNG",    clue:"the Stormlands"},
+  {wikiKey:"House_Lonmouth",     lat:-27.6056, lng:-87.2753,  imgRatio:(120/109), img:"http://awoiaf.westeros.org/images/thumb/c/ce/House_Lonmouth.PNG/109px-House_Lonmouth.PNG",    clue:"the Stormlands"},
   {wikiKey:"House_Mertyns",      seatKey:"Mistwood",          imgRatio:(120/90),  img:"http://awoiaf.westeros.org/images/thumb/0/01/House_Mertyns.PNG/90px-House_Mertyns.PNG"},
   {wikiKey:"House_Morrigen",     seatKey:"Crow%27s_Nest",     imgRatio:(120/109), img:"http://awoiaf.westeros.org/images/thumb/e/e5/House_Morrigen.PNG/109px-House_Morrigen.PNG"},
   {wikiKey:"House_Musgood",      lat:-22.1874, lng:-91.3183,  imgRatio:(120/109), img:"http://awoiaf.westeros.org/images/thumb/5/5e/Musgood.png/109px-Musgood.png",                  clue:"the Stormlands"},
@@ -1326,8 +1330,7 @@ paths["sansa"]= [
   {icon:"|S|808080",                     episodes:[53,53], key:"Castle_Black"},
   {line:  "#808080",                     episodes:54,      path:["Castle_Black", "Mole%27s_Town"]},
   {icon:"|S|808080",                     episodes:[54,55], key:"Mole%27s_Town"},
-  {line:  "#808080",                     episodes:56,      path:["Castle_Black", [74.8219,-107.0947], [76.0479,-112.0605], "Westwatch-by-the-Bridge", [73.4659,-138.7353]]}, // Wildling Camp & House Mormount
-  {line:  "#808080",                     episodes:56,      path:[[74.8219,-107.0947], [72.9454,-108.4570], "Last_Hearth", [74.8219,-107.0947]]}, // House Glover
+  {line:  "#808080",                     episodes:56,      path:["Castle_Black", [74.8219,-107.0947], [76.0479,-112.0605], "Westwatch-by-the-Bridge", [75.6504,-121.0253], [73.0610,-135.5712], [72.6595,-138.5156], [73.1758,-139.2626], [73.4659,-138.7353], [72.1144,-140.2734], "Deepwood_Motte", [72.1144,-140.2734], [75.6504,-121.0253]]}, // Wildling Camp, then Houses Mormount & Glover
   {icon: "_sleft|S|808080",              episodes:[56,56], coord:[74.8219,-107.0947]},
   {line:  "#808080",                     episodes:57,      path:[[74.8219,-107.0947], [72.6988,-108.8964], [68.5121,-120.8496], "Winterfell"]},
   {icon: "_sleft|S|808080",              episodes:[57,99], key:"Winterfell"},
@@ -1498,8 +1501,7 @@ paths["jon"]= [
   {icon:"_sleft|J|808080",                     episodes:[48,48], key:"Castle_Black"},
   {icon:"skull",           chapters:[340,999], episodes:[49,50], key:"Castle_Black"},
   {icon:      "|J|808080",                     episodes:[51,55], key:"Castle_Black"},
-  {line:        "#808080",                     episodes:56,      path:["Castle_Black", [74.8219,-107.0947], [76.0479,-112.0605], "Westwatch-by-the-Bridge", [73.4659,-138.7353]]}, // Wildling Camp & House Mormount
-  {line:        "#808080",                     episodes:56,      path:[[72.9454,-108.4570], "Last_Hearth", [74.8219,-107.0947]]}, // House Glover
+  {line:        "#808080",                     episodes:56,      path:["Castle_Black", [74.8219,-107.0947], [76.0479,-112.0605], "Westwatch-by-the-Bridge", [75.6504,-121.0253], [73.0610,-135.5712], [72.6595,-138.5156], [73.1758,-139.2626], [73.4659,-138.7353], [72.1144,-140.2734], "Deepwood_Motte", [72.1144,-140.2734], [75.6504,-121.0253]]}, // Wildling Camp, then Houses Mormount & Glover
   {icon:      "|J|808080",                     episodes:[56,56], coord:[74.8219,-107.0947]},
   {icon:      "|J|808080",                     episodes:[57,99], key:"Winterfell"},
 ];
@@ -1930,8 +1932,8 @@ paths["davos"]= [
   {line:         "#AAAAAA",                     episodes:47,      path:["Mole%27s_Town", [72.8679,-108.8964], [70.6126,-115.7519]]},
   {icon:       "|D|AAAAAA",                     episodes:[47,47], coord:[70.6126,-115.7519]}, //Stopped by the snow
   {icon:       "|D|AAAAAA",                     episodes:[48,49], key:"Mole%27s_Town"},
-  {icon:       "|D|AAAAAA",                     episodes:[50,99], key:"Castle_Black"},
-  {line:         "#AAAAAA",                     episodes: 56,     path:["Castle_Black", [74.8219,-107.0947]]},
+  {icon:       "|D|AAAAAA",                     episodes:[50,55], key:"Castle_Black"},
+  {line:        "#AAAAAA",                     episodes:56,      path:["Castle_Black", [74.8219,-107.0947], [76.0479,-112.0605], "Westwatch-by-the-Bridge", [75.6504,-121.0253], [73.0610,-135.5712], [72.6595,-138.5156], [73.1758,-139.2626], [73.4659,-138.7353], [72.1144,-140.2734], "Deepwood_Motte", [72.1144,-140.2734], [75.6504,-121.0253]]}, // Wildling Camp, then Houses Mormount & Glover
   {icon:"_sright|D|AAAAAA",                     episodes:[56,56], coord:[74.8219,-107.0947]},
   {line:         "#AAAAAA",                     episodes:57,      path:[[74.8219,-107.0947], [72.6988,-108.8964], [68.5121,-120.8496], "Winterfell"]},
   {icon:"_sright|D|AAAAAA",                     episodes:[57,99], key:"Winterfell"},
