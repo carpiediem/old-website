@@ -1,5 +1,5 @@
 wikiKey,seatKey,lat,lng,img,clue,isGreat,firstChapter,lastChapter,firstEpisode,lastEpisode
-Night%27s_Watch,Castle_Black,,,black_flag.png,,TRUE,0,999,,
+Night%27s_Watch,Castle_Black,,,http://awoiaf.westeros.org/images/thumb/4/47/Minigdn.png/109px-Minigdn.png,,TRUE,,,,
 House_Stark,Winterfell,,,http://awoiaf.westeros.org/images/thumb/5/51/House_Stark.PNG/90px-House_Stark.PNG,,TRUE,0,118,0,14
 House_Greyjoy,Winterfell,,,http://awoiaf.westeros.org/images/thumb/f/f3/Greyjoy_coat_sigil.png/120px-Greyjoy_coat_sigil.png,,TRUE,119,138,15,18
 House_Bolton,Dreadfort,,,http://awoiaf.westeros.org/images/thumb/7/76/Bolton.png/50px-Bolton.png,,FALSE,0,195,,
@@ -132,7 +132,7 @@ House_Estren,,25.6415,-142.837,http://awoiaf.westeros.org/images/thumb/2/27/Hous
 House_Falwell,,12.5545,-141.958,http://awoiaf.westeros.org/images/thumb/f/fe/Falwell.png/109px-Falwell.png,the Westerlands,,,,,
 House_Farman,Faircastle,,,http://awoiaf.westeros.org/images/thumb/8/83/Farman.png/50px-Farman.png,,,,,,
 House_Ferren,,-1.4939,-140.024,http://awoiaf.westeros.org/images/thumb/5/52/Ferren.png/250px-Ferren.png,the Westerlands,,,,,
-House_Foote,,-0.9667,-133.433,http://awoiaf.westeros.org/images/thumb/0/0c/House_Foote.PNG/50px-House_Foote.PNG,the Westerlands,,,,,
+House_Foote,,-0.9667,-133.433,http://awoiaf.westeros.org/images/thumb/0/0c/House_Foote.PNG/109px-House_Foote.PNG,the Westerlands,,,,,
 House_Garner,,-0.8788,-150.703,http://awoiaf.westeros.org/images/thumb/b/b7/House_Garner.PNG/101px-House_Garner.PNG,the Westerlands,,,,,
 House_Hamell,,2.8113,-134.268,http://awoiaf.westeros.org/images/thumb/6/6c/Hamell.PNG/250px-Hamell.PNG,the Westerlands,,,,,
 House_Jast,,9.6224,-154.746,http://awoiaf.westeros.org/images/thumb/4/4d/House_Jast.PNG/90px-House_Jast.PNG,the Westerlands,,,,,
@@ -261,7 +261,7 @@ House_Seaworth,,-23.8054,-83.3203,http://awoiaf.westeros.org/images/thumb/9/99/S
 House_Allyrion,Godsgrace,,,http://awoiaf.westeros.org/images/thumb/2/25/House_Allyrion.PNG/120px-House_Allyrion.PNG,,,,,,
 House_Blackmont,Blackmont,,,http://awoiaf.westeros.org/images/thumb/f/f9/Blackmont.png/120px-Blackmont.png,,,,,,
 House_Dalt,Lemonwood,,,http://awoiaf.westeros.org/images/thumb/f/fb/DaltCoA.png/50px-DaltCoA.png,,,,,,
-House_Dayne,Starfall,,,http://awoiaf.westeros.gr/images/b/b7/Dayne_coat_sigil.png,,,,,,
+House_Dayne,Starfall,,,http://awoiaf.westeros.org/images/thumb/1/15/DayneCoA.png/120px-DayneCoA.png,,,,,,
 House_Dayne_of_High_Hermitage,High_Hermitage,,,http://awoiaf.westeros.org/images/thumb/5/5c/Coats_of_arms_of_None.png/100px-Coats_of_arms_of_None.png,,,,,,
 House_Fowler,Skyreach,,,http://awoiaf.westeros.org/images/thumb/0/06/House_Fowler.png/90px-House_Fowler.png,,,,,,
 House_Gargalen,Salt_Shore,,,http://awoiaf.westeros.org/images/thumb/7/75/House_Gargalen.png/120px-House_Gargalen.png,,,,,,
