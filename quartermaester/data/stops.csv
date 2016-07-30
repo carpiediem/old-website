@@ -1,4 +1,4 @@
-character,town,clue,latitutde,longitude,firstChapter,firstEpisode,isLost,isDead,isUnmentioned
+character,town,clue,latitude,longitude,firstChapter,firstEpisode,isLost,isDead,isUnmentioned
 Eddard_Stark,Winterfell,,,,AGOT-0,,,,
 Eddard_Stark,Execution_Holdfast,,,,AGOT-1,,,,
 Eddard_Stark,Winterfell,,,,AGOT-2,S1E01,,,
