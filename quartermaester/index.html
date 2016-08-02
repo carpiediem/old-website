@@ -1,260 +1,282 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" >
+<html lang="en">
 <head>
-  <title>Interactive Game of Thrones Map with Spoiler Control | Quartermaester.info</title>
-  <link rel="shortcut icon" href="favicon.ico">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="css/openlayers.css">
-  
-  <!-- Bootstrap core CSS -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.13.1/lodash.min.js'></script>
+  <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/angularjs-slider/5.4.0/rzslider.min.js'></script>
+  <script src='js/angular-simple-logger.min.js'></script>
+  <script src='js/angular-google-maps.min.js'></script>
+  <script src="js/angular-csv-service.min.js"></script>
+  <script src="js/angular-toggle-switch.min.js"></script>
+  <script src="js/q-spread.min.js"></script>
+  <script src='js/ui-bootstrap-2.0.0.min.js'></script>
+  <script src='js/app.js'></script>
+  <script src='js/services.js'></script>
+  <script src='js/controller.js'></script>
 
-  <!-- Custom styles for this template -->
-  <link href="css/navbar-fixed-top.css" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/angularjs-slider/5.4.0/rzslider.min.css" rel="stylesheet">
+  <link href="css/angular-toggle-switch.css" rel="stylesheet">
+  <link href="css/quartermaester.css" rel="stylesheet">
 
-  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-  <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
-
-  <!-- <link href="http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.3/css/base/jquery.ui.all.css" rel="stylesheet"> -->
-  <link href="css/jquery-ui-1.10.2.custom.min.css" rel="stylesheet">
-  
-  <style type="text/css">
-    html, body, #map {
-        margin: 0;
-        width: 100%;
-        height: 100%;
-        min-height:0px;
-        overflow:hidden;
-    }
-    body {padding-top: 0px !important; overflow-x:hidden; background:#fff; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
-    .olControlAttribution {bottom:0px !important;}
-    .olControlMousePosition {color:white !important;}
-    .container, .navbar {color:grey !important; background-color:#eee !important; }
-    #header .container {padding-left:0px;}
-    #slider {margin-top:18px;}
-    .ui-slider-handle {height:2em; width:2em;}
-    label[for="slider"] p {margin:0px; font-style:italic; font-size:0.9em;}
-    #map {padding-top: 50px !important;}
-    
-    #characterList {overflow-y:auto; width:300px; position:fixed; top:116px; bottom:0px;}
-    #characterList::-webkit-scrollbar {
-      width: 10px;
-    }
-    #characterList::-webkit-scrollbar-button:vertical {
-        display:none;
-    }
-    ::-webkit-scrollbar-thumb:vertical {
-        background-color: #444;
-    }
-    
-  </style>
-  <script src="js/OpenLayers2.12.js"></script>
-  <script>
-    var map;
-    var mapBounds = new OpenLayers.Bounds( 0.0, -4642.0, 4642.0, 0.0);
-    var mapMinZoom = 0;
-    var mapMaxZoom = 5;
-    var emptyTileURL = "http://www.maptiler.org/img/none.png";
-    OpenLayers.IMAGE_RELOAD_ATTEMPTS = 3;
-
-    function init(){
-        var options = {
-            div: "map",
-            controls: [],
-            maxExtent: new OpenLayers.Bounds(0.0, -4642.0, 4642.0, 0.0),
-            maxResolution: 32.000000,
-            numZoomLevels: 6,
-            center: [953.5, -2302],
-            zoom: 4
-        };
-        map = new OpenLayers.Map(options);
-
-        var layer = new OpenLayers.Layer.TMS("TMS Layer", "",
-        {
-            serviceVersion: '.',
-            layername: '.',
-            alpha: true,
-            type: 'png',
-            getURL: getURL
-        });
-
-        map.addLayer(layer);
-        
-        map.addControls([new OpenLayers.Control.PanZoomBar(),
-                         new OpenLayers.Control.Navigation(),
-                         new OpenLayers.Control.MousePosition({numDigits:0}),
-                         new OpenLayers.Control.ArgParser(),
-                         new OpenLayers.Control.Attribution()]);
-    }
-
-    function getURL(bounds) {
-        bounds = this.adjustBounds(bounds);
-        var res = this.getServerResolution();
-        var x = Math.round((bounds.left - this.tileOrigin.lon) / (res * this.tileSize.w));
-        var y = Math.round((bounds.bottom - this.tileOrigin.lat) / (res * this.tileSize.h));
-        var z = this.getServerZoom();
-        var path = this.serviceVersion + "/" + this.layername + "/" + z + "/" + x + "/" + y + "." + this.type; 
-        var url = this.url;
-        if (OpenLayers.Util.isArray(url)) {
-            url = this.selectUrl(path, url);
-        }
-        if (mapBounds.intersectsBounds(bounds) && (z >= mapMinZoom) && (z <= mapMaxZoom)) {
-            return url + path;
-        } else {
-            return emptyTileURL;
-        }
-    }
-
-  </script>
-  
-  <!-- <link rel="stylesheet" type="text/css" href="http://tympanus.net/Development/MultiLevelPushMenu/css/normalize.css" /> -->
-  <link rel="stylesheet" type="text/css" href="css/mlpm-demo.css" />
-  <link rel="stylesheet" type="text/css" href="css/mlpm-icons.css" />
-  <link rel="stylesheet" type="text/css" href="css/mlpm-component.css" />
-  <script src="js/modernizr.custom.js"></script>
-  <script src="js/angular.min.js"></script>
-  <script src="js/app.js"></script>
-  <script src="js/CharacterCtrl.js"></script>
-  
+  <title>Interactive Game of Thrones Map</title>
 </head>
-<body ng-app="quartermaester">
+<body ng-app="quartermaester" ng-controller="mapCtrl">
 
-  <!-- Push Wrapper -->
-  <div class="mp-pusher" id="mp-pusher">
+  <ui-gmap-google-map center='map.center' zoom='map.zoom' options='map.options' events='map.events' control='map.control'>
 
-    <!-- mp-menu -->
-    <nav id="mp-menu" class="mp-menu">
-      <div class="mp-level">
-        <h2 class="icon icon-settings">Map Options</h2>
-        <ul>
-          <li class="icon icon-arrow-left">
-					  <a class="icon icon-search" href="#">Find a Town</a>
-          </li>
-          <li class="icon icon-arrow-left">
-            <a class="icon icon-params" href="#">Slider Units</a>
-            <div class="mp-level">
-              <h2 class="icon icon-params">Adjust the Spoiler Control Using These Units</h2>
-              <ul>
-                <li>
-                  <a class="icon icon-tv" href="#">TV Episodes</a>
-                </li>
-                <li>
-                  <a class="icon icon-wallet" href="#">Book Chapters</a>
-                </li>
-                <li>
-                  <a class="icon icon-wallet" href="#">Novella Chapters</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li class="icon icon-arrow-left">
-            <a class="icon icon-user" href="#">Characters</a>
-            <div class="mp-level">
-              <h2 class="icon icon-user">Show These Characters</h2>
-              <ul id="characterList" ng-controller="character" >
-                <li>{{ foo }}</li>
-                <!--
-                <li ng-repeat="x in characters">
-                  <a>
-                    <input type="checkbox">
-                    {{ x.name }}
-                  </a>
-                </li>
-                -->
-              </ul>
-            </div>
-          </li>
-          <li class="icon icon-arrow-left">
-            <a class="icon icon-location" href="#">Noble Houses</a>
-            <div class="mp-level">
-              <h2 class="icon icon-location">Show the Locations of These Noble Houses</h2>
-              <ul>
-                <li>
-                  <a class="icon icon-location" href="#">None</a>
-                </li>
-                <li>
-                  <a class="icon icon-location" href="#">Great Houses</a>
-                </li>
-                <li>
-                  <a class="icon icon-location" href="#">All Known Houses</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li class="icon icon-arrow-left">
-            <a class="icon icon-settings" href="#">Other Options</a>
-            <div class="mp-level">
-              <h2 class="icon icon-settings">Show the These on the Map</h2>
-              <ul>
-                <li>
-                  <a class="icon icon-world" href="#">Shaded Regions</a>
-                </li>
-                <li>
-                  <a class="icon icon-pen" href="#">Character Paths</a>
-                </li>
-                <li>
-                  <a class="icon icon-user" href="#">Character Names</a>
-                </li>
-                <li>
-                  <a class="icon icon-fire" href="#">Major Events</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li><a class="icon icon-clip" href="#">About this Site</a></li>
-        </ul>
+    <!-- Base map tiles from Ser Mountain Goat -->
+    <ui-gmap-map-type options='map.smgMapType'></ui-gmap-map-type>
+
+    <!-- Location Markers -->
+    <ui-gmap-markers
+      models='mapModels.towns'
+      coords="'coords'"
+      click='map.locationClick'
+      options="'options'"
+      idkey="'key'">
+    </ui-gmap-markers>
+
+    <!-- Heraldry Markers -->
+    <ui-gmap-markers
+      models='mapModels.heraldry'
+      coords="'coords'"
+      options="'options'"
+      click="map.heraldryClick"
+      idkey="'key'">
+    </ui-gmap-markers>
+
+    <!-- Region Polygons -->
+    <ui-gmap-polygons
+      models="mapModels.regions"
+      path="'path'"
+      fill="'fill'"
+      stroke="'stroke'"
+      visible="options.geographicRegions"
+      idKey="'key'">
+    </ui-gmap-polygons>
+
+    <!-- Character Markers -->
+    <ui-gmap-markers
+      models='mapModels.characters'
+      coords="'coords'"
+      options="'options'"
+      click="map.characterClick"
+      type="'spider'"
+      idkey="'key'">
+    </ui-gmap-markers>
+
+    <!-- Character Paths -->
+    <ui-gmap-polylines
+      models='mapModels.paths'
+      path="'path'"
+      stroke="'stroke'"
+      static="'static'"
+      icons="'icons'"
+      idkey="'key'">
+    </ui-gmap-polylines>
+
+  </ui-gmap-google-map>
+
+  <div id="side" class=".col-xs-12 .col-md-3">
+    <!-- <p>{{state}}</p> -->
+    <div id="slider" ng-show="state.substring(0,6)=='slider'">
+      <h1>
+        <span class="glyphicon glyphicon-menu-hamburger" ng-click="toState('menu')"></span>
+        <span ng-show="slider.show=='episodes'" ng-bind="episodes[slider.currentEpisode].name" title="{{episodes[slider.currentEpisode].name}}" ng-click="toState('slider-full')"></span>
+        <span ng-show="slider.show=='chapters'" ng-bind="chapters[slider.currentChapter].name" title="{{chapters[slider.currentChapter].name}}" ng-click="toState('slider-full')"></span>
+      </h1>
+      <div id="slider-control" ng-show="state=='slider-full'">
+        <div class="btn-group btn-group-2" role="group">
+          <button type="button" class="btn" ng-click="slider.show='episodes';" ng-class="{'btn-primary':(slider.show=='episodes'), 'btn-default':(slider.show!='episodes')}">
+            <i class="glyphicon glyphicon-facetime-video"></i>
+            HBO Show
+          </button>
+          <button type="button" class="btn" ng-click="slider.show='chapters';" ng-class="{'btn-primary':(slider.show=='chapters'), 'btn-default':(slider.show!='chapters')}">
+            <i class="glyphicon glyphicon-book"></i>
+            Books
+          </button>
+        </div>
+        <rzslider
+          ng-show="slider.show=='episodes'"
+          rz-slider-model="slider.currentEpisode"
+          rz-slider-options="{floor:0, ceil:episodes.length-1}">
+        </rzslider>
+        <rzslider
+          ng-show="slider.show=='chapters'"
+          rz-slider-model="slider.currentChapter"
+          rz-slider-options="{floor:0, ceil:chapters.length-1}">
+        </rzslider>
+        <div class="btn-group btn-group-5" role="group">
+          <button type="button" class="btn btn-default" ng-click="slideTo(-10)">
+            <i class="glyphicon glyphicon-step-backward"></i>
+          </button>
+          <button type="button" class="btn btn-default" ng-click="slideTo(-1)">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+          </button>
+          <a role="button" class="btn btn-default" ng-show="slider.show=='episodes'" ng-href="{{episodes[slider.currentEpisode].url}}">
+            <i class="glyphicon glyphicon-link"></i>
+          </a>
+          <a role="button" class="btn btn-default" ng-show="slider.show=='chapters'" ng-href="{{chapters[slider.currentChapter].url}}">
+            <i class="glyphicon glyphicon-link"></i>
+          </a>
+          <button type="button" class="btn btn-default" ng-click="slideTo(1)">
+            <i class="glyphicon glyphicon-chevron-right"></i>
+          </button>
+          <button type="button" class="btn btn-default" ng-click="slideTo(10)">
+            <i class="glyphicon glyphicon-step-forward"></i>
+          </button>
+        </div>
       </div>
-    </nav>
-    <!-- /mp-menu -->
+    </div>
 
-    <!-- Fixed navbar -->
-    <nav id="header" class="navbar navbar-default navbar-fixed-top" role="navigation">
-      <div class="container navbar-left">
-        <span class="navbar-brand" id="trigger">
-          <span class="glyphicon glyphicon-menu-hamburger"></span>
-          Quartermaester.info
-        </span>
-        <form class="navbar-form-alt">
-          <div class="input-group">
-            <span class="form-control" id="slider"></span>
-            <span class="input-group-btn">
-              <label class="btn" for="slider">
-                <p id="bookName">A Game of Thrones</p>
-                <p id="chapterName">0: Prologue</p>
-              </label>
-            </span>
-          </div>
-        </form>
+    <div id="menu" ng-show="state=='menu'" class="list-group">
+      <h1>
+        <span class="glyphicon glyphicon-menu-left"  ng-click="toState('slider')"></span>
+        Quartermaester.info
+      </h1>
+      <div class="list-group">
+        <button class="list-group-item btn-clear" ng-click="toState('slider-full')">
+          <i class="glyphicon glyphicon-eye-close"></i>
+          Spoiler Control
+        </button>
+        <button class="list-group-item btn-clear" ng-click="toState('characters')">
+          <i class="glyphicon glyphicon-user"></i>
+          Characters
+        </button>
+        <button class="list-group-item btn-clear" ng-click="toState('search')">
+          <i class="glyphicon glyphicon-search"></i>
+          Search
+        </button>
+        <button class="list-group-item btn-clear" ng-click="toState('options')">
+          <i class="glyphicon glyphicon-cog"></i>
+          Options
+        </button>
+        <a href="about.html" role="button" class="list-group-item btn-clear">
+          <i class="glyphicon glyphicon-question-sign"></i>
+          About
+        </a>
+        <a href="resources.html" role="button" class="list-group-item btn-clear">
+          <i class="glyphicon glyphicon-thumbs-up"></i>
+          Other Resources
+        </a>
       </div>
-    </nav>
-    
-    <div id="map"></div>
+    </div>
 
-  </div><!-- /pusher -->
-  <script src="js/classie.js"></script>
-  <script src="js/mlpushmenu.js"></script>
-  <script>
-    new mlPushMenu( document.getElementById( 'mp-menu' ), document.getElementById( 'trigger' ) );
-  </script>
-  
-  
-                
-  <script src="js/jquery.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/jquery-ui.min.js"></script>
-  <script src="js/jquery.ui.touch-punch.min.js"></script>
-    
-  <script>
-    init();
-    $(function() {
-      //alert( $( "#slider" ).slider);
-      $( "#slider" ).slider();
-    });
-  </script>
-  
-  <script src="js/app.js"></script>
+    <div id="location" ng-show="state=='location'">
+      <h1>
+        <span class="glyphicon glyphicon-menu-left"  ng-click="toState('slider')"></span>
+        Location Details
+      </h1>
+      <div class="list-group">
+        <a ng-href="{{locationDetail.url}}" role="button" class="list-group-item btn-clear">
+          <i class="glyphicon glyphicon glyphicon-map-marker"></i>
+          {{locationDetail.name}}
+          <i class="glyphicon glyphicon-menu-right pull-right"></i>
+        </a>
+        <a ng-href="{{locationDetail.houseUrl}}" role="button" class="list-group-item btn-clear" ng-if="locationDetail.houseUrl">
+          <img ng-src="{{locationDetail.houseImg}}">
+          {{locationDetail.house}}
+          <i class="glyphicon glyphicon-menu-right pull-right"></i>
+        </a>
+        <a ng-href="{{locationDetail.direct}}" role="button" class="list-group-item btn-clear">
+          <i class="glyphicon glyphicon-pushpin"></i>
+          Direct Link
+          <i class="glyphicon glyphicon-menu-right pull-right"></i>
+        </a>
+      </div>
+    </div>
+
+    <div id="characters" ng-show="state=='characters'">
+      <h1>
+        <span class="glyphicon glyphicon-menu-left" ng-click="toState('slider')"></span>
+        Characters
+      </h1>
+      <ul class="list-group">
+        <li ng-repeat="character in characters" class="list-group-item">
+          <a ng-href="{{character.house.url}}" ng-if="character.house!=''" class="hasimg">
+            <img ng-src="{{character.house.img}}">
+          </a>
+          <a ng-href="{{character.url}}" ng-class="{noimg:(character.house=='')}">{{character.name}}</a>
+          <toggle-switch
+            ng-model="options.characters[character.key]"
+            on-label="Show"
+            off-label="Hide"
+            class="pull-right">
+          </toggle-switch>
+        </li>
+      </ul>
+    </div>
+
+    <div id="search" ng-show="state=='search'">
+      <h1>
+        <span class="glyphicon glyphicon-menu-left" ng-click="toState('slider')"></span>
+        <div class="input-group pull-right" style="width:250px;">
+          <input id="searchInput" ng-model="search" type="text" class="form-control" placeholder="Search towns, houses, characters, titles">
+          <span class="input-group-addon">
+            <i class="glyphicon glyphicon-search"></i>
+          </span>
+        </div>
+      </h1>
+      <div class="list-group" ng-show="search!==''">
+        <button
+          ng-repeat="result in searchResults | filter:{ title: search }"
+          class="list-group-item"
+          ng-click="result.click()">
+          <i class="glyphicon {{result.icon}}"></i>
+          {{result.title}}
+          <small>{{result.subtitle}}</small>
+          <i class="glyphicon glyphicon-menu-right pull-right"></i>
+        </button>
+      </div>
+    </div>
+
+    <div id="options" ng-show="state=='options'">
+      <h1>
+        <span class="glyphicon glyphicon-menu-left" ng-click="toState('slider')"></span>
+        Options
+      </h1>
+      <ul class="list-group">
+        <li class="list-group-item">
+          Character Paths
+          <toggle-switch
+            ng-model="options.characterPaths"
+            on-label="Show"
+            off-label="Hide"
+            class="pull-right">
+          </toggle-switch>
+        </li>
+        <li class="list-group-item">
+          House Heraldry
+          <toggle-switch
+            ng-model="options.houseHeraldry"
+            on-label="Show"
+            off-label="Hide"
+            class="pull-right">
+          </toggle-switch>
+        </li><li class="list-group-item">
+          Geographic Regions
+          <toggle-switch
+            ng-model="options.geographicRegions"
+            on-label="Show"
+            off-label="Hide"
+            class="pull-right">
+          </toggle-switch>
+        </li><li class="list-group-item">
+          Political Allegiances
+          <toggle-switch
+            ng-model="options.politicalAllegiances"
+            on-label="Show"
+            off-label="Hide"
+            class="pull-right">
+          </toggle-switch>
+        </li>
+      </ul>
+
+
+    </div>
+
+  </div>
+
 </body>
 </html>
