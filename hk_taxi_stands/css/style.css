@@ -1,0 +1,164 @@
+ion-content .scroll, ui-gmap-google-map, .angular-google-map, .angular-google-map-container {
+  height: 100%
+}
+
+button#language_toggle {
+  width: 60px;
+  text-align: center;
+}
+
+button#type_toggle,
+#type_selector .item i.hts-type,
+#aboutcolors .item-icon-left i.taxi-icon {
+  background-image: url("../img/icons.png");
+  background-repeat: no-repeat;
+  width: 28px;
+}
+
+button#type_toggle.urban,  #type_selector .item i.hts-type.urban,   #aboutcolors .item-icon-left i.taxi-icon.U {background-position:    0px 1px;}
+button#type_toggle.newterr,#type_selector .item i.hts-type.newterr, #aboutcolors .item-icon-left i.taxi-icon.N {background-position:  -28px 1px;}
+button#type_toggle.lantau, #type_selector .item i.hts-type.lantau,  #aboutcolors .item-icon-left i.taxi-icon.L {background-position:  -56px 1px;}
+button#type_toggle.cross,  #type_selector .item i.hts-type.cross,   #aboutcolors .item-icon-left i.taxi-icon.C {background-position:  -84px 1px;}
+button#type_toggle.all,    #type_selector .item i.hts-type.all     {background-position: -112px 1px;}
+
+#type_selector .item i.hts-type {
+  margin-top: 10px;
+}
+
+#detail {
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  height: auto;
+  background-color: white;
+  -webkit-transition: 1s ease-in-out;
+  -moz-transition: 1s ease-in-out;
+  -o-transition: 1s ease-in-out;
+  transition: 1s ease-in-out;
+}
+
+#detail.none { transform: translateY(  30px); }
+#detail.name { transform: translateY( -70px); }
+#detail.peek { transform: translateY(-250px); }
+#detail.all  { transform: translateY(-400px); }
+
+#detail .title {
+  background-color: #333;
+  padding: 5px;
+}
+
+#detail .title.L {background-color: #1ab6d2;}
+#detail .title.N {background-color: #1ad230;}
+#detail .title.U,
+#detail .title.NU,
+#detail .title.LNU,
+#detail .title.LU {background-color: #e60010;}
+
+#detail .title h1 {
+  color: white;
+  margin: 0;
+}
+
+#detail .title p {
+  color: #ddd;
+  font-style: italic;
+}
+
+#detail .button {
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  top: -30px;
+  right: 10px;
+  border-radius: 30px;
+  padding-top: 7px;
+}
+
+#detail .button.ion-android-locate {
+  top: -105px;
+  color: #2677FF
+}
+
+#detail .button.ion-android-locate:before {
+  font-size: 36px !important;
+  margin-top: -3px;
+}
+
+#detail img {
+  display: block;
+  width: 600px;
+  margin: 0 auto;
+}
+
+@media only screen and (max-width: 600px) {
+  #detail img {
+    width: 100%;
+  }
+}
+
+#aboutcolors img {
+  width: 100%;
+  margin: 0 10px;
+}
+
+#aboutcolors .item ul {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+
+#aboutcolors table {
+  margin: 5px auto;
+  border: solid thin grey;
+  border-collapse: collapse;
+}
+
+#aboutcolors tr {
+  border: solid thin grey;
+}
+
+#aboutcolors th, #aboutcolors td {
+  padding: 5px;
+  vertical-align: middle;
+}
+
+#aboutcolors th {
+  font-weight: bold;
+}
+
+#aboutcolors td:nth-child(2) {
+  text-align: right;
+}
+
+#otherapps div.list div.item p {
+  white-space: normal;
+}
+
+#otherapps div.list div.item-button-right a.button-balanced {
+  top: 54px;
+}
+
+#depots .item {
+  min-height: 77px;
+}
+
+#depots .item-icon-left .ion-android-car.U {color: #e60010;}
+#depots .item-icon-left .ion-android-car.N {color: #1ad230;}
+#depots .item-icon-left .ion-android-car.L {color: #1ab6d2;}
+
+#depots .item-button-right .button {
+  top: 20px;
+}
+
+#depots .item-button-right .button i.ion-ios-telephone {
+  left: 8px;
+}
+
+#depots .item-button-right .button:nth-child(5) {
+  right: 70px;
+}
+
+
+
+#feedback img {
+  width: 100%;
+}
