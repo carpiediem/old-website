@@ -254,7 +254,7 @@ console.log("controler");
           latitude: parseFloat(stand.Latitude),
           longitude: parseFloat(stand.Longitude)
         },
-        image: stand.pano ? "https://maps.googleapis.com/maps/api/streetview?size=600x300&fov=120&pano=" + stand.pano + "&heading=" + stand.heading : "https://maps.googleapis.com/maps/api/streetview?size=600x600&pano=not_yet",
+        image: stand.pano ? "https://maps.googleapis.com/maps/api/streetview?key=AIzaSyCCD9qpjFMDkGoH4GLP6Uyuy7o9m5ga8dM&size=600x300&fov=120&pano=" + stand.pano + "&heading=" + stand.heading : "https://maps.googleapis.com/maps/api/streetview?size=600x600&pano=not_yet",
         directions: "https://www.google.com.hk/maps/dir/" + $scope.map.center.latitude + "," + $scope.map.center.longitude + "/" + parseFloat(stand.Latitude) + "," + parseFloat(stand.Longitude) + "/data=!4m2!4m1!3e2",
         icon: "img/marker-" + shortcat + ".png"
       };
