@@ -27,7 +27,7 @@ var app = angular.module('hk_taxi_stands', ['ionic', 'ngCordova', 'uiGmapgoogle-
     })
 
     .config(function($stateProvider, $urlRouterProvider) {
-console.log("stateProvider");
+
       $stateProvider
 
       .state('app', {

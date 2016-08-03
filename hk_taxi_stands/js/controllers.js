@@ -3,7 +3,7 @@ angular.module('hk_taxi_stands.controllers', [])
   .controller('MenuCtrl', function() {})
 
   .controller('MapCtrl', function($scope, $rootScope, $ionicModal, $ionicPlatform, $timeout, $cordovaDevice, $cordovaGeolocation, $cordovaGoogleAnalytics, uiGmapGoogleMapApi, $http, fCsv) {
-console.log("controler");
+
     $scope.markers = [];
     $scope.show_detail = "none";
     $scope.visibleTypes = "all";
@@ -50,7 +50,7 @@ console.log("controler");
       $scope.markers = [];
       hide_details();
       loadMarkers();
-      if (typeof analytics !== 'undefined') $cordovaGoogleAnalytics.trackEvent('Map', 'Toggle Language', $rootScope.script);
+      // if (typeof analytics !== 'undefined') $cordovaGoogleAnalytics.trackEvent('Map', 'Toggle Language', $rootScope.script);
     }
 
     function displayType(name) {
@@ -64,12 +64,12 @@ console.log("controler");
       $scope.detail = markerModel;
       $scope.show_detail = "peek";
       $timeout(function(){ $scope.show_detail = "name"; }, 1000);
-      if (typeof analytics !== 'undefined') $cordovaGoogleAnalytics.trackEvent('Detail Pane', 'Show', markerModel.name);
+      // if (typeof analytics !== 'undefined') $cordovaGoogleAnalytics.trackEvent('Detail Pane', 'Show', markerModel.name);
     }
 
     function expand_details() {
       $scope.show_detail = "all";
-      if (typeof analytics !== 'undefined') $cordovaGoogleAnalytics.trackEvent('Detail Pane', 'Expand', $scope.detail.name);
+      // if (typeof analytics !== 'undefined') $cordovaGoogleAnalytics.trackEvent('Detail Pane', 'Expand', $scope.detail.name);
     }
 
     function hide_details() {
@@ -78,18 +78,18 @@ console.log("controler");
 
     function center_map() {
       $scope.map.center = angular.copy($scope.map.currentPos.coords);
-      if (typeof analytics !== 'undefined') $cordovaGoogleAnalytics.trackEvent('Map', 'Re-Center');
+      // if (typeof analytics !== 'undefined') $cordovaGoogleAnalytics.trackEvent('Map', 'Re-Center');
     }
 
     function record_directions() {
-      if (typeof analytics !== 'undefined') $cordovaGoogleAnalytics.trackEvent('Detail Pane', 'Directions', $scope.detail.name);
+      // if (typeof analytics !== 'undefined') $cordovaGoogleAnalytics.trackEvent('Detail Pane', 'Directions', $scope.detail.name);
     }
 
 
 
 
     var initializeMap = function(position) {
-      console.log("init");
+      // console.log("init");
       if (position) {
         $scope.position = position;
         if (typeof analytics !== 'undefined') {
@@ -105,7 +105,7 @@ console.log("controler");
           position.coords.longitude < 113.83
         );
       }
-      console.log("init", position, outOfBounds);
+      // console.log("init", position, outOfBounds);
       if (!position || outOfBounds) {
         // Default to Victoria Harbour
         position = {
@@ -180,7 +180,7 @@ console.log("controler");
       $cordovaGeolocation.getCurrentPosition(posOptions).then(function(position) {
         initializeMap(position);
       }, function(error) {
-        console.log(error);
+        // console.log(error);
         initializeMap();
       });
     });
@@ -254,7 +254,7 @@ console.log("controler");
           latitude: parseFloat(stand.Latitude),
           longitude: parseFloat(stand.Longitude)
         },
-        image: stand.pano ? "https://maps.googleapis.com/maps/api/streetview?key=AIzaSyCCD9qpjFMDkGoH4GLP6Uyuy7o9m5ga8dM&size=600x300&fov=120&pano=" + stand.pano + "&heading=" + stand.heading : "https://maps.googleapis.com/maps/api/streetview?size=600x600&pano=not_yet",
+        image: stand.pano ? "https://maps.googleapis.com/maps/api/streetview?key=AIzaSyCaWUZn2n0nCPN8vhNU9MiS1G_66BZmP58&size=600x300&fov=120&pano=" + stand.pano + "&heading=" + stand.heading : "https://maps.googleapis.com/maps/api/streetview?size=600x600&pano=not_yet",
         directions: "https://www.google.com.hk/maps/dir/" + $scope.map.center.latitude + "," + $scope.map.center.longitude + "/" + parseFloat(stand.Latitude) + "," + parseFloat(stand.Longitude) + "/data=!4m2!4m1!3e2",
         icon: "img/marker-" + shortcat + ".png"
       };
@@ -287,24 +287,24 @@ console.log("controler");
 
   .controller('AboutCtrl', function($ionicPlatform, $cordovaGoogleAnalytics) {
     $ionicPlatform.ready(function() {
-      $cordovaGoogleAnalytics.trackView('About Screen');
+      // $cordovaGoogleAnalytics.trackView('About Screen');
     });
   })
 
   .controller('AppsCtrl', function($ionicPlatform, $cordovaGoogleAnalytics) {
     $ionicPlatform.ready(function() {
-      $cordovaGoogleAnalytics.trackView('Apps Screen');
+      // $cordovaGoogleAnalytics.trackView('Apps Screen');
     });
   })
 
   .controller('DepotsCtrl', function($ionicPlatform, $cordovaGoogleAnalytics) {
     $ionicPlatform.ready(function() {
-      $cordovaGoogleAnalytics.trackView('Depots Screen');
+      // $cordovaGoogleAnalytics.trackView('Depots Screen');
     });
   })
 
   .controller('FeedbackCtrl', function($ionicPlatform, $cordovaGoogleAnalytics) {
     $ionicPlatform.ready(function() {
-      $cordovaGoogleAnalytics.trackView('Feedback Screen');
+      // $cordovaGoogleAnalytics.trackView('Feedback Screen');
     });
   });
