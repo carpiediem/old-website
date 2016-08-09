@@ -698,6 +698,18 @@ Joffrey_Baratheon-1,,44.5904,-122.4023
 Joffrey_Baratheon-1,,57.9848,-122.4023
 Joffrey_Baratheon-1,,64.6991,-124.8633
 Joffrey_Baratheon-1,Winterfell,,
+Tommen_Baratheon-1,King%27s_Landing,,
+Tommen_Baratheon-1,Hayford,,
+Tommen_Baratheon-1,,16.0669,-109.5263
+Tommen_Baratheon-1,Darry,,
+Tommen_Baratheon-1,,26.4312,-114.1406
+Tommen_Baratheon-1,,33.8704,-121.5234
+Tommen_Baratheon-1,,36.1733,-122.0507
+Tommen_Baratheon-1,,41.0462,-120.5566
+Tommen_Baratheon-1,,44.5904,-122.4023
+Tommen_Baratheon-1,,57.9848,-122.4023
+Tommen_Baratheon-1,,64.6991,-124.8633
+Tommen_Baratheon-1,Winterfell,,
 Myrcella_Baratheon-1,King%27s_Landing,,
 Myrcella_Baratheon-1,Hayford,,
 Myrcella_Baratheon-1,,16.0669,-109.5263
@@ -733,6 +745,11 @@ Myrcella_Baratheon-5,Planky_Town,,
 Myrcella_Baratheon-5,Sunspear,,
 Myrcella_Baratheon-6,Sunspear,,
 Myrcella_Baratheon-6,,-43.6440,-83.1884
+Myrcella_Baratheon-7,,-43.6440,-83.1884
+Myrcella_Baratheon-7,,-41.7057,-79.5410
+Myrcella_Baratheon-7,,-33.2111,-77.6953
+Myrcella_Baratheon-7,,-12.6403,-78.6621
+Myrcella_Baratheon-7,,1.1425,-99.4921
 Robert_Baratheon-1,King%27s_Landing,,
 Robert_Baratheon-1,Hayford,,
 Robert_Baratheon-1,,16.0669,-109.5263
@@ -941,7 +958,7 @@ Brienne_of_Tarth-15,Hayford,,
 Brienne_of_Tarth-15,King%27s_Landing,,
 Brienne_of_Tarth-16,King%27s_Landing,,
 Brienne_of_Tarth-16,,4.9158,-101.6015
-Brienne_of_Tarth-17,,4.9158,-101.6015
+Brienne_of_Tarth-17,,16.0669,-109.5263
 Brienne_of_Tarth-17,Crossroads_Inn,,
 Brienne_of_Tarth-18,Crossroads_Inn,,
 Brienne_of_Tarth-18,,23.9661,-109.8632
@@ -1022,7 +1039,8 @@ Davos-3,,32.4726,-74.9707
 Davos-3,,-4.7406,-82.9687
 Davos-3,,-17.6440,-89.8242
 Davos-3,Storm%27s_End,,
-Davos-4,,-4.7406,-82.9687
+Davos-3a,,-4.7406,-82.9687
+Davos-3a,,11.3357,-85.0161
 Davos-4,,11.3357,-85.0161
 Davos-4,,0.7031,-101.7773
 Davos-4,King%27s_Landing,,
@@ -1040,6 +1058,7 @@ Davos-7,Braavos,,
 Davos-8,Braavos,,
 Davos-8,,72.5808,-79.2773
 Davos-8,Eastwatch-by-the-Sea,,
+Davos-8,,76.6189,-106.6113
 Davos-8,Castle_Black,,
 Davos-9,Castle_Black,,
 Davos-9,Mole%27s_Town,,
