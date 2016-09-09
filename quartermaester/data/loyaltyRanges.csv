@@ -6,7 +6,7 @@ Undeclared-1,AGOT-47,AGOT-55,S1E07,S1E07
 Stannis_Baratheon-1,AGOT-47,AGOT-70,S1E07,S1E09
 Stannis_Baratheon-2,AGOT-47,ADWD-72,S1E07,S6E10
 Joffrey_Baratheon-1,AGOT-47,ASOS-60,S1E07,S4E01
-Joffrey_Baratheon-2,AGOT-47,ASOS-60,S1E07,S4E01
+Joffrey_Baratheon-2,AGOT-47,ACOK-34,S1E07,S4E01
 Joffrey_Baratheon-3,AGOT-56,ACOK-6,S1E07,S4E01
 Undeclared-2,AGOT-56,ADWD-72,,
 Joffrey_Baratheon-4,AGOT-56,ACOK-6,S1E07,S4E01
@@ -17,9 +17,9 @@ Stannis_Baratheon-4,AGOT-63,AGOT-70,,
 Undeclared-5,,,,
 Renly_Baratheon-1,AGOT-69,ACOK-32,S1E10,S6E10
 Robb_Stark-1,AGOT-71,ADWD-72,S1E10,S6E10
-Robb_Stark-2,AGOT-71,ADWD-72,S1E10,S6E10
+Robb_Stark-2,AGOT-71,ACOK-6,S1E10,S6E10
 Joffrey_Baratheon-5,ACOK-7,ACOK-29,S1E08,S4E01
-Robb_Stark-3,ACOK-7,ADWD-72,,
+Robb_Stark-3,ACOK-7,ACOK-29,,
 Joffrey_Baratheon-6,ACOK-20,ADWD-72,,
 Joffrey_Baratheon-7,ACOK-30,ASOS-60,S1E08,S4E01
 Robb_Stark-4,ACOK-30,ADWD-72,,
@@ -28,5 +28,5 @@ Stannis_Baratheon-5,ACOK-33,ACOK-44,,
 Stannis_Baratheon-6,ACOK-33,ASOS-19,,
 Stannis_Baratheon-7,ACOK-33,ACOK-65,,
 Robb_Stark-5,ACOK-35,ADWD-72,,
-Joffrey_Baratheon-8,ACOK-35,ADWD-72,,
+Joffrey_Baratheon-8,ACOK-35,ASOS-60,,
 Balon_Greyjoy-1,ACOK-46,ADWD-72,,
