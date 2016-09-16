@@ -1,4 +1,5 @@
 wikiKey,seatKey,lat,lng,img,clue,isGreat,firstChapter,lastChapter,firstEpisode,lastEpisode
+Free_folk,,77.989,-124.1895,http://vignette2.wikia.nocookie.net/gameofthrones/images/c/c5/Free-Folk-Main-Shield.PNG/revision/latest/scale-to-width-down/50?cb=20160811070628,gathering in the Skirling Pass,FALSE,107,999,14,39
 Night%27s_Watch,Castle_Black,,,http://awoiaf.westeros.org/images/thumb/4/47/Minigdn.png/109px-Minigdn.png,,TRUE,,,,
 House_Stark,Winterfell,,,http://awoiaf.westeros.org/images/thumb/5/51/House_Stark.PNG/90px-House_Stark.PNG,,TRUE,0,118,0,14
 House_Greyjoy,Winterfell,,,http://awoiaf.westeros.org/images/thumb/f/f3/Greyjoy_coat_sigil.png/120px-Greyjoy_coat_sigil.png,,TRUE,119,138,15,18
