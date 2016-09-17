@@ -1,7 +1,7 @@
 key,firstChapter,lastChapter,firstEpisode,lastEpisode
 Robert_Baratheon-1,AGOT-0,AGOT-46,S1E01,S1E06
 Jeor_Mormont-1,AGOT-0,ASOS-33,S1E01,S3E03
-Freefolk-1,AGOT-0,ASOS-72,S1E01,S4E08
+Free_folk-1,AGOT-0,ASOS-72,S1E01,S4E08
 Undeclared-1,AGOT-47,AGOT-55,S1E07,S1E07
 Stannis_Baratheon-1,AGOT-47,AGOT-70,S1E07,S1E09
 Stannis_Baratheon-2,AGOT-47,ASOS-35,S1E07,S6E10
@@ -53,7 +53,7 @@ Kingsmoot-3,ASOS-45,AFFC-18,,
 Joffrey_Baratheon-14,ASOS-51,ASOS-59,,
 Joffrey_Baratheon-15,ASOS-51,ASOS-59,,
 Joffrey_Baratheon-16,ASOS-51,ASOS-59,,
-Freefolk-2,,,,
+Free_folk-2,,,,
 Tommen_Baratheon-1A,ASOS-60,ASOS-75,,
 Tommen_Baratheon-1B,ASOS-60,ASOS-61,,
 Tommen_Baratheon-1C,ASOS-60,TWOW-???,,
@@ -63,7 +63,7 @@ Tommen_Baratheon-1F,ASOS-60,ADWD-60,,
 Tommen_Baratheon-1G,ASOS-60,TWOW-???,,
 Tommen_Baratheon-2,ASOS-62,AFFC-43,,
 Tommen_Baratheon-3,ASOS-68,TWOW-???,,
-Freefolk-2,,,,
+Free_folk-2,,,,
 Daenerys_Targaryen-1,ASOS-71,TWOW-???,,
 Tommen_Baratheon-4,ASOS-74,TWOW-???,,
 Kingsmoot-4,ASOS-76,AFFC-18,,
