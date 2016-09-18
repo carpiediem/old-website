@@ -36,7 +36,8 @@ angular.module('quartermaester')
       smgMapType: smgMapType,
       locationClick: locationClick,
       heraldryClick: heraldryClick,
-      characterClick: characterClick
+      characterClick: characterClick,
+      loyaltyRangeClick: loyaltyRangeClick
     };
     $scope.mapModels = {
       towns: [],
@@ -44,17 +45,20 @@ angular.module('quartermaester')
       characters: [],
       paths: [],
       regions: [],
-      loyalties: []
+      politicalAllegiances: [],
+      editableLoyaltyRanges: []
     };
     $scope.episodes = [];
     $scope.chapters = [];
     $scope.searchResults = [];
+    $scope.clickHistory = [];
     $scope.toState = toState;
     $scope.slideTo = slideTo;
     $scope.panTo = panTo;
     $scope.resultClick = resultClick;
     $scope.refreshMap = refreshMap;
     $scope.locationDetail = null;
+    $scope.lastClick = null;
 
     // Set up promises
     uiGmapGoogleMapApi.then(onMapLoad);
@@ -65,6 +69,12 @@ angular.module('quartermaester')
 
     function addToScope(d) {
       qmData = d;
+
+      for (var i=0;i<qmData.loyaltyRanges.length; i++) {
+        qmData.loyaltyRanges[i].events = {
+          click: loyaltyRangeClick
+        };
+      }
 
       // Add data from CSV files into $scope
       $scope.episodes = qmData.episodes;
@@ -89,8 +99,21 @@ angular.module('quartermaester')
       $scope.mapModels.towns = $filter('qmSlider')(qmData.towns, $scope.slider);
       $scope.mapModels.heraldry = $scope.options.houseHeraldry ? $filter('qmSlider')(qmData.heraldry, $scope.slider) : [];
       $scope.mapModels.characters = $filter('qmSlider')(qmData.characterMarkers, $scope.slider, $scope.options);
-      $scope.mapModels.paths = $filter('qmSlider')(qmData.characterPaths, $scope.slider, $scope.options);
-      //console.log("mapModels.paths", $scope.mapModels.paths);
+      $scope.belligerents = $filter('qmSlider')(qmData.belligerents, $scope.slider);
+      var staticPaths = $filter('qmSlider')(qmData.characterPaths, $scope.slider, $scope.options);
+      $scope.mapModels.paths = angular.copy(staticPaths);
+      $scope.mapModels.editablePaths = angular.copy(staticPaths).map(function(path) {
+        path.static   = false;
+        path.editable = true;
+        return path;
+      });
+
+      $scope.mapModels.loyaltyRanges = $filter('qmSlider')(qmData.loyaltyRanges, $scope.slider);
+      $scope.mapModels.editableLoyaltyRanges = angular.copy($scope.mapModels.loyaltyRanges).map(function(polygon) {
+        polygon.static   = false;
+        polygon.editable = true;
+        return polygon;
+      });
     }
 
     function panToCharacter(newValue, oldValue) {
@@ -111,6 +134,7 @@ angular.module('quartermaester')
       if (stateName=="search") $timeout(function() {
         document.getElementById("searchInput").focus();
       });
+      if (stateName=="edit") refreshMap();
       // if (stateName=="slider-full") $timeout(function() {
       //   console.log(document.getElementById("slide-"+$scope.slider.show).getElementsByClassName("rz-pointer"));
       //   document.getElementById("slide-"+$scope.slider.show).getElementsByClassName("rz-pointer")[0].focus();
@@ -177,8 +201,6 @@ angular.module('quartermaester')
     }
 
     function panTo(input) {
-
-      console.log("panTo", input);
       var location = $filter('filter')($scope.map.locations, {key: input})[0];
       $scope.map.control.getGMap().panTo({lat: location.coords.latitude, lng: location.coords.longitude});
       $scope.locationDetail = location;
@@ -269,8 +291,33 @@ angular.module('quartermaester')
       $scope.state = "location";
     }
 
-    function mapClick() {
+    function loyaltyRangeClick(e, eventName, model) {
+      var keyMatch = /(.+)\-\d+\w?$/.exec(model.key);
+      var matchingBelligerant = $filter('filter')(qmData.belligerents, {key: keyMatch[1]})[0];
+      var filtered = $filter('filter')(qmData.belligerents, {key: keyMatch[1]});
+
+      $scope.locationDetail = {
+        house: matchingBelligerant.title + " " + matchingBelligerant.name,
+        houseImg: matchingBelligerant.houseImg,
+        houseUrl: matchingBelligerant.url
+      };
+      $scope.state = "location";
+    }
+
+    function mapClick(a, b, c, d) {
       $scope.state = "slider";
+      //console.log(a, b, c, d);
+      //console.log("lng", c[0].latLng.lng());
+      //$scope.lastClick = JSON;
+      //console.log($scope.mapModels.paths);
+      addClickToEditor(c[0].latLng.lat(), c[0].latLng.lng())
+    }
+
+    function addClickToEditor(latitude, longitude) {
+      $scope.clickHistory.push({
+        latitude: latitude,
+        longitude: longitude
+      });
     }
 
     function onMapLoad(maps) {

@@ -69,17 +69,21 @@ angular.module('quartermaester')
       getFile('houses.csv'),
       getFile('characters.csv'),
       getFile('regions.csv'),
+      getFile('loyaltyRanges.csv'),
       getFile('towns.csv'),
       getFile('borders.csv'),
+      getFile('loyaltyRangeEdges.csv'),
       getFile('stops.csv'),
       getFile('waypoints.csv'),
-      getFile('paths.csv')
+      getFile('paths.csv'),
+      getFile('belligerents.csv')
     ]).spread(parseData);
   }
 
-  function parseData(books, chapters, seasons, episodes, houses, characters, regions, towns, borders, stops, waypoints, paths) {
+  function parseData(books, chapters, seasons, episodes, houses, characters, regions, loyaltyRanges, towns, borders, loyaltyRangeEdges, stops, waypoints, paths, belligerents) {
     var qmData = {
       borderArrays: {},
+      lrEdgeArrays: {},
       waypointArrays: {},
       bookLookup: {}
     };
@@ -89,6 +93,12 @@ angular.module('quartermaester')
       if (!(borders[i].name in qmData.borderArrays))
         qmData.borderArrays[borders[i].name] = [];
       qmData.borderArrays[borders[i].name].push(borders[i]);
+    }
+
+    for (var i=0; i<loyaltyRangeEdges.length; i++) {
+      if (!(loyaltyRangeEdges[i].key in qmData.lrEdgeArrays))
+        qmData.lrEdgeArrays[loyaltyRangeEdges[i].key] = [];
+      qmData.lrEdgeArrays[loyaltyRangeEdges[i].key].push(loyaltyRangeEdges[i]);
     }
 
     for (var i=0; i<waypoints.length; i++) {
@@ -106,11 +116,12 @@ angular.module('quartermaester')
     qmData.books      = books;
     qmData.regions    = regions.map(regionModel);
     qmData.characters = characters.map(characterModel);
+    qmData.belligerents = belligerents.map(belligerentModel);
+    qmData.loyaltyRanges = loyaltyRanges.map(loyaltyRangeModel);
     qmData.towns      = getTownMarkers(towns, houses);
     qmData.heraldry   = houses.map(heraldryMarkerModel);
     qmData.characterMarkers = stops.map(characterMarkerModel);
     qmData.characterPaths = paths.map(characterPathModel);
-
 
     qmData.searchResults = [].concat(
       towns.map(townSearchModel),
@@ -321,6 +332,25 @@ angular.module('quartermaester')
       };
     }
 
+    function loyaltyRangeModel(loyaltyRange) {
+      var keyMatch = /(.+)\-\d+\w?$/.exec(loyaltyRange.key);
+      var matchingBelligerant = $filter('filter')(qmData.belligerents, {key: keyMatch[1]})[0];
+      return {
+        key: loyaltyRange.key,
+        fill: {
+          color: matchingBelligerant.color,
+          opacity: 0.5
+        },
+        stroke: {weight: 0},
+        path: qmData.lrEdgeArrays[loyaltyRange.key],
+        timing: {
+          episodes: [getEpisodeId(loyaltyRange.firstEpisode), getEpisodeId(loyaltyRange.lastEpisode)],
+          chapters: [getChapterId(loyaltyRange.firstChapter), getChapterId(loyaltyRange.lastChapter)]
+        },
+        clickable: true
+      };
+    }
+
     function characterMarkerModel(stop, index, fullArray) {
       var matchingCharacter = $filter('filter')(qmData.characters, {key: stop.character})[0];
       var coords = (stop.town=="") ? {latitude:parseFloat(stop.latitude), longitude:parseFloat(stop.longitude)} : $filter('filter')(qmData.towns, {key: stop.town})[0].coords;
@@ -379,13 +409,14 @@ angular.module('quartermaester')
       });
 
       return {
-          key: "path-" + index,
+          key: path.key,
           character: { key: matchingCharacter.key },
           path: waypoints,
           stroke: {
               color: matchingCharacter.color,
               weight: 3
           },
+          editable: false,
           static: true,
           icons: icons,
           timing: {
@@ -402,17 +433,48 @@ angular.module('quartermaester')
     }
 
     function waypointModel(waypoint) {
-      if (waypoint.location=="") return {latitude: parseFloat(waypoint.latitude), longitude: parseFloat(waypoint.longitude)};
+      if (waypoint.location=="") return {
+        latitude: parseFloat(waypoint.latitude),
+        longitude: parseFloat(waypoint.longitude),
+        location: ""
+      };
       var matchingTown = $filter('filter')(qmData.towns, {key: waypoint.location})[0];
-      return matchingTown.coords;
+      return {
+        latitude: matchingTown.coords.latitude,
+        longitude: matchingTown.coords.longitude,
+        location: waypoint.location
+      };
     }
 
+    function belligerentModel(belligerent) {
+      var matchingHouse = $filter('filter')(houses, {wikiKey: belligerent.house})[0];
+      return {
+        key:   belligerent.key,
+        title: belligerent.title,
+        name:  belligerent.name,
+        url:   "http://awoiaf.westeros.org/index.php/" + belligerent.key,
+        houseImg: matchingHouse.img,
+        houseUrl: "http://awoiaf.westeros.org/index.php/" + belligerent.house,
+        color: belligerent.color,
+        timing: {
+          episodes: [
+            getEpisodeId(belligerent.firstEpisode),
+            getEpisodeId(belligerent.lastEpisode)
+          ],
+          chapters: [
+            getChapterId(belligerent.firstChapter),
+            getChapterId(belligerent.lastChapter)
+          ]
+        }
+      };
+    }
 
 
     function getChapterId(chapterKey) {
       //AGOT-2 to 2
       if (chapterKey=="") return -1;
       if (chapterKey=="TWOW-?") return 344;
+      if (chapterKey=="TWOW-???") return 344;
       var reMatch = /(\w{4})\-(\d+)/.exec(chapterKey);
       var precedingChapters = parseInt(qmData.bookLookup[ reMatch[1] ].precedingChapters, 10)
       return precedingChapters + parseInt(reMatch[2], 10);
@@ -480,10 +542,8 @@ angular.module('quartermaester')
   return {
     restrict: 'A',
     link: function (scope, elem, attrs) {
-      // console.log(elem, attrs);
       var winHeight = $window.innerHeight;
       // var listHeight = attrs.qmList ? 41*parseInt(attrs.qmList, 10) : 0;
-      // console.log(winHeight, attrs.qmList, listHeight);
       // if (listHeight>winHeight) elem.css('height', winHeight - 48 + 'px');
       elem.css('height', winHeight - 55 + 'px');
     }
