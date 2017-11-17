@@ -1,0 +1,409 @@
+<html>
+<head>
+<title>Time-Scaled MTR Map</title>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script>
+//Created by Ryan Carpenter, 2013
+//Inspired by Stone Brown Design <http://www.stonebrowndesign.com/uploads/9/7/6/9/9769402/mbta-rail-timescale.png>
+//This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/.
+
+  //Configuration Parameters
+  var center = [250,980];  // The center of the concentric circles, as measured from the upper-left
+  var hr     = 1100;       // The radius corresponding to one hour of travel
+  var tpplw  = 20;         // Trains per Pixel of Line Width
+  diagram_x  = 35;
+  diagram_y  = 245;
+
+stations = {
+  "Lam Tin": {time:25, theta:20, traffic:327, align:"left", anchor:[0,-17]},
+  "Kwun Tong": {time:27, theta:20, traffic:327, align:"left", anchor:[0,-17]},
+  "Ngau Tau Kok": {time:29, theta:20, traffic:327, align:"left", anchor:[0,-17]},
+  "Kowloon Bay": {time:28, theta:40, traffic:327, align:"center", anchor:[0,15]},
+  "Choi Hung": {time:26, theta:40, traffic:327, align:"left", anchor:[10,-10]},
+  "Diamond Hill": {time:24, theta:40, traffic:327, align:"left", anchor:[10,-10]},
+  "Wong Tai Sin": {time:22, theta:40, traffic:327, align:"left", anchor:[10,-10]},
+  "Lok Fu": {time:21, theta:40, traffic:327, align:"left", anchor:[10,-10]},
+  "Kowloon Tong": {time:19, theta:45, traffic:558, align:"right", anchor:[-20,0]},
+  "Shek Kip Mei": {time:17, theta:45, traffic:327, align:"left", anchor:[10,-10]},
+  "Tsuen Wan": {time:29, theta:90, traffic:353, align:"center", anchor:[0,10]},
+  "Tai Wo Hau": {time:27, theta:90, traffic:353, align:"left", anchor:[13,-5]},
+  "Kwai Hing": {time:25, theta:90, traffic:353, align:"left", anchor:[13,-5]},
+  "Kwai Fong": {time:23, theta:90, traffic:353, align:"left", anchor:[13,-5]},
+  "Lai King": {time:20, theta:90, traffic:530, align:"right", anchor:[-20,-5]},
+  "Mei Foo": {time:21, theta:60, traffic:585, align:"center", anchor:[0,20]},
+  "Lai Chi Kok": {time:19, theta:60, traffic:353, align:"right", anchor:[-15,-5]},
+  "Cheung Sha Wan": {time:17, theta:60, traffic:353, align:"right", anchor:[-15,-5]},
+  "Sham Shui Po": {time:15, theta:60, traffic:353, align:"right", anchor:[-15,-5]},
+  "Prince Edward": {time:13, theta:52.5, traffic:680, align:"left", anchor:[20,-10]},
+  "Mong Kok": {time:12, theta:52.5, traffic:680, align:"left", anchor:[20,-10]},
+  "Yau Ma Tei": {time:10, theta:52.5, traffic:680, align:"left", anchor:[20,-10]},
+  "Jordan": {time:8, theta:52.5, traffic:353, align:"left", anchor:[13,-5]},
+  "Tsim Sha Tsui": {time:6, theta:52.5, traffic:353, align:"left", anchor:[13,-10]},
+  "Sheung Wan": {time:3, theta:180, traffic:332, align:"center", anchor:[0,-20]},
+  "Central": {time:0, theta:0, traffic:685, align:"center", anchor:[0,-30]},
+  "Admiralty": {time:3, theta:0, traffic:685, align:"center", anchor:[0,-30]},
+  "Wan Chai": {time:5, theta:0, traffic:332, align:"center", anchor:[5,13]},
+  "Causeway Bay": {time:7, theta:0, traffic:332, align:"center", anchor:[0,-20]},
+  "Tin Hau": {time:9, theta:0, traffic:332, align:"center", anchor:[0,13]},
+  "Fortress Hill": {time:11, theta:0, traffic:332, align:"center", anchor:[0,-30]},
+  "North Point": {time:13, theta:0, traffic:635, align:"center", anchor:[0,20]},
+  "Quarry Bay": {time:15, theta:0, traffic:635, align:"center", anchor:[-5,-37]},
+  "Tai Koo": {time:17, theta:-5, traffic:332, align:"center", anchor:[8,15]},
+  "Sai Wan Ho": {time:18, theta:-5, traffic:332, align:"center", anchor:[0,-20]},
+  "Shau Kei Wan": {time:20, theta:-5, traffic:332, align:"center", anchor:[5,13]},
+  "Heng Fa Chuen": {time:22, theta:-5, traffic:332, align:"center", anchor:[0,-20]},
+  "Chai Wan": {time:25, theta:-5, traffic:332, align:"center", anchor:[0,13]},
+  "LOHAS Park": {time:34, theta:5, traffic:100, align:"center", anchor:[0,-20]},
+  "Po Lam": {time:31, theta:15, traffic:252, align:"left", anchor:[0,-17]},
+  "Hang Hau": {time:29, theta:15, traffic:252, align:"left", anchor:[0,-17]},
+  "Tseung Kwan O": {time:26, theta:10, traffic:367, align:"left", anchor:[20,0]},
+  "Tiu Keng Leng": {time:25, theta:10, traffic:630, align:"center", anchor:[0,-35]},
+  "Yau Tong": {time:21, theta:10, traffic:630, align:"center", anchor:[0,-35]},
+  "Kowloon": {time:12, theta:90, traffic:284, align:"left", anchor:[15,-5]},
+  "Olympic": {time:14, theta:90, traffic:177, align:"left", anchor:[15,-5]},
+  "Nam Cheong": {time:16, theta:90, traffic:408, align:"left", anchor:[15,-5]},
+  "Tsing Yi": {time:23, theta:105, traffic:284, align:"left", anchor:[15,-5]},
+  "Sunny Bay": {time:30, theta:105, traffic:300, align:"right", anchor:[-10,-5]},
+  "Disneyland": {time:37, theta:110, traffic:154, align:"left", anchor:[0,-20]},
+  "Tung Chung": {time:37, theta:105, traffic:147, align:"center", anchor:[0,10]},
+  "Hung Hom": {time:20, theta:25, traffic:424, align:"center", anchor:[0,-30]},
+  "Mong Kok East": {time:25, theta:25, traffic:193, align:"center", anchor:[0,20]},
+  "Tai Wai": {time:29, theta:55, traffic:418, align:"left", anchor:[17,-10]},
+  "Sha Tin": {time:31, theta:55, traffic:193, align:"left", anchor:[17,-5]},
+  "Fo Tan": {time:34, theta:55, traffic:193, align:"left", anchor:[17,-5]},
+  "University": {time:38, theta:55, traffic:193, align:"left", anchor:[17,-5]},
+  "Tai Po Market": {time:44, theta:55, traffic:193, align:"left", anchor:[17,-5]},
+  "Tai Wo": {time:46, theta:55, traffic:193, align:"left", anchor:[17,-5]},
+  "Fanling": {time:52, theta:55, traffic:193, align:"left", anchor:[17,-5]},
+  "Sheung Shui": {time:54, theta:55, traffic:193, align:"left", anchor:[17,-5]},
+  "Lo Wu": {time:59, theta:50, traffic:163, align:"center", anchor:[0,10]},
+  "Lok Ma Chau": {time:64, theta:55, traffic:93, align:"center", anchor:[0,5]},
+  "Che Kung Temple": {time:35, theta:45, traffic:225, align:"left", anchor:[8,-10]},
+  "Sha Tin Wai": {time:37, theta:45, traffic:225, align:"left", anchor:[8,-10]},
+  "City One": {time:39, theta:45, traffic:225, align:"left", anchor:[8,-10]},
+  "Shek Mun": {time:40, theta:45, traffic:225, align:"left", anchor:[8,-10]},
+  "Tai Shui Hang": {time:44, theta:45, traffic:225, align:"left", anchor:[8,-10]},
+  "Heng On": {time:46, theta:45, traffic:225, align:"left", anchor:[8,-10]},
+  "Ma On Shan": {time:48, theta:45, traffic:225, align:"left", anchor:[8,-10]},
+  "Wu Kai Sha": {time:50, theta:45, traffic:225, align:"center", anchor:[0,10]},
+  "East Tsim Sha Tsui": {time:16, theta:25, traffic:231, align:"center", anchor:[5,-25]},
+  "Austin": {time:20, theta:30, traffic:231, align:"center", anchor:[0,10]},
+  "Tsuen Wan West": {time:28, theta:75, traffic:231, align:"left", anchor:[10,-5]},
+  "Kam Sheung Road": {time:34, theta:75, traffic:231, align:"left", anchor:[10,-5]},
+  "Yuen Long": {time:38, theta:75, traffic:231, align:"left", anchor:[10,-5]},
+  "Long Ping": {time:40, theta:75, traffic:231, align:"left", anchor:[10,-5]},
+  "Tin Shui Wai": {time:42, theta:75, traffic:231, align:"left", anchor:[10,-5]},
+  "Siu Hong": {time:47, theta:75, traffic:231, align:"left", anchor:[10,-5]},
+  "Tuen Mun": {time:49, theta:75, traffic:231, align:"center", anchor:[0,10]},
+  "Airport": {time:33, theta:100, traffic:107, align:"left", anchor:[10,-5]},
+  "Asia World Expo": {time:37, theta:100, traffic:107, align:"center", anchor:[0,10]},
+  "Hong Kong": {time:9, theta:90, traffic:284, align:"left", anchor:[15,-5]},
+};
+
+linestyles = {
+  "island": {color:"#007cc2", traffic:332},
+  "twl":    {color:"#ee2e22", traffic:353},
+  "ktl":    {color:"#21b259", traffic:327},
+  "west":   {color:"#ad208e", traffic:231},
+  "mosl":   {color:"#663f25", traffic:225},
+  "ael":    {color:"#007b85", traffic:107},
+  "disney": {color:"#dc87b9", traffic:154},
+  "east":   {color:"#4fbdec", traffic:193},
+  "ss2lw":  {color:"#4fbdec", traffic:163},
+  "ss2lmc": {color:"#4fbdec", traffic:93 },
+  "hk2ty":  {color:"#f7971d", traffic:177},
+  "ty2tc":  {color:"#f7971d", traffic:147},
+  "np2tkl": {color:"#936fb0", traffic:303},
+  "tkl2tko":{color:"#936fb0", traffic:367},
+  "tko2pl": {color:"#936fb0", traffic:252},
+  "tko2lp": {color:"#936fb0", traffic:100},
+  "walk":   {color:"#000000", traffic:50 },
+};
+</script>
+<style>
+h1      {position:absolute; top:-40px; font-family:"Source Sans Pro"; font-weight:900; font-size:4em;}
+#left   {position:absolute; top:95px; left:35px;  width:195px;}
+#right  {position:absolute; top:95px; left:245px; width:175px;}
+h2      {margin:5px 0px; font-family:"Source Sans Pro"; font-weight:400; font-size:1.0em; font-style:italic;}
+p       {margin:0px; font-family:"Source Sans Pro"; font-weight:200; font-size:0.9em; text-align:justify;}
+#source {position:absolute; top:1050px; left:20px;font-family:"Source Sans Pro"; font-weight:200; font-size:0.7em;}
+</style>
+</head>
+<body>
+<h1>Time-Scaled MTR Map</h1>
+<div id="left">
+  <h2>Weekday Service Frequency</h2>
+  <p>Line width represents the total number of trains to use that line on a weekday.  Circle size represents the number of trains passing through a station.</p>
+</div>
+<div id="right">
+  <h2>Hidden Line Segments</h2>
+  <p>This diagram shows the fastest route between Central and every other station in the MTR network.  Rail segments that are not used in the most efficient path to or from Central are not shown.  All times are approximations from MTR.</p>
+</div>
+<div id="source"><b>Source</b>: MTR <a href="http://www.mtr.com.hk/jplanner/flash_eng/">Journey Planner</a> and <a href="http://www.mtr.com.hk/eng/getting_around/service_hours.html">Average Train Frequency Table</a></div>
+<canvas id="myCanvas" width="980" height="1060"></canvas>
+<script>
+  $(document).ready(function() {
+
+    WebFontConfig = {
+      google: { families: [ 'Source+Sans+Pro:200,900,400italic:latin' ] },
+      fontactive: function(fontFamily, fontDescription) { useFont(); }
+    };
+    (function() {
+      var wf = document.createElement('script');
+      wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+        '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+      wf.type = 'text/javascript';
+      wf.async = 'true';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(wf, s);
+    })(); 
+
+  });
+  
+  var drawConcentric = function(x,y,r,color,label,style,labelAngle){
+    ctx.strokeStyle=color;
+    ctx.beginPath();
+    ctx.arc(x,y,r,0,2*Math.PI);
+    ctx.stroke();
+    if (label!="") {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.rotate(labelAngle*Math.PI/180);
+      ctx.fillStyle="#FFFFFF";
+      ctx.fillRect(-15,-7-r,30,14);
+      ctx.fillStyle=color;
+      ctx.textAlign = "center";
+      ctx.fillStyle=style;
+      ctx.fillText(label, 0, 4-r);
+      ctx.restore();
+    }
+  };
+  
+  var drawStation = function(name){
+    var x = hr * stations[name]["time"]/60 * Math.cos(Math.PI*stations[name]["theta"]/180);
+    var y = hr * stations[name]["time"]/60 * Math.sin(Math.PI*stations[name]["theta"]/180);
+    var r = stations[name]["traffic"]/tpplw/2;
+    
+    ctx.strokeStyle = "#000000";
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.arc(center[0]+x, center[1]-y, r, 0, 2*Math.PI);
+    ctx.stroke();
+    ctx.fillStyle   = "#ffffff";
+    ctx.fill();
+    ctx.fillStyle   = "#000000";
+    ctx.beginPath();
+    ctx.arc(center[0]+x, center[1]-y, 2, 0, 2*Math.PI);
+    ctx.fill();
+    ctx.textAlign = stations[name]["align"];
+    ctx.fillText(name, center[0]+x+stations[name]["anchor"][0], center[1]-y-stations[name]["anchor"][1]);
+  };
+  
+  var drawLine = function(from, to, style, curve, fromPosition, toPosition) {
+    var from_sin = Math.sin(Math.PI*stations[from]["theta"]/180);
+    var from_cos = Math.cos(Math.PI*stations[from]["theta"]/180);
+    var to_sin   = Math.sin(Math.PI*stations[to  ]["theta"]/180);
+    var to_cos   = Math.cos(Math.PI*stations[to  ]["theta"]/180);
+    
+    var offset = [0,0];
+    if (fromPosition instanceof Array) offset[0] = ((fromPosition[0]=="right")?1:-1) * linestyles[fromPosition[1]]["traffic"]/2;
+    if (toPosition   instanceof Array) offset[1] = ((toPosition[0]  =="right")?1:-1) * linestyles[toPosition[1]  ]["traffic"]/2;
+    
+    var from_x = hr/60*stations[from]["time"]*from_cos + offset[0]/tpplw*from_sin;
+    var from_y = hr/60*stations[from]["time"]*from_sin - offset[0]/tpplw*from_cos;
+    var to_x   = hr/60*stations[to  ]["time"]*  to_cos + offset[1]/tpplw*  to_sin;
+    var to_y   = hr/60*stations[to  ]["time"]*  to_sin - offset[1]/tpplw*  to_cos;
+    var out_x  = from_x + curve*from_cos;
+    var out_y  = from_y + curve*from_sin;
+    var in_x   = to_x   - curve*  to_cos;
+    var in_y   = to_y   - curve*  to_sin;
+    
+    //Walking paths should leave Central & TST at an angle
+    if (style=="walk") {
+      if (from=="Central") {
+        out_x  = from_x + curve*0;
+        out_y  = from_y + curve*1;
+      }
+      if (from=="Tsim Sha Tsui") {
+        out_x  = from_x + curve*1;
+        out_y  = from_y + curve*0;
+      }
+    }
+    
+    ctx.strokeStyle = linestyles[style]["color"];
+    ctx.lineWidth   = linestyles[style]["traffic"]/tpplw;
+    ctx.beginPath();
+    ctx.moveTo(center[0]+from_x, center[1]-from_y);
+    ctx.bezierCurveTo(center[0]+out_x, center[1]-out_y, center[0]+in_x, center[1]-in_y, center[0]+to_x, center[1]-to_y);
+    ctx.stroke();
+  };
+  
+  alreadyDrawn = false;
+  var useFont = function(){
+    if (alreadyDrawn) return;
+    ctx.font = '9pt "Source Sans Pro"';
+    for (name in stations) drawStation(name);
+    alreadyDrawn = true;
+  };
+  
+  //Initialize the Canvas Element
+  var c=document.getElementById("myCanvas");
+  var ctx=c.getContext("2d");
+  
+  //Draw concentric circles with time labels
+  for (i=1; i<65; i++) {
+    labelAngle = (i<25) ? -20 : 30;
+    if (i%15==0)  drawConcentric(center[0], center[1], hr*(i/60), "#AAAAAA", "0:"+i, "bold 10pt Arial", labelAngle);
+    else {
+      if (i==5){  drawConcentric(center[0], center[1], hr*(i/60), "#E0E0E0", "0:05", "8pt Arial", labelAngle); continue;}
+      if (i%5==0) drawConcentric(center[0], center[1], hr*(i/60), "#E0E0E0", "0:"+i, "8pt Arial", labelAngle);
+      else        drawConcentric(center[0], center[1], hr*(i/60), "#F4F4F4", "", "");
+    }
+  }
+  
+  //Draw rail lines
+  //Island Line
+  drawLine("Central", "Sheung Wan", "island", 0, ["right","twl"]);
+  drawLine("Central", "Admiralty", "island", 40, ["right","twl"], ["right","twl"]);
+  drawLine("Admiralty", "Wan Chai", "island", 20, ["right","twl"]);
+  drawLine("Wan Chai", "Fortress Hill", "island", 0)
+  drawLine("Fortress Hill", "North Point", "island", 20, null, ["right","np2tkl"]);
+  drawLine("North Point", "Quarry Bay", "island", 0, ["right","np2tkl"], ["right","np2tkl"]);
+  drawLine("Quarry Bay", "Tai Koo", "island", 20, ["right","np2tkl"]);
+  drawLine("Tai Koo", "Chai Wan", "island", 0);
+  //Airport Express
+  drawLine("Hong Kong", "Kowloon", "ael", 0, ["left","hk2ty"], ["left","hk2ty"]);
+  drawLine("Kowloon", "Tsing Yi", "ael", 50, ["left","hk2ty"], ["right","hk2ty"]);
+  drawLine("Tsing Yi", "Airport", "ael", 50, ["right","hk2ty"]);
+  drawLine("Airport", "Asia World Expo", "ael", 0);
+  //Tung Chung Line
+  drawLine("Central", "Hong Kong", "walk", 0);
+  drawLine("Hong Kong", "Kowloon", "hk2ty", 0, ["right","ael"], ["right","ael"]);
+  drawLine("Kowloon", "Olympic", "hk2ty", 0, ["right","ael"]);
+  drawLine("Olympic", "Nam Cheong", "hk2ty", 0, null, ["left","west"]);
+  drawLine("Nam Cheong", "Lai King", "hk2ty", 0, ["left","west"], ["left","twl"]);  
+  drawLine("Lai King", "Tsing Yi", "hk2ty", 50, ["left","twl"], ["left","ael"]);
+  drawLine("Tsing Yi", "Sunny Bay", "ty2tc", 20, ["left","ael"]);
+  drawLine("Sunny Bay", "Tung Chung", "ty2tc", 50, ["right","disney"]);
+  drawLine("Sunny Bay", "Disneyland", "disney", 50, ["left","ty2tc"]);
+  //Tsuen Wan Line
+  drawLine("Central", "Admiralty", "twl", 50, ["left","island"], ["left","island"]);
+  drawLine("Admiralty", "Tsim Sha Tsui", "twl", 20, ["left","island"]);
+  drawLine("Tsim Sha Tsui", "Jordan", "twl", 0);
+  drawLine("Jordan", "Yau Ma Tei", "twl", 20, null, ["left","ktl"]);
+  drawLine("Yau Ma Tei", "Prince Edward", "twl", 0, ["left","ktl"], ["left","ktl"]);
+  drawLine("Prince Edward", "Sham Shui Po", "twl", 30, ["left","ktl"]);
+  drawLine("Sham Shui Po", "Mei Foo", "twl", 0);
+  drawLine("Lai King", "Kwai Fong", "twl", 20, ["right","hk2ty"]);
+  drawLine("Kwai Fong", "Tsuen Wan", "twl", 0);
+  //West Rail Line
+  drawLine("Nam Cheong", "Tsuen Wan West", "west", 50, ["right","hk2ty"]);
+  drawLine("Tsuen Wan West", "Tuen Mun", "west", 0);
+  drawLine("East Tsim Sha Tsui", "Austin", "west", 50);
+  drawLine("East Tsim Sha Tsui", "Hung Hom", "west", 0);
+  //Kwun Tong Line
+  drawLine("Yau Ma Tei", "Prince Edward", "ktl", 0, ["right","twl"], ["right","twl"]);
+  drawLine("Prince Edward", "Shek Kip Mei", "ktl", 50, ["right","twl"]);
+  drawLine("Shek Kip Mei", "Kowloon Tong", "ktl", 20, null, ["right","east"]);
+  drawLine("Kowloon Tong", "Lok Fu", "ktl", 30, ["right","east"]);
+  drawLine("Lok Fu", "Kowloon Bay", "ktl", 0);
+  drawLine("Yau Tong", "Lam Tin", "ktl", 30, ["left","np2tkl"]);
+  drawLine("Lam Tin", "Ngau Tau Kok", "ktl", 0);
+  drawLine("Yau Tong", "Tiu Keng Leng", "ktl", 0, ["left","np2tkl"], ["left","np2tkl"]);
+  //East Rail Line
+  drawLine("Kowloon Tong", "Tai Wai", "east", 50, ["left","ktl"], ["left","mosl"]);
+  drawLine("Tai Wai", "Sha Tin", "east", 20, ["left","mosl"]);
+  drawLine("Sha Tin", "Sheung Shui", "east", 0);
+  drawLine("Sheung Shui", "Lo Wu", "ss2lw", 50, ["right","ss2lmc"]);
+  drawLine("Sheung Shui", "Lok Ma Chau", "ss2lmc", 50, ["left","ss2lw"]);
+  drawLine("Hung Hom", "Mong Kok East", "east", 0);
+  //Ma On Shan Line
+  drawLine("Tai Wai", "Che Kung Temple", "mosl", 50, ["right","east"]);
+  drawLine("Che Kung Temple", "Wu Kai Sha", "mosl", 0);
+  //Tseung Kwan O Line
+  drawLine("North Point", "Quarry Bay", "np2tkl", 0, ["left","island"], ["left","island"]);
+  drawLine("Quarry Bay", "Yau Tong", "np2tkl", 50, ["left","island"], ["right","ktl"]);
+  drawLine("Yau Tong", "Tiu Keng Leng", "np2tkl", 20, ["right","ktl"], ["right","ktl"]);
+  drawLine("Tiu Keng Leng", "Tseung Kwan O", "tkl2tko", 20);
+  drawLine("Tseung Kwan O", "Hang Hau", "tko2pl", 30, ["left","tko2lp"]);
+  drawLine("Hang Hau", "Po Lam", "tko2pl", 0);
+  drawLine("Tseung Kwan O", "LOHAS Park", "tko2lp", 30, ["right","tko2pl"]);
+  //Walking path from Tsim Sha Tsui to East TST
+  drawLine("Tsim Sha Tsui", "East Tsim Sha Tsui", "walk", 50);
+  
+  //Draw Legend
+  ctx.beginPath();
+  ctx.rect(20,80,400,200);
+  ctx.fillStyle = 'white';
+  ctx.fill();
+  ctx.lineWidth = 3;
+  ctx.strokeStyle = 'black';
+  ctx.stroke();
+  
+  ctx.strokeStyle = "#808080";
+  ctx.beginPath();
+  ctx.lineWidth   = 100/tpplw;
+  ctx.moveTo(diagram_x    ,diagram_y);
+  ctx.lineTo(diagram_x+60 ,diagram_y);
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.lineWidth   = 200/tpplw;
+  ctx.moveTo(diagram_x+60 ,diagram_y);
+  ctx.lineTo(diagram_x+120,diagram_y);
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.lineWidth   = 300/tpplw;
+  ctx.moveTo(diagram_x+120,diagram_y);
+  ctx.lineTo(diagram_x+180,diagram_y);
+  ctx.stroke();
+  
+  ctx.lineWidth = 1;
+  ctx.strokeStyle = 'black';
+  ctx.fillStyle   = "#ffffff";
+  ctx.beginPath();
+  ctx.arc(diagram_x    , diagram_y, 100/tpplw/2, 0, 2*Math.PI);
+  ctx.stroke();
+  ctx.fill();
+  ctx.beginPath();
+  ctx.arc(diagram_x+60 , diagram_y, 200/tpplw/2, 0, 2*Math.PI);
+  ctx.stroke();
+  ctx.fill();
+  ctx.beginPath();
+  ctx.arc(diagram_x+120, diagram_y, 300/tpplw/2, 0, 2*Math.PI);
+  ctx.stroke();
+  ctx.fill();
+  ctx.beginPath();
+  ctx.arc(diagram_x+180, diagram_y, 400/tpplw/2, 0, 2*Math.PI);
+  ctx.stroke();
+  ctx.fill();
+  ctx.fillStyle   = "#000000";
+  ctx.beginPath();
+  ctx.arc(diagram_x    , diagram_y, 2, 0, 2*Math.PI);
+  ctx.fill();
+  ctx.beginPath();
+  ctx.arc(diagram_x+60 , diagram_y, 2, 0, 2*Math.PI);
+  ctx.fill();
+  ctx.beginPath();
+  ctx.arc(diagram_x+120, diagram_y, 2, 0, 2*Math.PI);
+  ctx.fill();
+  ctx.beginPath();
+  ctx.arc(diagram_x+180, diagram_y, 2, 0, 2*Math.PI);
+  ctx.fill();
+  ctx.fillText("100/day", diagram_x+10 , diagram_y+20);
+  ctx.fillText("200/day", diagram_x+70 , diagram_y+20);
+  ctx.fillText("300/day", diagram_x+130, diagram_y+20);
+  
+</script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36764950-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</body>
+</html>
